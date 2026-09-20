@@ -1,0 +1,261 @@
+Picked up JAVA_TOOL_OPTIONS: -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.banking:WebBasedBankingSystem >------------------
+[INFO] Building Web Based Banking System 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ WebBasedBankingSystem ---
+[INFO] Deleting C:\Users\User\WebBasedBankingSystem\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ WebBasedBankingSystem ---
+[INFO] Copying 1 resource from src\main\resources to target\maven-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ WebBasedBankingSystem ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 41 source files with javac [debug release 17] to target\maven-classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ WebBasedBankingSystem ---
+[INFO] skip non existing resourceDirectory C:\Users\User\WebBasedBankingSystem\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ WebBasedBankingSystem ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ WebBasedBankingSystem ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ WebBasedBankingSystem ---
+[WARNING]  Parameter 'classesDirectory' is read-only, must not be used in configuration
+[INFO] Packaging webapp
+[INFO] Assembling webapp [WebBasedBankingSystem] in [C:\Users\User\WebBasedBankingSystem\target\WebBasedBankingSystem]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\Users\User\WebBasedBankingSystem\src\main\webapp]
+[INFO] Building war: C:\Users\User\WebBasedBankingSystem\target\WebBasedBankingSystem.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.205 s
+[INFO] Finished at: 2026-09-16T07:47:20+05:30
+[INFO] ------------------------------------------------------------------------
+Picked up JAVA_TOOL_OPTIONS: -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+Picked up JAVA_TOOL_OPTIONS: -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+PASS transfer rejects 0
+PASS payment rejects 0
+PASS transfer rejects -1
+PASS payment rejects -1
+PASS transfer rejects 0.001
+PASS payment rejects 0.001
+PASS transfer rejects 10000000000000
+PASS payment rejects 10000000000000
+PASS transfer records both balance changes and payment for session customer
+PASS transfer insert failure does not commit
+PASS transfer rolls back after balance changes
+PASS same account rejected
+PASS same account never updates balance
+PASS missing receiver rejected
+PASS missing receiver never updates balance
+PASS insufficient transfer balance rejected
+PASS missing active sender rejected
+PASS payment debits and records together
+PASS payment insert failure does not commit
+PASS payment rolls back debit on insert failure
+PASS blank provider rejected
+PASS oversized provider rejected
+PASS insufficient payment balance rejected
+PASS loan installment debit, status and payment commit together
+PASS paid, inactive or unowned installment rejected
+PASS ineligible installment never debits
+PASS loan payment insert failure does not commit
+PASS loan installment and debit roll back together
+PASS HTML escaping
+PASS loan installments sum to exact total
+PASS final installment absorbs rounding remainder
+PASS maturity uses annual actual-days interest
+PASS early withdrawal pays principal only
+PASS payment IDs support SQL BIGINT
+Completed 34 isolated financial/security checks. No database accessed.
+Picked up JAVA_TOOL_OPTIONS: -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+PASS isolated database selected
+Sep 16, 2026 7:47:26 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-nio-127.0.0.1-auto-1"]
+Sep 16, 2026 7:47:26 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Sep 16, 2026 7:47:26 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/10.1.59]
+Sep 16, 2026 7:47:26 AM org.apache.catalina.startup.ContextConfig getDefaultWebXmlFragment
+INFO: No global web.xml found
+Sep 16, 2026 7:47:29 AM org.apache.jasper.servlet.TldScanner scanJars
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Sep 16, 2026 7:47:29 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-127.0.0.1-auto-1-53732"]
+PASS login redirect /loan/dashboard.jsp
+Sep 16, 2026 7:47:31 AM org.apache.catalina.core.ApplicationDispatcher invoke
+SEVERE: Servlet.service() for servlet [jsp] threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [788] in the jsp file: [/WEB-INF/employee/dashboard.jsp]
+String literal is not properly closed by a double-quote
+785:                                                                                                         decisions.add(
+786:                                                                                                         new String[]{
+787:                                                                                                         "investment-approve",
+788:                                                                                                         "Approve and
+789:                                                                                                         Fund",
+790:                                                                                                         investmentId
+791:                                                                                                         }
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:70)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:189)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:593)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:408)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:380)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:366)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:736)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:441)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:359)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:310)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:609)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:394)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:323)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:268)
+	at com.banking.controller.EmployeeServlet.doGet(EmployeeServlet.java:69)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:36)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+Sep 16, 2026 7:47:31 AM org.apache.catalina.core.StandardWrapperValve invoke
+SEVERE: Servlet.service() for servlet [com.banking.controller.EmployeeServlet] in context with path [/bank] threw exception [org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [788] in the jsp file: [/WEB-INF/employee/dashboard.jsp]
+String literal is not properly closed by a double-quote
+785:                                                                                                         decisions.add(
+786:                                                                                                         new String[]{
+787:                                                                                                         "investment-approve",
+788:                                                                                                         "Approve and
+789:                                                                                                         Fund",
+790:                                                                                                         investmentId
+791:                                                                                                         }
+
+
+Stacktrace:] with root cause
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [788] in the jsp file: [/WEB-INF/employee/dashboard.jsp]
+String literal is not properly closed by a double-quote
+785:                                                                                                         decisions.add(
+786:                                                                                                         new String[]{
+787:                                                                                                         "investment-approve",
+788:                                                                                                         "Approve and
+789:                                                                                                         Fund",
+790:                                                                                                         investmentId
+791:                                                                                                         }
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:70)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:189)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:593)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:408)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:380)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:366)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:736)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:441)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:359)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:310)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:609)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:394)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:323)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:268)
+	at com.banking.controller.EmployeeServlet.doGet(EmployeeServlet.java:69)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:36)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+Sep 16, 2026 7:47:31 AM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-nio-127.0.0.1-auto-1-53732"]
+Sep 16, 2026 7:47:31 AM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service [Tomcat]
+Sep 16, 2026 7:47:31 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesJdbc
+WARNING: The web application [bank] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Sep 16, 2026 7:47:31 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+WARNING: The web application [bank] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.20/java.lang.Object.wait(Native Method)
+ java.base@17.0.20/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base@17.0.20/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.20/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.20/java.lang.Thread.run(Thread.java:840)
+Sep 16, 2026 7:47:31 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesObjectStreamClassCaches
+WARNING: You need to add "--add-opens=java.base/java.io=ALL-UNNAMED" to the JVM command line arguments to enable ObjectStream cache memory leak protection. Alternatively, you can suppress this warning by disabling ObjectStream class cache memory leak protection.
+Sep 16, 2026 7:47:31 AM org.apache.catalina.loader.WebappClassLoaderBase checkThreadLocalsForLeaks
+WARNING: You need to add "--add-opens=java.base/java.lang=ALL-UNNAMED" to the JVM command line arguments to enable ThreadLocal memory leak detection. Alternatively, you can suppress this warning by disabling ThreadLocal memory leak detection.
+Sep 16, 2026 7:47:31 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesRmiTargets
+WARNING: You need to add "--add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED" to the JVM command line arguments to enable RMI Target memory leak detection. Alternatively, you can suppress this warning by disabling RMI Target memory leak detection.
+Sep 16, 2026 7:47:31 AM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-nio-127.0.0.1-auto-1-53732"]
+Sep 16, 2026 7:47:31 AM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-nio-127.0.0.1-auto-1-53732"]
+Exception in thread "main" java.lang.AssertionError: protected JSP renders CSRF token
+	at EndToEndTest.check(EndToEndTest.java:24)
+	at EndToEndTest.login(EndToEndTest.java:44)
+	at EndToEndTest.main(EndToEndTest.java:64)

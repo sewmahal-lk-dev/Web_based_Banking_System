@@ -1,0 +1,35 @@
+PASS deposit increases balance exactly once
+PASS deposit creates linked payment and audit
+PASS reference fits unique VARCHAR(50)
+PASS withdrawal debits and records payment and audit
+PASS preserves IllegalArgumentException: Account number was not found.
+PASS failure rolls back all changes
+PASS missing account never updates balance
+PASS preserves SecurityException: not authorized
+PASS failure rolls back all changes
+PASS preserves SQLException: Simulated payment
+PASS failure rolls back all changes
+PASS no retry or partial balance change after payment
+PASS preserves SQLException: Simulated audit
+PASS failure rolls back all changes
+PASS no retry or partial balance change after audit
+PASS preserves SQLException: Duplicate entry
+PASS failure rolls back all changes
+PASS no retry or partial balance change after duplicate
+PASS preserves IllegalArgumentException: Account number was not found.
+PASS failure rolls back all changes
+PASS missing account never updates balance
+PASS preserves SecurityException: not authorized
+PASS failure rolls back all changes
+PASS preserves SQLException: Simulated payment
+PASS failure rolls back all changes
+PASS no retry or partial balance change after payment
+PASS preserves SQLException: Simulated audit
+PASS failure rolls back all changes
+PASS no retry or partial balance change after audit
+PASS preserves SQLException: Duplicate entry
+PASS failure rolls back all changes
+PASS no retry or partial balance change after duplicate
+PASS preserves IllegalArgumentException: Insufficient account balance
+PASS failure rolls back all changes
+Completed 34 cash transaction checks. No database accessed.

@@ -1,0 +1,463 @@
+{
+  "changedExistingFiles": [
+    {
+      "path": "src/main/webapp/login.jsp",
+      "sha256": "fdf37200b5e093057fc461b0c5011f78a634b853650395549ce6b5999868bb60",
+      "bytes": 22830
+    },
+    {
+      "path": "src/main/webapp/register.jsp",
+      "sha256": "b0787cb9588e5dfbf6d3c8112ac3ac6911bad3a6f995ee4a1fcc7d8c293478ea",
+      "bytes": 12809
+    },
+    {
+      "path": "src/main/webapp/customer/accounts.jsp",
+      "sha256": "bf10282ebb4e58a2cb12a534eca917b41da04a7ce565ddc7cc5d1210e21e1330",
+      "bytes": 15073
+    },
+    {
+      "path": "src/main/webapp/customer/dashboard.jsp",
+      "sha256": "7d0227890bf1e045446a692576eca7d4c155c2a0d729a0a1de453ffdb1c9a65f",
+      "bytes": 7315
+    },
+    {
+      "path": "src/main/webapp/customer/payments.jsp",
+      "sha256": "525f67fb4d4c33c8b301503a712c3a1366951073560adfa48c25b8dcca6d7489",
+      "bytes": 24593
+    },
+    {
+      "path": "src/main/webapp/customer/transfer.jsp",
+      "sha256": "4194b6209474cd8e0cda293ac5c658198fa1fae24b3234672b0091288888fbcb",
+      "bytes": 19434
+    },
+    {
+      "path": "src/main/webapp/WEB-INF/notifications.jsp",
+      "sha256": "35cf0fe73a3ea4d28282f89ca7fc0d85691503345d45b6c82bbcbb7ae67fe17f",
+      "bytes": 2184
+    },
+    {
+      "path": "src/main/webapp/WEB-INF/customer/services.jsp",
+      "sha256": "4cffa01672ac8ec306c2a1cd23997edb009a271d094933eb15abd9114b3c1427",
+      "bytes": 8863
+    },
+    {
+      "path": "src/main/webapp/WEB-INF/employee/dashboard.jsp",
+      "sha256": "253cf09fce795125b3147a6f35bc1d991a747e2a85709956f8e42016440b3b26",
+      "bytes": 112744
+    },
+    {
+      "path": "src/main/webapp/WEB-INF/fragments/customer-workflow-create.jsp",
+      "sha256": "34315d1656286eba0df9d7f8d9ff2933495c44b1e6c3eefe40d019f2bc4ea37d",
+      "bytes": 4408
+    },
+    {
+      "path": "src/main/webapp/WEB-INF/public/home.jsp",
+      "sha256": "d41ca5cc3d271f1a634317887ec82d4fbf98d50342383e7d4726c5c106fc7eeb",
+      "bytes": 11730
+    },
+    {
+      "path": "src/main/webapp/assets/js/banking-ui.js",
+      "sha256": "64fcad44ede297d1ef35d8eb2907b657f0741ff24f2bfab8e138d32fab6d176f",
+      "bytes": 14577
+    }
+  ],
+  "createdImplementationAndTestFiles": [
+    {
+      "path": "src/main/webapp/assets/css/workspaces.css",
+      "sha256": "3ca5a33abbb01396d976b1ed89ebbb12a2af03f115607088d18bf5228da49eb7",
+      "bytes": 29751
+    },
+    {
+      "path": "src/main/webapp/assets/js/workspaces.js",
+      "sha256": "444fa126ea7a1477f2feabc8f456908453af44ad1f7271d394fcd309c699579d",
+      "bytes": 36703
+    },
+    {
+      "path": "tools/ux-prepare-tests.py",
+      "sha256": "add648d526ba6131af75e25f55431a892645e10138fc22da831b08b6770d9ba3",
+      "bytes": 2620
+    },
+    {
+      "path": "tools/ux-browser.mjs",
+      "sha256": "029511d54687b5e898c3b8cef848568dbde85bc0a3a43a7e17e4dd5ac0a7e8a0",
+      "bytes": 24157
+    },
+    {
+      "path": "tools/ux-audit.py",
+      "sha256": "6e982fd697ea734bb266805c0b82727b1876214e172ae7687bdb13be6368961b",
+      "bytes": 1694
+    }
+  ],
+  "evidence": [
+    {
+      "path": "verification/ux-1440-customer-quick-action-modal.png",
+      "sha256": "762c73c7a92956d4d90b48706da3e96337dc72233cbc9cbd48c1071bcff66eab",
+      "bytes": 92749
+    },
+    {
+      "path": "verification/ux-390-customer-quick-action-modal.png",
+      "sha256": "ac6d4b7dd100af1a7080703fb71667304e4d4b1fe9a399a3523b40199cfbf1ba",
+      "bytes": 38130
+    },
+    {
+      "path": "verification/ux-admin-Audit-log.png",
+      "sha256": "a3ec570d78a45f5a4311ad7c6df9f8ce8270dc1f49ea4e4ada52449c6e63580d",
+      "bytes": 73875
+    },
+    {
+      "path": "verification/ux-admin-Customers.png",
+      "sha256": "c9f3ec234ffdbe5c7e20d3c80d3b653eb5272e8f2d975db34ff3abf7a346cddd",
+      "bytes": 75850
+    },
+    {
+      "path": "verification/ux-admin-employee-drawer.png",
+      "sha256": "c1156974b9fc97081713d4e567b96827ffd0abac20a5faf07fa6c0c9321885a5",
+      "bytes": 82926
+    },
+    {
+      "path": "verification/ux-admin-employee-modal.png",
+      "sha256": "fb1fcfc19fb3274f71dd013b22790b5aacaa5ebdffc6fb689da9536eb6b2046f",
+      "bytes": 126710
+    },
+    {
+      "path": "verification/ux-admin-Employees.png",
+      "sha256": "5520a0bc07f27f34e502afa879c8dbb3c5df49931d182547961309c670d6fa49",
+      "bytes": 76239
+    },
+    {
+      "path": "verification/ux-admin-Products.png",
+      "sha256": "d4886db6751ebde783fa48b10fa1c5197ac4f8034204f4bd6d3f50cf70d152c5",
+      "bytes": 54214
+    },
+    {
+      "path": "verification/ux-admin-status-confirmation.png",
+      "sha256": "ebaa25bfe586536721890e811da0c798e7d36f1c2e42a49f6a195939fa7e2fd0",
+      "bytes": 59091
+    },
+    {
+      "path": "verification/ux-baseline.json",
+      "sha256": "c63d6f829b26e5219b77b8ea2a4739f894bcc6cdc0b3762d52b5be8ac3ed07cc",
+      "bytes": 152330
+    },
+    {
+      "path": "verification/ux-browser-results.json",
+      "sha256": "17735c95052734f2e4a15a659c22e1fe33876fe97fd342511f3fb0c480975afc",
+      "bytes": 132
+    },
+    {
+      "path": "verification/ux-build.log",
+      "sha256": "61f9bfa99891d0390e563d7aab702a48f57d6cecc659ebecb89ebd7a69979bad",
+      "bytes": 2177
+    },
+    {
+      "path": "verification/ux-card-application-dark-1024.png",
+      "sha256": "59c4eb8ec1277084afe5b49bd3e0e54af1f0d7c80b9c852d11b270471eb71b81",
+      "bytes": 85160
+    },
+    {
+      "path": "verification/ux-card-application-dark-1440.png",
+      "sha256": "bec1de97d98c57aed28c04311e2febe544f0595fcedf4ea5e79abaf858c867c6",
+      "bytes": 100667
+    },
+    {
+      "path": "verification/ux-card-application-dark-390.png",
+      "sha256": "e161545f45c2191d519e7a3297eb1f70e93ee9faf963323d85ca85355934e56b",
+      "bytes": 37608
+    },
+    {
+      "path": "verification/ux-card-application-dark-768.png",
+      "sha256": "b4b0b7edc69b15cac4934cd6d57691a01c44d24d3457e71f4b90a284dedc520a",
+      "bytes": 48221
+    },
+    {
+      "path": "verification/ux-card-application-error.png",
+      "sha256": "19045ac743f7eddb425add7c5468643660c81ae30c79b20cdb8fb664ea71dc05",
+      "bytes": 100836
+    },
+    {
+      "path": "verification/ux-card-application-light-1024.png",
+      "sha256": "445a50919b72d5906a33b2c711484c38f0a0062134c4731d4fabfb5f81942dd4",
+      "bytes": 87542
+    },
+    {
+      "path": "verification/ux-card-application-light-1440.png",
+      "sha256": "686312faacbd86143c558893a878cfad8b2d99e48da7cb2fe8ddd8e3004d098c",
+      "bytes": 105885
+    },
+    {
+      "path": "verification/ux-card-application-light-390.png",
+      "sha256": "9938da216f6c332042f04c9b44930f61cce18c36c81c6d52793c056aec79f8b8",
+      "bytes": 38695
+    },
+    {
+      "path": "verification/ux-card-application-light-768.png",
+      "sha256": "b77f9443c9af22fea2d3fa518956b1ca8333be7ef9730d7aeaf237d835ed047b",
+      "bytes": 49316
+    },
+    {
+      "path": "verification/ux-card-application-pending.png",
+      "sha256": "77c80b053b53f338634b56b2de5dfafd12bde0ad3b4e1c8ada79315c47bcc253",
+      "bytes": 56809
+    },
+    {
+      "path": "verification/ux-card-check.log",
+      "sha256": "7cba64ba5fa2127a0c0cd416377a83a4668e4590736a04e4552672cac878a1ef",
+      "bytes": 41030
+    },
+    {
+      "path": "verification/ux-card-workspace-approved.png",
+      "sha256": "978ead44a37b6bdcfa52d11a04f4052fddef4c9b461c65503c0fd9923a55815e",
+      "bytes": 52721
+    },
+    {
+      "path": "verification/ux-CARD_SERVICES_OFFICER-workspace.png",
+      "sha256": "0029e33419b375f973fcb6f7cdfc23b39b4a80e587b120e92df83f4b8691a46a",
+      "bytes": 55986
+    },
+    {
+      "path": "verification/ux-cash-deposit-modal.png",
+      "sha256": "d593e21d587f9931f55303438154a63759776e0b657f09ff07acd00fac1392c1",
+      "bytes": 96472
+    },
+    {
+      "path": "verification/ux-CashTransactionSafetyTest.log",
+      "sha256": "6f5c2b62f8a05cc4e30bdce0eb467d528ce6d764956deef7af5057f9a1c73f19",
+      "bytes": 1702
+    },
+    {
+      "path": "verification/ux-command-palette.png",
+      "sha256": "3180aa960a5364fb002eab62cbdf08808b9bf38052e02bb7381ac9c7630b69a0",
+      "bytes": 118312
+    },
+    {
+      "path": "verification/ux-COMPLIANCE_RISK_OFFICER-workspace.png",
+      "sha256": "929960a06df91553f49969c19b71889d8e1ca873a428ba938ade5ca9e52d6ad0",
+      "bytes": 74476
+    },
+    {
+      "path": "verification/ux-contracts.json",
+      "sha256": "5b0cae0c6a547ebef94c24b9333181325fa71e51696d7e1a62b71d4e50f86c9f",
+      "bytes": 24895
+    },
+    {
+      "path": "verification/ux-CUSTOMER_SERVICE_OFFICER-workspace.png",
+      "sha256": "72303fafd0b67216c1311c7be86d0ed523e76ca5c5256965a118f9ae008d7d15",
+      "bytes": 53395
+    },
+    {
+      "path": "verification/ux-dark-1440--.png",
+      "sha256": "2040cd69e7fee3058a9e24014f3f0d8c42dabc9966d12af89f3e7d8cff9146a3",
+      "bytes": 209296
+    },
+    {
+      "path": "verification/ux-dark-1440--customer-dashboard.png",
+      "sha256": "334778f3d1076e96fa731560f4a4284cda18a4004f4adc19ce4b68a5858c8fc8",
+      "bytes": 173334
+    },
+    {
+      "path": "verification/ux-dark-1440--customer-tickets.png",
+      "sha256": "a3b341eb0f75d7c2784769411f913c6fe5566a21bff792cbd0466f6bf60167de",
+      "bytes": 96676
+    },
+    {
+      "path": "verification/ux-dark-1440--login.jsp.png",
+      "sha256": "64d1f80e0dbadd03a90000b7b4ea817d8c371da349063437133b650fc6b61139",
+      "bytes": 357017
+    },
+    {
+      "path": "verification/ux-dark-390--.png",
+      "sha256": "f1b3813cfc8ea6b4e97d983dd518e0658732a74e48826cef913e39dc6ee16407",
+      "bytes": 102170
+    },
+    {
+      "path": "verification/ux-dark-390--customer-dashboard.png",
+      "sha256": "9a5adf803e3be7d72a529f8bdf590a3f1d306f38b7ca817b666bc358e70f1c5d",
+      "bytes": 75690
+    },
+    {
+      "path": "verification/ux-dark-390--customer-tickets.png",
+      "sha256": "77e0a9f5898ca4c0434ba65ecd550e749443b266aea10a50d9db47d192ac02f8",
+      "bytes": 36375
+    },
+    {
+      "path": "verification/ux-dark-390--login.jsp.png",
+      "sha256": "ec51683c526701efa6f6854c37b5ac95d753f98accadd26870e6861d573741b5",
+      "bytes": 32117
+    },
+    {
+      "path": "verification/ux-dark-admin-dashboard.png",
+      "sha256": "3993aebc15d6bb56061a5a14bc74531ef4a4474d48895c4528ab4a88d634d25b",
+      "bytes": 162047
+    },
+    {
+      "path": "verification/ux-dark-mobile-ticket.png",
+      "sha256": "54cddf9e014158e9ec9b688c2c049b83076dd044c0dd8d57cac664f31f7324f6",
+      "bytes": 42174
+    },
+    {
+      "path": "verification/ux-dark-service-dashboard.png",
+      "sha256": "07929874f9f9ba2373edb52c7772e263b14af930d7531fdcdf4c78d1e412ffb0",
+      "bytes": 152154
+    },
+    {
+      "path": "verification/ux-database-after.txt",
+      "sha256": "b67eb6e227fd8428ac952fa4dfc7fdd96f3a2f14fda02750832cdfa302844893",
+      "bytes": 2578
+    },
+    {
+      "path": "verification/ux-database-before.txt",
+      "sha256": "b67eb6e227fd8428ac952fa4dfc7fdd96f3a2f14fda02750832cdfa302844893",
+      "bytes": 2578
+    },
+    {
+      "path": "verification/ux-deployment-before.json",
+      "sha256": "1a84ed91fe6517536cdf90cfd9a3210fec7288e23bbf534a00a89be60766f6aa",
+      "bytes": 87
+    },
+    {
+      "path": "verification/ux-final-build.log",
+      "sha256": "819b66127457ea1f596ccd38d5c54fb7d39bc654993a14996ee7e96f5c32d9eb",
+      "bytes": 1936
+    },
+    {
+      "path": "verification/ux-final-integrity.json",
+      "sha256": "c0f70a9a6bf4733e8426ec4f0a95b1872cd865477e3bf103c06d719810d17602",
+      "bytes": 5353
+    },
+    {
+      "path": "verification/ux-FinancialSafetyTest.log",
+      "sha256": "4944f11b9df841b85cad4199eb652d79eb4300664dd9a8911ca6525422223928",
+      "bytes": 1486
+    },
+    {
+      "path": "verification/ux-INVESTMENT_OFFICER-workspace.png",
+      "sha256": "b664d2f7e3f4e2696aea6a0c32a01e425dce8c00ae2fab02701b2417fd756453",
+      "bytes": 62716
+    },
+    {
+      "path": "verification/ux-InvestmentSafetyTest.log",
+      "sha256": "b6e16e30d4945bf361dcae34e7ffb8778e0bf8f2ea9d02b8c46a3de15104eceb",
+      "bytes": 1434
+    },
+    {
+      "path": "verification/ux-light-1440--.png",
+      "sha256": "129157bb97cc8d70be7180ed38ead85298a34f0c4efb304edb33db897387d1aa",
+      "bytes": 210260
+    },
+    {
+      "path": "verification/ux-light-1440--customer-dashboard.png",
+      "sha256": "215438341a039dbc8bbd89a070f97581ad0c66a558f9d7843fc89190e543faa1",
+      "bytes": 174777
+    },
+    {
+      "path": "verification/ux-light-1440--customer-tickets.png",
+      "sha256": "333b4a5deef196dcc7d286e5f8538d9c9f8ab7a35774cbf4db49527141c65bf8",
+      "bytes": 96817
+    },
+    {
+      "path": "verification/ux-light-1440--login.jsp.png",
+      "sha256": "d8138af9b97df31ce303d949d7f8ffcac3d723f6b6b1cd115c931d72a03c7676",
+      "bytes": 357556
+    },
+    {
+      "path": "verification/ux-light-390--.png",
+      "sha256": "fb73c3562f37f7f8e32dd385835f9877acddc6fe86f0a5df0985a373c9d75ef1",
+      "bytes": 102269
+    },
+    {
+      "path": "verification/ux-light-390--customer-dashboard.png",
+      "sha256": "9a4ef9e25cef578869b9258b3a7454c76cbe6500efc69c52eafe70a11751ded3",
+      "bytes": 77127
+    },
+    {
+      "path": "verification/ux-light-390--customer-tickets.png",
+      "sha256": "04615d94f64798c6497219d38e2d747d832403dac0dbd6da47545c175a47a262",
+      "bytes": 36935
+    },
+    {
+      "path": "verification/ux-light-390--login.jsp.png",
+      "sha256": "077908841c0cf4c3d689f73bb15f04e2f64889edb0122f8f03c202ba50c02d9b",
+      "bytes": 32181
+    },
+    {
+      "path": "verification/ux-light-admin-dashboard.png",
+      "sha256": "bdaba57d0d949063c6780c3e56cb0283048338d969e30306fc0c07dc6944e419",
+      "bytes": 164842
+    },
+    {
+      "path": "verification/ux-light-mobile-ticket.png",
+      "sha256": "58482fa068ed171fd0d59629d860dcdbd309325aeb5d95e9eb5912ab48eb5cc5",
+      "bytes": 42307
+    },
+    {
+      "path": "verification/ux-light-service-dashboard.png",
+      "sha256": "0778b87a8534b11b78c4c0dd80900031a4a720c22a926d2c363f2e1d6e418663",
+      "bytes": 155044
+    },
+    {
+      "path": "verification/ux-LOAN_OFFICER-workspace.png",
+      "sha256": "fc11d2b32d1df627c405e89204e3e2af750b6c62a79ca67c694412cf54e274bb",
+      "bytes": 51751
+    },
+    {
+      "path": "verification/ux-notification-desktop.png",
+      "sha256": "d1218779a385c79574d10e57d16102a5b3927bc6c5f59d2226db2ceb409b5b0e",
+      "bytes": 165063
+    },
+    {
+      "path": "verification/ux-notification-dropdown.png",
+      "sha256": "a9a7985127959d6e3bc08464b8e3de932511b3de943d2ffbcbce2dd8535ab158",
+      "bytes": 186697
+    },
+    {
+      "path": "verification/ux-notification-mobile.png",
+      "sha256": "8098f9efb1e094a244c55d7b13a43cbd1b40fb45ffa00297850ecbfe1c34d344",
+      "bytes": 43056
+    },
+    {
+      "path": "verification/ux-payment-error-modal.png",
+      "sha256": "def36aaadab261e357a42be226088799f516b9402ba5f5807916ce7f15d4419d",
+      "bytes": 95226
+    },
+    {
+      "path": "verification/ux-report.md",
+      "sha256": "abd49f7efc78fbed023a83be2af215f5858b095bcc980ed9bcb670c546f0076d",
+      "bytes": 15440
+    },
+    {
+      "path": "verification/ux-smoke.log",
+      "sha256": "f59b0f09dc722e952b27b216227d40c0f0b88ec8a1fd9880aa1998299616b11d",
+      "bytes": 6984
+    },
+    {
+      "path": "verification/ux-SmokeTest.log",
+      "sha256": "f07b51148394edfd73997ac4f8e912258a95ad402ca31f06e1cfa8c7911d3643",
+      "bytes": 6984
+    },
+    {
+      "path": "verification/ux-source-audit.json",
+      "sha256": "67158b6353d3e48e26cc60f012b1b37032f871eb534e936c41ea6c5b8157a766",
+      "bytes": 674
+    },
+    {
+      "path": "verification/ux-support-server-success.png",
+      "sha256": "edac593dfd1e16a78cc45d38aa3db1cdfe5e0ced59f87945883c000ab951409d",
+      "bytes": 90337
+    },
+    {
+      "path": "verification/ux-ticket-assignment-modal.png",
+      "sha256": "6dcfbf5e0cfb01a7aae42628cef46b07be96c41747378a487c58c508d3ece9d9",
+      "bytes": 118910
+    },
+    {
+      "path": "verification/ux-workflows.log",
+      "sha256": "26df12d446344948fd02581abc8521466de0227caa1140eae3f9b9b84301ce61",
+      "bytes": 41032
+    }
+  ],
+  "war": {
+    "path": "target/WebBasedBankingSystem.war",
+    "sha256": "8508f31541198209a68d9b364b5d319a70f0982021d0b4d0a52f66e627329b63",
+    "bytes": 10352248
+  }
+}

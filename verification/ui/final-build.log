@@ -1,0 +1,508 @@
+Picked up JAVA_TOOL_OPTIONS: -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.banking:WebBasedBankingSystem >------------------
+[INFO] Building Web Based Banking System 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ WebBasedBankingSystem ---
+[INFO] Deleting C:\Users\User\WebBasedBankingSystem\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ WebBasedBankingSystem ---
+[INFO] Copying 1 resource from src\main\resources to target\maven-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ WebBasedBankingSystem ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 40 source files with javac [debug release 17] to target\maven-classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ WebBasedBankingSystem ---
+[INFO] skip non existing resourceDirectory C:\Users\User\WebBasedBankingSystem\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ WebBasedBankingSystem ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ WebBasedBankingSystem ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ WebBasedBankingSystem ---
+[WARNING]  Parameter 'classesDirectory' is read-only, must not be used in configuration
+[INFO] Packaging webapp
+[INFO] Assembling webapp [WebBasedBankingSystem] in [C:\Users\User\WebBasedBankingSystem\target\WebBasedBankingSystem]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\Users\User\WebBasedBankingSystem\src\main\webapp]
+[INFO] Building war: C:\Users\User\WebBasedBankingSystem\target\WebBasedBankingSystem.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.727 s
+[INFO] Finished at: 2026-09-16T00:42:38+05:30
+[INFO] ------------------------------------------------------------------------
+Picked up JAVA_TOOL_OPTIONS: -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+Picked up JAVA_TOOL_OPTIONS: -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+PASS transfer rejects 0
+PASS payment rejects 0
+PASS transfer rejects -1
+PASS payment rejects -1
+PASS transfer rejects 0.001
+PASS payment rejects 0.001
+PASS transfer rejects 10000000000000
+PASS payment rejects 10000000000000
+PASS transfer records both balance changes and payment for session customer
+PASS transfer insert failure does not commit
+PASS transfer rolls back after balance changes
+PASS same account rejected
+PASS same account never updates balance
+PASS missing receiver rejected
+PASS missing receiver never updates balance
+PASS insufficient transfer balance rejected
+PASS missing active sender rejected
+PASS payment debits and records together
+PASS payment insert failure does not commit
+PASS payment rolls back debit on insert failure
+PASS blank provider rejected
+PASS oversized provider rejected
+PASS insufficient payment balance rejected
+PASS loan installment debit, status and payment commit together
+PASS paid, inactive or unowned installment rejected
+PASS ineligible installment never debits
+PASS loan payment insert failure does not commit
+PASS loan installment and debit roll back together
+PASS HTML escaping
+PASS loan installments sum to exact total
+PASS final installment absorbs rounding remainder
+PASS maturity uses annual actual-days interest
+PASS early withdrawal pays principal only
+PASS payment IDs support SQL BIGINT
+Completed 34 isolated financial/security checks. No database accessed.
+Picked up JAVA_TOOL_OPTIONS: -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+PASS isolated database selected
+Sep 16, 2026 12:42:43 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-nio-127.0.0.1-auto-1"]
+Sep 16, 2026 12:42:43 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Sep 16, 2026 12:42:43 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/10.1.59]
+Sep 16, 2026 12:42:44 AM org.apache.catalina.startup.ContextConfig getDefaultWebXmlFragment
+INFO: No global web.xml found
+Sep 16, 2026 12:42:47 AM org.apache.jasper.servlet.TldScanner scanJars
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Sep 16, 2026 12:42:47 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-127.0.0.1-auto-1-50754"]
+PASS login redirect /loan/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /card/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /investment/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /service/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /compliance/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /admin/dashboard.jsp
+PASS protected JSP renders CSRF token
+Customer registered successfully. ID: 24
+PASS registration creates customer 1
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS registration stores BCrypt hash
+Customer registered successfully. ID: 25
+PASS registration creates customer 2
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS registration stores BCrypt hash
+Customer registered successfully. ID: 26
+PASS registration creates customer 3
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS registration stores BCrypt hash
+PASS anonymous protection /customer/cards
+PASS anonymous protection /customer/accounts.jsp
+PASS anonymous protection /employee/dashboard
+PASS anonymous protection /admin/dashboard.jsp
+PASS staff blocked from customer LOAN_OFFICER
+PASS cross-role denied LOAN_OFFICER -> INVESTMENT_OFFICER
+PASS cross-role denied LOAN_OFFICER -> CARD_SERVICES_OFFICER
+PASS cross-role denied LOAN_OFFICER -> SYSTEM_ADMIN
+PASS cross-role denied LOAN_OFFICER -> COMPLIANCE_RISK_OFFICER
+PASS cross-role denied LOAN_OFFICER -> CUSTOMER_SERVICE_OFFICER
+PASS staff blocked from customer CARD_SERVICES_OFFICER
+PASS cross-role denied CARD_SERVICES_OFFICER -> INVESTMENT_OFFICER
+PASS cross-role denied CARD_SERVICES_OFFICER -> LOAN_OFFICER
+PASS cross-role denied CARD_SERVICES_OFFICER -> SYSTEM_ADMIN
+PASS cross-role denied CARD_SERVICES_OFFICER -> COMPLIANCE_RISK_OFFICER
+PASS cross-role denied CARD_SERVICES_OFFICER -> CUSTOMER_SERVICE_OFFICER
+PASS staff blocked from customer INVESTMENT_OFFICER
+PASS cross-role denied INVESTMENT_OFFICER -> CARD_SERVICES_OFFICER
+PASS cross-role denied INVESTMENT_OFFICER -> LOAN_OFFICER
+PASS cross-role denied INVESTMENT_OFFICER -> SYSTEM_ADMIN
+PASS cross-role denied INVESTMENT_OFFICER -> COMPLIANCE_RISK_OFFICER
+PASS cross-role denied INVESTMENT_OFFICER -> CUSTOMER_SERVICE_OFFICER
+PASS staff blocked from customer CUSTOMER_SERVICE_OFFICER
+PASS cross-role denied CUSTOMER_SERVICE_OFFICER -> INVESTMENT_OFFICER
+PASS cross-role denied CUSTOMER_SERVICE_OFFICER -> CARD_SERVICES_OFFICER
+PASS cross-role denied CUSTOMER_SERVICE_OFFICER -> LOAN_OFFICER
+PASS cross-role denied CUSTOMER_SERVICE_OFFICER -> SYSTEM_ADMIN
+PASS cross-role denied CUSTOMER_SERVICE_OFFICER -> COMPLIANCE_RISK_OFFICER
+PASS staff blocked from customer COMPLIANCE_RISK_OFFICER
+PASS cross-role denied COMPLIANCE_RISK_OFFICER -> INVESTMENT_OFFICER
+PASS cross-role denied COMPLIANCE_RISK_OFFICER -> CARD_SERVICES_OFFICER
+PASS cross-role denied COMPLIANCE_RISK_OFFICER -> LOAN_OFFICER
+PASS cross-role denied COMPLIANCE_RISK_OFFICER -> SYSTEM_ADMIN
+PASS cross-role denied COMPLIANCE_RISK_OFFICER -> CUSTOMER_SERVICE_OFFICER
+PASS staff blocked from customer SYSTEM_ADMIN
+PASS cross-role denied SYSTEM_ADMIN -> INVESTMENT_OFFICER
+PASS cross-role denied SYSTEM_ADMIN -> CARD_SERVICES_OFFICER
+PASS cross-role denied SYSTEM_ADMIN -> LOAN_OFFICER
+PASS cross-role denied SYSTEM_ADMIN -> COMPLIANCE_RISK_OFFICER
+PASS cross-role denied SYSTEM_ADMIN -> CUSTOMER_SERVICE_OFFICER
+PASS customer denied admin
+PASS invalid CSRF denied
+PASS direct JSP routes through controller
+PASS incorrect credentials rejected
+PASS operation /customer/transfer 1000000025
+PASS transfer debits session account
+PASS transfer credits receiver
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS operation /customer/payments Demo utility
+PASS bill payment debits exact amount
+PASS invalid operation rejected /customer/payments
+PASS failed operation has no success message
+PASS invalid operation rejected /customer/payments
+PASS failed operation has no success message
+PASS receiver history includes incoming transfer
+Customer registered successfully. ID: 27
+PASS registration creates customer 4
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS registration stores BCrypt hash
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'balance' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:95)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:938)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1106)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1045)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1369)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1030)
+	at com.banking.dao.TransferDAO.transferMoney(TransferDAO.java:150)
+	at com.banking.controller.TransferServlet.doPost(TransferServlet.java:101)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:36)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS MySQL transfer rollback after receiver update failure
+PASS operation /customer/payment-plans schedule
+PASS scheduling does not debit
+PASS operation /customer/payment-plans update
+PASS scheduled amount updated
+PASS future payment cannot execute
+PASS operation /customer/payment-plans execute
+PASS due bill executes once
+PASS scheduled replay does not debit twice
+PASS operation /customer/payment-plans schedule
+PASS operation /customer/payment-plans cancel
+PASS pending schedule cancelled
+PASS operation /customer/cards apply
+PASS debit subtype created
+PASS invalid operation rejected /customer/cards
+PASS failed operation has no success message
+PASS operation /employee/dashboard card-approve
+PASS officer activates card
+PASS operation /customer/cards limit
+PASS customer limit update
+PASS operation /customer/cards block
+PASS operation /employee/dashboard card-unblock
+PASS operation /customer/cards close
+PASS card safely closed
+PASS operation /customer/cards apply
+PASS credit subtype created
+PASS operation /customer/cards cancel
+PASS operation /customer/cards apply
+PASS operation /employee/dashboard card-reject
+PASS officer rejects pending card without deletion
+PASS card numbers masked in customer view
+PASS operation /customer/loans apply
+PASS operation /customer/loans update
+PASS invalid operation rejected /customer/loans
+PASS failed operation has no success message
+PASS operation /employee/dashboard loan-approve
+PASS operation /customer/loans accept
+PASS loan principal disbursed once
+PASS monthly loan schedule generated
+PASS flat simple interest schedule total
+PASS invalid operation rejected /customer/loans
+PASS failed operation has no success message
+PASS loan acceptance replay cannot disburse twice
+PASS operation /customer/loans repay
+PASS operation /customer/loans repay
+PASS fully repaid loan closes
+PASS operation /customer/loans apply
+PASS operation /customer/loans cancel
+PASS loan application cancelled
+PASS operation /customer/loans apply
+PASS operation /employee/dashboard loan-reject
+PASS officer loan rejection saved
+PASS operation /customer/investments apply
+PASS operation /customer/investments update
+PASS invalid operation rejected /customer/investments
+PASS failed operation has no success message
+PASS operation /employee/dashboard investment-approve
+PASS investment approval debits funding account
+PASS operation /customer/investments withdraw
+PASS early investment withdrawal returns principal only
+PASS invalid operation rejected /customer/investments
+PASS failed operation has no success message
+PASS investment payout replay prevented
+PASS operation /customer/investments apply
+PASS operation /employee/dashboard investment-approve
+PASS operation /employee/dashboard investment-mature
+PASS maturity payout includes actual-days simple interest
+PASS operation /customer/investments apply
+PASS operation /customer/investments cancel
+PASS pending investment cancelled
+PASS operation /customer/investments apply
+PASS operation /employee/dashboard investment-reject
+PASS investment rejected
+PASS operation /customer/investments apply
+Sep 16, 2026 12:42:58 AM org.apache.catalina.core.ApplicationContext log
+SEVERE: com.banking.controller.EmployeeServlet: Employee action failed
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'INV-FUND-20' for key 'payment.reference_number'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:109)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:113)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:938)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1106)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1045)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1369)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1030)
+	at com.banking.dao.Jdbc.update(Jdbc.java:17)
+	at com.banking.dao.Jdbc.exactlyOne(Jdbc.java:18)
+	at com.banking.dao.FinancialLedger.record(FinancialLedger.java:12)
+	at com.banking.dao.InvestmentDAO.lambda$process$3(InvestmentDAO.java:28)
+	at com.banking.dao.Jdbc.transaction(Jdbc.java:12)
+	at com.banking.dao.InvestmentDAO.process(InvestmentDAO.java:22)
+	at com.banking.controller.EmployeeServlet.doPost(EmployeeServlet.java:27)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:36)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+PASS invalid operation rejected /employee/dashboard
+PASS failed operation has no success message
+PASS MySQL investment debit rolls back on ledger failure
+PASS failed investment funding retains pending state
+PASS operation /customer/investments cancel
+PASS operation /customer/requests request
+PASS operation /customer/requests request-update
+PASS invalid operation rejected /customer/requests
+PASS failed operation has no success message
+PASS operation /employee/dashboard request-review
+PASS operation /employee/dashboard request-review
+PASS service request opens real current account
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS request fulfilled ACCOUNT_STATEMENT
+PASS statement download
+PASS statement ownership enforced
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS request fulfilled CHEQUE_BOOK
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS profile request updates email
+PASS operation /customer/requests request
+PASS operation /customer/requests request-cancel
+PASS service request cancellation
+PASS operation /customer/requests ticket
+PASS operation /customer/requests ticket-update
+PASS operation /employee/dashboard ticket-response
+PASS customer sees support response
+PASS operation /customer/requests ticket-close
+PASS ticket safely closed
+PASS invalid operation rejected /customer/settings
+PASS failed operation has no success message
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS account closure preserves record
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS account closure preserves record
+PASS operation /customer/settings deactivate
+PASS customer safely deactivated
+PASS deactivation invalidates session
+PASS operation /employee/dashboard customer-status
+PASS admin reactivates customer
+PASS operation /employee/dashboard employee-save
+PASS login redirect /loan/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS operation /employee/dashboard employee-save
+PASS role change revokes stale session
+PASS operation /employee/dashboard employee-status
+PASS employee deactivated without deletion
+PASS operation /employee/dashboard product-save
+PASS customer can read active products
+PASS operation /employee/dashboard product-save
+PASS inactive products hidden from customer
+PASS invalid operation rejected /employee/dashboard
+PASS failed operation has no success message
+PASS operation /employee/dashboard account-status
+PASS compliance freezes account
+PASS invalid operation rejected /customer/payments
+PASS failed operation has no success message
+PASS operation /employee/dashboard account-status
+PASS audit search works
+PASS operation /customer/settings profile
+PASS profile stored and safely escaped
+Sep 16, 2026 12:43:00 AM org.apache.catalina.core.ApplicationContext log
+SEVERE: com.banking.controller.CustomerServicesServlet: Customer operation failed
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '094995610502' for key 'customer.phone'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:109)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:113)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:938)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1106)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1045)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1369)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1030)
+	at com.banking.dao.CustomerServicesDAO.profile(CustomerServicesDAO.java:50)
+	at com.banking.controller.CustomerServicesServlet.doPost(CustomerServicesServlet.java:75)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:36)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+PASS invalid operation rejected /customer/settings
+PASS failed operation has no success message
+PASS operation /customer/settings password
+PASS password change signs out current session
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS workflow audit records persisted
+PASS final customer JSP dashboard
+PASS final queries dashboard
+PASS final customer JSP accounts
+PASS final queries accounts
+PASS final customer JSP transfer
+PASS final queries transfer
+PASS final customer JSP payments
+PASS final queries payments
+PASS final customer JSP cards
+PASS final queries cards
+PASS final customer JSP loans
+PASS final queries loans
+PASS final customer JSP investments
+PASS final queries investments
+PASS final customer JSP requests
+PASS final queries requests
+PASS final customer JSP settings
+PASS final queries settings
+PASS final customer JSP transactions
+PASS final queries transactions
+PASS final customer JSP products
+PASS final queries products
+PASS populated employee dashboard
+PASS populated employee dashboard
+PASS populated employee dashboard
+PASS populated employee dashboard
+PASS populated employee dashboard
+PASS populated employee dashboard
+PASS logout redirect
+PASS logout invalidates session
+ALL 270 END-TO-END CHECKS PASSED
+Sep 16, 2026 12:43:02 AM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-nio-127.0.0.1-auto-1-50754"]
+Sep 16, 2026 12:43:02 AM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service [Tomcat]
+Sep 16, 2026 12:43:02 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesJdbc
+WARNING: The web application [bank] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Sep 16, 2026 12:43:02 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+WARNING: The web application [bank] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.20/java.lang.Object.wait(Native Method)
+ java.base@17.0.20/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base@17.0.20/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.20/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.20/java.lang.Thread.run(Thread.java:840)
+Sep 16, 2026 12:43:02 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesObjectStreamClassCaches
+WARNING: You need to add "--add-opens=java.base/java.io=ALL-UNNAMED" to the JVM command line arguments to enable ObjectStream cache memory leak protection. Alternatively, you can suppress this warning by disabling ObjectStream class cache memory leak protection.
+Sep 16, 2026 12:43:02 AM org.apache.catalina.loader.WebappClassLoaderBase checkThreadLocalsForLeaks
+WARNING: You need to add "--add-opens=java.base/java.lang=ALL-UNNAMED" to the JVM command line arguments to enable ThreadLocal memory leak detection. Alternatively, you can suppress this warning by disabling ThreadLocal memory leak detection.
+Sep 16, 2026 12:43:02 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesRmiTargets
+WARNING: You need to add "--add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED" to the JVM command line arguments to enable RMI Target memory leak detection. Alternatively, you can suppress this warning by disabling RMI Target memory leak detection.
+Sep 16, 2026 12:43:02 AM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-nio-127.0.0.1-auto-1-50754"]
+Sep 16, 2026 12:43:02 AM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-nio-127.0.0.1-auto-1-50754"]
+Build and end-to-end tests passed.

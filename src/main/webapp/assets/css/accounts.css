@@ -1,0 +1,490 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --navy: #061b2d;
+    --navy-light: #0b2942;
+    --navy-card: #0a3a57;
+    --gold: #d7aa55;
+    --gold-light: #f0c76c;
+    --white: #ffffff;
+    --background: #f4f6f8;
+    --text: #102133;
+    --muted: #748091;
+    --border: #dfe5ea;
+    --green: #43d5a0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+.app-layout {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: var(--navy);
+    color: white;
+    padding: 30px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0 10px 35px;
+}
+
+.brand-logo {
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--gold);
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 26px;
+    color: var(--gold-light);
+}
+
+.brand-text h2 {
+    font-size: 15px;
+    letter-spacing: 4px;
+}
+
+.brand-text span {
+    color: #6f9ab8;
+    font-size: 7px;
+    letter-spacing: 2px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 17px;
+    border-radius: 8px;
+    color: #91bedc;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.nav-item:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+}
+
+.nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 34px;
+    background: var(--gold);
+}
+
+.nav-icon {
+    width: 17px;
+    color: var(--gold-light);
+    font-size: 17px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logout:hover {
+    background: rgba(255, 100, 100, 0.08);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main-area {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+}
+
+.topbar {
+    min-height: 100px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 25px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-label,
+.small-gold {
+    display: block;
+    color: #d69b38;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.topbar h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: normal;
+    font-size: 27px;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.notification-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: white;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info strong {
+    font-size: 12px;
+}
+
+.user-info span {
+    font-size: 9px;
+    color: #8b99a7;
+    margin-top: 4px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    padding: 38px 44px 60px;
+    max-width: 1200px;
+}
+
+.page-heading {
+    margin-bottom: 28px;
+}
+
+.page-heading h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: normal;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.page-heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* =========================
+   ACCOUNT CARD
+========================= */
+
+.account-card {
+    background: linear-gradient(120deg,
+            #07324d,
+            #0b4564);
+
+    color: white;
+    border-radius: 17px;
+    padding: 32px 38px 0;
+    margin-bottom: 24px;
+    overflow: hidden;
+    position: relative;
+}
+
+.account-card::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(215, 170, 85, 0.12);
+    border-radius: 50%;
+    right: -80px;
+    top: -130px;
+}
+
+.account-card-top {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.account-label {
+    color: #7db4d2;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.account-card h3 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: normal;
+    margin: 8px 0;
+    text-transform: capitalize;
+}
+
+.account-number {
+    color: #8fb9d0;
+    font-size: 11px;
+}
+
+.account-status {
+    height: fit-content;
+    padding: 8px 13px;
+    border-radius: 20px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.status-active {
+    background: rgba(67, 213, 160, 0.12);
+    color: #6ce1b6;
+}
+
+.status-other {
+    background: rgba(255, 255, 255, 0.1);
+    color: #d7e1e7;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.balance-section {
+    padding: 34px 0 38px;
+    position: relative;
+    z-index: 2;
+}
+
+.balance-title {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #80b8d8;
+    margin-bottom: 10px;
+}
+
+.balance {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.currency {
+    color: var(--gold-light);
+    font-size: 14px;
+}
+
+.amount {
+    font-family: Georgia, serif;
+    font-size: 46px;
+    letter-spacing: 1px;
+}
+
+.account-card-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    gap: 70px;
+    padding: 18px 0 21px;
+    position: relative;
+    z-index: 2;
+}
+
+.account-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.account-detail span {
+    color: #72a5c2;
+    font-size: 8px;
+}
+
+.account-detail strong {
+    font-size: 11px;
+}
+
+/* =========================
+   EMPTY ACCOUNT
+========================= */
+
+.empty-state {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 60px 30px;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 20px;
+    background: var(--navy);
+    color: var(--gold-light);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 27px;
+}
+
+.empty-state h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================
+   SECURITY
+========================= */
+
+.security-message {
+    text-align: center;
+    color: #93a1af;
+    font-size: 11px;
+    margin-top: 30px;
+}
+
+.security-message span {
+    color: var(--gold);
+    margin-right: 8px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 75px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .brand-text,
+    .nav-item span:not(.nav-icon) {
+        display: none;
+    }
+
+    .brand {
+        margin-left: 4px;
+    }
+
+    .main-area {
+        margin-left: 75px;
+        width: calc(100% - 75px);
+    }
+
+    .topbar,
+    .content {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .account-card-bottom {
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .amount {
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .user-info {
+        display: none;
+    }
+
+    .topbar {
+        padding: 20px;
+    }
+
+    .content {
+        padding: 25px 18px;
+    }
+
+    .account-card {
+        padding: 25px 23px 0;
+    }
+
+    .account-card-top {
+        gap: 20px;
+    }
+}

@@ -1,0 +1,896 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <script src="<%= request.getContextPath() %>/assets/js/theme-init.js"></script>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>LankaTrust Bank | Secure Banking</title>
+
+
+
+
+
+
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                --navy: #061b2d;
+                --navy-light: #0b2942;
+                --gold: #d7aa55;
+                --gold-light: #f0cc7c;
+                --white: #ffffff;
+                --text: #102133;
+                --muted: #748091;
+                --border: #dce3e9;
+                --background: #f8fafc;
+            }
+
+            body {
+                min-height: 100vh;
+                font-family: "Inter", sans-serif;
+                background: var(--background);
+                color: var(--text);
+            }
+
+            .login-container {
+                min-height: 100vh;
+                display: grid;
+                grid-template-columns: 1.08fr 0.92fr;
+            }
+
+            /* =========================
+           LEFT SIDE
+        ========================== */
+
+            .brand-panel {
+                min-height: 100vh;
+                position: relative;
+                overflow: hidden;
+
+                background:
+                    linear-gradient(145deg,
+                        #031827 0%,
+                        #06233a 60%,
+                        #0b3552 Role-based);
+
+                padding: 70px 8vw;
+
+                color: white;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .brand-panel::before {
+                content: "";
+                position: absolute;
+
+                width: 620px;
+                height: 620px;
+
+                border: 1px solid rgba(215, 170, 85, 0.12);
+
+                border-radius: 50%;
+
+                right: -270px;
+                top: -100px;
+            }
+
+            .brand-panel::after {
+                content: "";
+                position: absolute;
+
+                width: 500px;
+                height: 500px;
+
+                border: 1px solid rgba(215, 170, 85, 0.13);
+
+                border-radius: 50%;
+
+                right: -180px;
+                bottom: -260px;
+            }
+
+            .brand {
+                position: relative;
+                z-index: 2;
+            }
+
+            .brand-row {
+                display: flex;
+                align-items: center;
+                gap: 18px;
+            }
+
+            .logo-box {
+                width: 58px;
+                height: 58px;
+
+                border: 1px solid var(--gold);
+
+                border-radius: 14px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-family: "Playfair Display", serif;
+                font-size: 31px;
+
+                color: var(--gold-light);
+            }
+
+            .brand-name {
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 5px;
+            }
+
+            .brand-small {
+                margin-left: 77px;
+                margin-top: -8px;
+
+                font-size: 8px;
+                letter-spacing: 4px;
+
+                color: #72a7c8;
+            }
+
+            .hero {
+                position: relative;
+                z-index: 2;
+                max-width: 720px;
+            }
+
+            .eyebrow {
+                color: var(--gold-light);
+
+                font-size: 14px;
+                font-weight: 700;
+
+                letter-spacing: 5px;
+
+                margin-bottom: 30px;
+            }
+
+            .hero h1 {
+                font-family: "Playfair Display", serif;
+
+                font-size: clamp(54px, 5.3vw, 88px);
+
+                font-weight: 400;
+
+                line-height: 1.03;
+
+                letter-spacing: -2px;
+            }
+
+            .hero h1 span {
+                color: var(--gold-light);
+            }
+
+            .hero-description {
+                margin-top: 38px;
+
+                max-width: 700px;
+
+                font-size: 20px;
+                line-height: 1.8;
+
+                color: #bdd1e0;
+            }
+
+            .stats {
+                position: relative;
+                z-index: 2;
+
+                padding-top: 40px;
+
+                border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+                display: flex;
+                gap: 80px;
+            }
+
+            .stat strong {
+                display: block;
+
+                font-family: "Playfair Display", serif;
+
+                font-size: 30px;
+
+                color: var(--gold-light);
+            }
+
+            .stat span {
+                display: block;
+
+                margin-top: 7px;
+
+                color: #8eb0c8;
+
+                font-size: 14px;
+            }
+
+            .security-line {
+                position: relative;
+                z-index: 2;
+
+                margin-top: 20px;
+
+                color: #638ba7;
+
+                font-size: 13px;
+
+                letter-spacing: 2px;
+            }
+
+            /* =========================
+           RIGHT SIDE
+        ========================== */
+
+            .login-panel {
+                min-height: 100vh;
+
+                background: white;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 60px 7vw;
+            }
+
+            .login-box {
+                width: Role-based;
+                max-width: 590px;
+            }
+
+            .welcome {
+                color: var(--gold);
+
+                font-size: 14px;
+                font-weight: 700;
+
+                letter-spacing: 5px;
+
+                margin-bottom: 22px;
+            }
+
+            .login-box h2 {
+                font-family: "Playfair Display", serif;
+
+                font-size: 48px;
+
+                font-weight: 500;
+
+                color: var(--navy);
+
+                margin-bottom: 12px;
+            }
+
+            .subtitle {
+                color: var(--muted);
+
+                font-size: 16px;
+
+                margin-bottom: 45px;
+            }
+
+            .error-box {
+                margin-bottom: 24px;
+
+                padding: 14px 17px;
+
+                border: 1px solid #efc5c5;
+
+                background: #fff6f6;
+
+                border-radius: 10px;
+
+                color: #a63b3b;
+
+                font-size: 14px;
+            }
+
+            .success-box {
+                margin-bottom: 24px;
+
+                padding: 14px 17px;
+
+                border: 1px solid #b9dec9;
+
+                background: #f1fbf5;
+
+                border-radius: 10px;
+
+                color: #26744a;
+
+                font-size: 14px;
+            }
+
+            .form-group {
+                margin-bottom: 27px;
+            }
+
+            .label-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                margin-bottom: 10px;
+            }
+
+            label {
+                font-size: 14px;
+                font-weight: 600;
+
+                color: var(--navy);
+            }
+
+            .forgot {
+                color: #a67520;
+
+                font-size: 13px;
+
+                text-decoration: none;
+            }
+
+            .input-wrapper {
+                height: 73px;
+
+                border: 1px solid var(--border);
+
+                border-radius: 11px;
+
+                display: flex;
+                align-items: center;
+
+                padding: 0 22px;
+
+                transition: 0.25s;
+            }
+
+            .input-wrapper:focus-within {
+                border-color: var(--gold);
+
+                box-shadow:
+                    0 0 0 4px rgba(215, 170, 85, 0.10);
+            }
+
+            .input-icon {
+                width: 42px;
+
+                color: #9aa8b5;
+
+                font-size: 18px;
+            }
+
+            .input-wrapper input {
+                width: Role-based;
+
+                border: none;
+                outline: none;
+
+                background: transparent;
+
+                color: var(--text);
+
+                font-family: "Inter", sans-serif;
+
+                font-size: 16px;
+            }
+
+            .input-wrapper input::placeholder {
+                color: #aab7c4;
+            }
+
+            .show-password {
+                border: none;
+                background: transparent;
+
+                color: #9a6b17;
+
+                font-weight: 600;
+
+                cursor: pointer;
+
+                padding: 10px;
+            }
+
+            .options {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                margin-top: 5px;
+                margin-bottom: 30px;
+            }
+
+            .remember {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                color: #647180;
+
+                font-size: 14px;
+            }
+
+            .remember input {
+                width: 17px;
+                height: 17px;
+            }
+
+            .login-button {
+                width: Role-based;
+                height: 75px;
+
+                border: none;
+
+                border-radius: 10px;
+
+                background:
+                    linear-gradient(135deg,
+                        #06243a,
+                        #0b4263);
+
+                color: white;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                padding: 0 30px;
+
+                font-size: 16px;
+                font-weight: 700;
+
+                cursor: pointer;
+
+                box-shadow:
+                    0 15px 30px rgba(6, 36, 58, 0.15);
+
+                transition: 0.25s;
+            }
+
+            .login-button:hover {
+                transform: translateY(-2px);
+
+                box-shadow:
+                    0 18px 35px rgba(6, 36, 58, 0.22);
+            }
+
+            .arrow {
+                color: var(--gold-light);
+
+                font-size: 31px;
+            }
+
+            .create-account {
+                margin-top: 20px;
+
+                width: Role-based;
+                height: 64px;
+
+                border: 1px solid #d9c08e;
+
+                border-radius: 10px;
+
+                background: white;
+
+                color: var(--navy);
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                text-decoration: none;
+
+                font-weight: 600;
+
+                transition: 0.25s;
+            }
+
+            .create-account:hover {
+                border-color: var(--gold);
+
+                background: #fffaf1;
+
+                transform: translateY(-1px);
+            }
+
+            .secure-message {
+                text-align: center;
+
+                margin-top: 32px;
+
+                color: #93a1b1;
+
+                font-size: 13px;
+            }
+
+            .secure-message span {
+                color: var(--gold);
+
+                margin-right: 9px;
+            }
+
+            /* =========================
+           RESPONSIVE
+        ========================== */
+
+            @media (max-width: 1000px) {
+
+                .login-container {
+                    grid-template-columns: 1fr;
+                }
+
+                .brand-panel {
+                    min-height: auto;
+                    padding: 50px 35px;
+                }
+
+                .hero {
+                    margin-top: 80px;
+                    margin-bottom: 80px;
+                }
+
+                .stats {
+                    gap: 40px;
+                    flex-wrap: wrap;
+                }
+
+                .login-panel {
+                    min-height: auto;
+                    padding: 70px 30px;
+                }
+            }
+
+            @media (max-width: 600px) {
+
+                .brand-panel {
+                    display: none;
+                }
+
+                .login-panel {
+                    min-height: 100vh;
+                    padding: 35px 22px;
+                }
+
+                .login-box h2 {
+                    font-size: 38px;
+                }
+
+                .input-wrapper {
+                    height: 65px;
+                }
+
+                .login-button {
+                    height: 67px;
+                }
+            }
+        </style>
+
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/lankatrust.css">
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/banking-system.css">
+        <script defer src="<%= request.getContextPath() %>/assets/js/banking-ui.js"></script>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/design-system.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/workspaces.css">
+<script defer src="<%= request.getContextPath() %>/assets/js/workspaces.js"></script>
+</head>
+
+    <body class="auth-page">
+        <a class="auth-home" href="<%= request.getContextPath() %>/">&larr; LankaTrust home</a>
+
+        <div class="login-container">
+
+            <!-- =========================
+         LEFT BRAND PANEL
+    ========================== -->
+
+            <section class="brand-panel">
+
+                <div class="brand">
+
+                    <div class="brand-row">
+
+                        <div class="logo-box">LT</div>
+
+                        <div class="brand-name">
+                            LankaTrust
+                        </div>
+
+                    </div>
+
+                    <div class="brand-small">
+                        DIGITAL BANKING
+                    </div>
+
+                </div>
+
+
+                <div class="hero">
+
+                    <div class="eyebrow">
+                        DIGITAL BANKING
+                    </div>
+
+                    <h1>
+                        Banking built for
+                        <br>
+                        <span>your future.</span>
+                    </h1>
+
+                    <p class="hero-description">
+
+                        Securely manage your accounts,
+                        cards, investments and financial
+                        services from one intelligent
+                        banking platform.
+
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <div class="stats">
+
+                        <div class="stat">
+
+                            <strong>
+                                Protected
+                            </strong>
+
+                            <span>
+                                Customer operations
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>
+                                Personal
+                            </strong>
+
+                            <span>
+                                Digital Banking
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>
+                                Role-based
+                            </strong>
+
+                            <span>
+                                Access control
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="security-line">
+                        Secure • Reliable • Intelligent Banking
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+         LOGIN PANEL
+    ========================== -->
+
+            <section class="login-panel">
+
+                <div class="login-box">
+
+                    <div class="welcome">
+                        WELCOME BACK
+                    </div>
+
+                    <h2>
+                        Sign in to your account
+                    </h2>
+
+                    <p class="subtitle">
+                        Enter your credentials to continue securely.
+                    </p>
+
+
+                    <% if (request.getAttribute("error") !=null) { %>
+
+                        <div class="error-box">
+
+                            <%= request.getAttribute("error") %>
+
+                        </div>
+
+                        <% } %>
+
+
+                            <% if ("1".equals(request.getParameter("registered"))) { %>
+
+                                <div class="success-box">
+
+                                    Your LankaTrust account was created successfully.
+                                    You can now sign in.
+
+                                </div>
+
+                                <% } %>
+
+
+                                    <form action="<%= request.getContextPath() %>/login" method="post">
+
+                                        <!-- EMAIL -->
+
+                                        <div class="form-group">
+
+                                            <div class="label-row">
+
+                                                <label for="email">
+                                                    Email address
+                                                </label>
+
+                                            </div>
+
+                                            <div class="input-wrapper">
+
+                                                <div class="input-icon">
+                                                    ✉
+                                                </div>
+
+                                                <input type="email" id="email" name="email"
+                                                    placeholder="name@example.com" autocomplete="email" required>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <!-- PASSWORD -->
+
+                                        <div class="form-group">
+
+                                            <div class="label-row">
+
+                                                <label for="password">
+                                                    Password
+                                                </label>
+
+                                                <span class="forgot">Forgot password? Contact your bank
+                                                    administrator.</span>
+
+                                            </div>
+
+
+                                            <div class="input-wrapper">
+
+                                                <div class="input-icon">
+                                                    •
+                                                </div>
+
+                                                <input type="password" id="password" name="password"
+                                                    placeholder="Enter your password" autocomplete="current-password"
+                                                    required>
+
+                                                <button type="button" class="show-password" id="showPassword">
+
+                                                    Show
+
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <!-- OPTIONS -->
+
+                                        <div class="options">
+
+                                            <p class="remember">Session expires after 30 minutes of inactivity.</p>
+
+                                        </div>
+
+
+                                        <!-- LOGIN BUTTON -->
+
+                                        <button type="submit" class="login-button">
+
+                                            <span>
+                                                Secure Sign In
+                                            </span>
+
+                                            <span class="arrow">
+                                                →
+                                            </span>
+
+                                        </button>
+
+                                    </form>
+
+
+                                    <!-- CREATE ACCOUNT -->
+
+                                    <a href="<%= request.getContextPath() %>/register.jsp" class="create-account">
+
+                                        Create a New Banking Account
+
+                                    </a>
+
+
+                                    <div class="secure-message">
+
+                                        <span>◆</span>
+
+                                        Keep your password private and sign out when finished.
+
+                                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <script>
+
+            const passwordInput =
+                document.getElementById("password");
+
+            const showPasswordButton =
+                document.getElementById("showPassword");
+
+
+            showPasswordButton.addEventListener(
+                "click",
+                function () {
+
+                    if (passwordInput.type === "password") {
+
+                        passwordInput.type = "text";
+
+                        showPasswordButton.textContent =
+                            "Hide";
+
+                    } else {
+
+                        passwordInput.type = "password";
+
+                        showPasswordButton.textContent =
+                            "Show";
+                    }
+                }
+            );
+
+        </script>
+
+    </body>
+
+    </html>

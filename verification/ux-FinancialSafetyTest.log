@@ -1,0 +1,35 @@
+PASS transfer rejects 0
+PASS payment rejects 0
+PASS transfer rejects -1
+PASS payment rejects -1
+PASS transfer rejects 0.001
+PASS payment rejects 0.001
+PASS transfer rejects 10000000000000
+PASS payment rejects 10000000000000
+PASS transfer records both balance changes and payment for session customer
+PASS transfer insert failure does not commit
+PASS transfer rolls back after balance changes
+PASS same account rejected
+PASS same account never updates balance
+PASS missing receiver rejected
+PASS missing receiver never updates balance
+PASS insufficient transfer balance rejected
+PASS missing active sender rejected
+PASS payment debits and records together
+PASS payment insert failure does not commit
+PASS payment rolls back debit on insert failure
+PASS blank provider rejected
+PASS oversized provider rejected
+PASS insufficient payment balance rejected
+PASS loan installment debit, status and payment commit together
+PASS paid, inactive or unowned installment rejected
+PASS ineligible installment never debits
+PASS loan payment insert failure does not commit
+PASS loan installment and debit roll back together
+PASS HTML escaping
+PASS loan installments sum to exact total
+PASS final installment absorbs rounding remainder
+PASS maturity uses annual actual-days interest
+PASS early withdrawal pays principal only
+PASS payment IDs support SQL BIGINT
+Completed 34 isolated financial/security checks. No database accessed.

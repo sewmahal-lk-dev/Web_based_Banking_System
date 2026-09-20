@@ -1,0 +1,60 @@
+/* LankaTrust shared portal and authentication identity. Existing form contracts retained. */
+:root{--navy:#102c41;--gold:#a77e36;--text:#203647;--muted:#61717c;--border:#dce2e5}
+.balance-card,.account-card{animation:none!important;box-shadow:0 3px 10px #102c4108!important}
+.staff-portal h1,.staff-portal h2,.services-content h2{font-family:Inter,'Segoe UI',Arial,sans-serif}
+.status-badge{display:inline-block;padding:3px 9px;background:#edf3ef;color:#28513d;border:1px solid #d6e3d9;border-radius:4px;font-size:12px;letter-spacing:.2px}
+@media(max-width:800px){.auth-page .brand-panel{display:flex!important;min-height:0!important}.auth-page .brand-panel .hero,.auth-page .brand-content,.auth-page .brand-small{display:none}.auth-page .brand{margin:0}.auth-page .brand-name{font-size:26px}.auth-page .login-panel,.auth-page .form-panel{min-height:0!important}.auth-page .password-label{gap:12px;flex-wrap:wrap}}
+body{font-family:Inter,'Segoe UI',Arial,sans-serif;color:var(--text);background:#f5f5f1;line-height:1.5}
+*,*::before,*::after{box-sizing:border-box}
+a,button,input,select,textarea{touch-action:manipulation}
+:focus-visible{outline:3px solid #a77e36!important;outline-offset:3px}
+button,input,select,textarea{font:inherit}
+input,select,textarea{max-width:100%;border-radius:5px!important}
+button,.btn,.action-card{border-radius:5px!important;box-shadow:none!important}
+button{min-height:42px}
+.customer-sidebar{background:#102c41;padding-top:28px}
+.customer-brand strong{font-family:Georgia,serif;font-size:23px;letter-spacing:-.6px;font-weight:400}
+.customer-brand{gap:10px;padding-left:0;padding-right:0}
+.customer-logo{font-size:18px;border-radius:3px;width:36px;height:38px}
+.customer-brand small{font-size:9px;letter-spacing:1.5px}
+.customer-sidebar .customer-nav-item{border-radius:4px;min-height:43px}
+.customer-sidebar .customer-nav-item.active{background:#284153}
+.topbar{background:#fff;border-bottom:1px solid var(--border);box-shadow:none;gap:20px;flex-wrap:wrap;min-height:90px}
+.topbar h1{font-size:clamp(20px,2.4vw,28px);letter-spacing:-.6px}
+.dashboard-content,.content{padding:32px;max-width:1500px}
+.panel,.account-card,.transfer-card,.payment-card,.summary-card,.action-card{border:1px solid var(--border);border-radius:7px!important;box-shadow:0 2px 6px #102c4105!important}
+.balance-card,.account-card{background:#102c41;border-radius:7px!important}
+.balance-decoration,.account-card::before{display:none!important}
+.balance{font-size:clamp(28px,4vw,44px)}
+.services-content .panel{padding:26px;margin-bottom:24px;background:#fff}
+.services-content h2{font-size:21px;font-weight:600;letter-spacing:-.3px}
+.services-content .record{padding:24px 0}
+.services-content .record:last-child{border-bottom:0}
+.record dt{font-size:11px!important;letter-spacing:.5px;text-transform:uppercase!important}
+.record dd{font-weight:500;overflow-wrap:anywhere}
+.services-content form{padding:4px 0}
+.services-content button{background:#102c41;color:white;border:1px solid #102c41}
+.services-content button:hover{background:#29475b}
+.services-content summary{cursor:pointer;color:#785a28;font-weight:600;padding:12px 0}
+.notice{border-radius:5px;background:#fbf7ec;border-left:3px solid #a77e36}
+table{border-collapse:collapse;width:100%;font-size:13px}th{text-align:left;background:#f1f3f3;color:#52636f;font-weight:600}td,th{padding:14px 12px;border-bottom:1px solid var(--border)}
+.table-wrapper,.table-container{overflow-x:auto}
+.staff-brandbar{background:#102c41;color:#fff;padding:18px 32px;display:flex;gap:24px;align-items:center}
+.staff-brandbar a{font:26px Georgia,serif;color:#fff;text-decoration:none}.staff-brandbar span{font-size:12px;border-left:1px solid #768693;padding-left:24px}
+.staff-portal .dashboard-content{margin:auto}.staff-navigation{padding:16px 0;border-bottom:1px solid var(--border);gap:8px}
+.staff-navigation a{background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 14px;text-decoration:none;color:#102c41}
+.auth-home{position:absolute;top:16px;left:30px;z-index:10;color:#f2dfb4;font-size:13px;text-decoration:none}
+.auth-page .brand-panel{background:#102c41;padding-top:70px}
+.auth-page .brand-panel::before,.auth-page .brand-panel::after{display:none}
+.auth-page .brand-name,.auth-page .brand-name h2{font:32px Georgia,serif;letter-spacing:-.6px}
+.auth-page .logo-box{border-radius:3px;font:22px Georgia,serif;box-shadow:none;background:transparent}
+.auth-page h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(32px,3.8vw,52px);line-height:1.15}
+.auth-page .login-panel,.auth-page .form-panel{background:#fafaf7}
+.auth-page .login-box,.auth-page .form-container{max-width:540px;width:100%}
+.auth-page .login-btn,.auth-page .submit-btn,.auth-page button[type=submit]{background:#102c41;color:white;box-shadow:none}
+.auth-page .stats,.auth-page .features{border-top:1px solid #ffffff30;padding-top:24px}
+.auth-page .stat strong,.auth-page .feature strong{font-size:16px}
+@media(max-width:1100px){.auth-page .brand-panel{padding-left:30px;padding-right:30px}.topbar{padding:20px}.dashboard-content,.content{padding:24px}.record dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.customer-sidebar{padding:20px}.customer-navigation{gap:3px}.customer-brand{padding-bottom:18px}.topbar{min-height:auto}.dashboard-content,.content{padding:20px}.auth-page .login-container,.auth-page .register-page{display:block}.auth-page .brand-panel{min-height:0;padding:64px 24px 30px}.auth-page .hero,.auth-page .brand-content{margin:28px 0}.auth-page .stats,.auth-page .features,.auth-page .brand-footer,.auth-page .security-line{display:none}.auth-page .login-panel,.auth-page .form-panel{padding:32px 24px}.services-content .panel{padding:18px}.staff-brandbar{padding:18px 20px}.transfer-grid,.payments-grid{grid-template-columns:1fr!important}}
+@media(max-width:480px){.record dl{grid-template-columns:1fr}.topbar-actions,.user-area{flex-wrap:wrap}.customer-sidebar .customer-nav-item{font-size:12px;padding:8px}.services-content button{width:100%;margin:4px 0}.staff-brandbar span{font-size:10px}.account-card{padding:20px}.balance-footer{flex-wrap:wrap;gap:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

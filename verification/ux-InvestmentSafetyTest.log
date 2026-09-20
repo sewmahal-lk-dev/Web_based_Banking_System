@@ -1,0 +1,27 @@
+PASS failure reports Insufficient account balance
+PASS failure rolls back without committing
+PASS failure preserves account, investment, payment and audit state
+PASS insufficient balance is detected before any write
+PASS assignment records officer and audit without funding
+PASS failure reports Record is not eligible
+PASS failure rolls back without committing
+PASS failure preserves account, investment, payment and audit state
+PASS assigned officer funds 120000 and activates investment with payment and audit
+PASS failure reports Record not found
+PASS failure rolls back without committing
+PASS failure preserves account, investment, payment and audit state
+PASS exact balance funds successfully
+PASS failure reports Simulated payment
+PASS failure rolls back without committing
+PASS failure preserves account, investment, payment and audit state
+PASS rollback tested after debit for payment
+PASS failure reports Simulated activation
+PASS failure rolls back without committing
+PASS failure preserves account, investment, payment and audit state
+PASS rollback tested after debit for activation
+PASS failure reports Simulated audit
+PASS failure rolls back without committing
+PASS failure preserves account, investment, payment and audit state
+PASS rollback tested after debit for audit
+PASS rejection does not require funding
+Completed 26 investment checks. No database accessed.

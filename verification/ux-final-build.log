@@ -1,0 +1,35 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.banking:WebBasedBankingSystem >------------------
+[INFO] Building Web Based Banking System 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ WebBasedBankingSystem ---
+[INFO] Copying 1 resource from src\main\resources to target\maven-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ WebBasedBankingSystem ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ WebBasedBankingSystem ---
+[INFO] skip non existing resourceDirectory C:\Users\User\WebBasedBankingSystem\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ WebBasedBankingSystem ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ WebBasedBankingSystem ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ WebBasedBankingSystem ---
+[WARNING]  Parameter 'classesDirectory' is read-only, must not be used in configuration
+[INFO] Packaging webapp
+[INFO] Assembling webapp [WebBasedBankingSystem] in [C:\Users\User\WebBasedBankingSystem\target\WebBasedBankingSystem]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\Users\User\WebBasedBankingSystem\src\main\webapp]
+[INFO] Building war: C:\Users\User\WebBasedBankingSystem\target\WebBasedBankingSystem.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.254 s
+[INFO] Finished at: 2026-09-18T13:17:27+05:30
+[INFO] ------------------------------------------------------------------------

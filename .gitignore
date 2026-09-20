@@ -1,0 +1,8 @@
+/target/
+/tools/ui-deps/
+/tools/ui-browsers/
+/ui-build.log
+/deployment-backups/
+/database/backups/
+/database/test-database.txt
+/config/database.properties

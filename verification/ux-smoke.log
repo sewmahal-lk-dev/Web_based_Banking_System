@@ -1,0 +1,128 @@
+java.exe : Sep 18, 2026 1:10:46 PM org.apache.coyote.AbstractProtocol init
+At line:2 char:200
++ ... -juli.jar'; & 'C:\Users\User\.jdks\ms-17.0.20\bin\java.exe' -Xmx192m  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Sep 18, 2026 1:...ctProtocol init:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+INFO: Initializing ProtocolHandler ["http-nio-127.0.0.1-auto-1"]
+Sep 18, 2026 1:10:46 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Sep 18, 2026 1:10:46 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/10.1.59]
+Sep 18, 2026 1:10:47 PM org.apache.catalina.startup.ContextConfig getDefaultWebXmlFragment
+INFO: No global web.xml found
+Sep 18, 2026 1:10:49 PM org.apache.jasper.servlet.TldScanner scanJars
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete 
+list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve 
+startup time and JSP compilation time.
+Sep 18, 2026 1:10:50 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-127.0.0.1-auto-1-59317"]
+PASS unauthenticated /customer/dashboard
+PASS unauthenticated /customer/cards
+PASS unauthenticated /customer/settings
+PASS unauthenticated /customer/accounts.jsp
+PASS unauthenticated /employee/dashboard
+PASS unauthenticated /admin/dashboard.jsp
+PASS public JSP /login.jsp
+PASS public JSP /register.jsp
+PASS customer render dashboard
+PASS HTML escaping dashboard
+PASS shared sidebar dashboard
+PASS database queries dashboard
+PASS customer render accounts
+PASS HTML escaping accounts
+PASS shared sidebar accounts
+PASS database queries accounts
+PASS customer render transfer
+PASS HTML escaping transfer
+PASS shared sidebar transfer
+PASS database queries transfer
+PASS customer render payments
+PASS HTML escaping payments
+PASS shared sidebar payments
+PASS database queries payments
+PASS customer render cards
+PASS HTML escaping cards
+PASS shared sidebar cards
+PASS database queries cards
+PASS customer render loans
+PASS HTML escaping loans
+PASS shared sidebar loans
+PASS database queries loans
+PASS customer render investments
+PASS HTML escaping investments
+PASS shared sidebar investments
+PASS database queries investments
+PASS customer render requests
+PASS HTML escaping requests
+PASS shared sidebar requests
+PASS database queries requests
+PASS customer render settings
+PASS HTML escaping settings
+PASS shared sidebar settings
+PASS database queries settings
+PASS customer render transactions
+PASS HTML escaping transactions
+PASS shared sidebar transactions
+PASS database queries transactions
+PASS customer cannot access staff
+PASS direct JSP routes through controller
+PASS missing CSRF rejected
+PASS staff render LOAN_OFFICER
+PASS staff queries LOAN_OFFICER
+PASS staff cannot access customer LOAN_OFFICER
+PASS staff role isolation LOAN_OFFICER
+PASS staff render CARD_SERVICES_OFFICER
+PASS staff queries CARD_SERVICES_OFFICER
+PASS staff cannot access customer CARD_SERVICES_OFFICER
+PASS staff role isolation CARD_SERVICES_OFFICER
+PASS staff render INVESTMENT_OFFICER
+PASS staff queries INVESTMENT_OFFICER
+PASS staff cannot access customer INVESTMENT_OFFICER
+PASS staff role isolation INVESTMENT_OFFICER
+PASS staff render CUSTOMER_SERVICE_OFFICER
+PASS staff queries CUSTOMER_SERVICE_OFFICER
+PASS staff cannot access customer CUSTOMER_SERVICE_OFFICER
+PASS staff role isolation CUSTOMER_SERVICE_OFFICER
+PASS staff render COMPLIANCE_RISK_OFFICER
+PASS staff queries COMPLIANCE_RISK_OFFICER
+PASS staff cannot access customer COMPLIANCE_RISK_OFFICER
+PASS staff role isolation COMPLIANCE_RISK_OFFICER
+PASS staff render SYSTEM_ADMIN
+PASS staff queries SYSTEM_ADMIN
+PASS staff cannot access customer SYSTEM_ADMIN
+PASS existing customer available for smoke checks
+Completed 75 read-only smoke checks. No database records changed.
+Sep 18, 2026 1:10:53 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-nio-127.0.0.1-auto-1-59317"]
+Sep 18, 2026 1:10:53 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service [Tomcat]
+Sep 18, 2026 1:10:53 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesJdbc
+WARNING: The web application [bank] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it 
+when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+Sep 18, 2026 1:10:53 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+WARNING: The web application [bank] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but 
+has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.20/java.lang.Object.wait(Native Method)
+ java.base@17.0.20/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base@17.0.20/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.20/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.20/java.lang.Thread.run(Thread.java:840)
+Sep 18, 2026 1:10:53 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesObjectStreamClassCaches
+WARNING: You need to add "--add-opens=java.base/java.io=ALL-UNNAMED" to the JVM command line arguments to enable 
+ObjectStream cache memory leak protection. Alternatively, you can suppress this warning by disabling ObjectStream 
+class cache memory leak protection.
+Sep 18, 2026 1:10:53 PM org.apache.catalina.loader.WebappClassLoaderBase checkThreadLocalsForLeaks
+WARNING: You need to add "--add-opens=java.base/java.lang=ALL-UNNAMED" to the JVM command line arguments to enable 
+ThreadLocal memory leak detection. Alternatively, you can suppress this warning by disabling ThreadLocal memory leak 
+detection.
+Sep 18, 2026 1:10:53 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesRmiTargets
+WARNING: You need to add "--add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED" to the JVM command line arguments to 
+enable RMI Target memory leak detection. Alternatively, you can suppress this warning by disabling RMI Target memory 
+leak detection.
+Sep 18, 2026 1:10:53 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-nio-127.0.0.1-auto-1-59317"]
+Sep 18, 2026 1:10:53 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-nio-127.0.0.1-auto-1-59317"]

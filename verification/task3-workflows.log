@@ -1,0 +1,699 @@
+PASS V4 preserves existing payment with NULL reference
+java.exe : Sep 17, 2026 10:43:27 PM org.apache.coyote.AbstractProtocol init
+At line:6 char:291
++ ... -juli.jar'; & $java -Xms16m -Xmx256m -XX:+UseSerialGC -cp $cp Support ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Sep 17, 2026 10...ctProtocol init:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+INFO: Initializing ProtocolHandler ["http-nio-127.0.0.1-auto-1"]
+Sep 17, 2026 10:43:27 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Sep 17, 2026 10:43:27 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/10.1.59]
+Sep 17, 2026 10:43:27 PM org.apache.catalina.startup.ContextConfig getDefaultWebXmlFragment
+INFO: No global web.xml found
+Sep 17, 2026 10:43:29 PM org.apache.jasper.servlet.TldScanner scanJars
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete 
+list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve 
+startup time and JSP compilation time.
+Sep 17, 2026 10:43:29 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-127.0.0.1-auto-1-58514"]
+PASS anonymous access rejected
+PASS customer JSP HTTP 200: tickets
+PASS customer JSP HTTP 200: requests
+PASS customer JSP HTTP 200: cards
+PASS customer JSP HTTP 200: loans
+PASS customer JSP HTTP 200: investments
+PASS customer JSP HTTP 200: settings
+PASS customer JSP HTTP 200: transactions
+PASS customer JSP HTTP 200: products
+PASS customer JSP HTTP 200: dashboard
+PASS customer JSP HTTP 200: accounts
+PASS customer JSP HTTP 200: transfer
+PASS customer JSP HTTP 200: payments
+PASS missing CSRF rejected
+PASS CSRF rejected
+PASS invalid CSRF creates no ticket
+PASS customer creates complaint
+PASS customer reads own ticket
+PASS other customer cannot read ticket
+PASS other customer cannot update ticket
+PASS other customer cannot close ticket
+PASS owner edits OPEN unassigned ticket
+PASS officer sees complaint and customer details
+PASS other customer cannot reply
+PASS reply CSRF enforced
+PASS owner sends reply
+PASS reply is escaped
+PASS support tracker and reply composer render
+PASS officer sees customer reply
+PASS unauthorized role cannot respond: LOAN_OFFICER
+PASS unauthorized role cannot respond: CARD_SERVICES_OFFICER
+PASS unauthorized role cannot respond: INVESTMENT_OFFICER
+PASS unauthorized role cannot respond: COMPLIANCE_RISK_OFFICER
+PASS unauthorized role cannot respond: SYSTEM_ADMIN
+PASS officer processes ticket
+PASS processed ticket cannot be edited by customer
+PASS officer resolves with response
+PASS customer reads staff response
+PASS soft close retains record
+PASS create update reply process resolve close audited
+PASS both officer replies and status events retained with customer reply
+PASS closed ticket rejects replies
+PASS closed ticket hides reply composer
+PASS audit failure rolls back ticket creation
+PASS staff Jasper HTTP 200: CUSTOMER_SERVICE_OFFICER
+PASS staff Jasper HTTP 200: LOAN_OFFICER
+PASS staff Jasper HTTP 200: CARD_SERVICES_OFFICER
+PASS staff Jasper HTTP 200: INVESTMENT_OFFICER
+PASS staff Jasper HTTP 200: COMPLIANCE_RISK_OFFICER
+PASS staff Jasper HTTP 200: SYSTEM_ADMIN
+PASS dashboard support link targets ticket page
+PASS real customer password login and redirect
+PASS authenticated customer dashboard
+PASS customer denied staff dashboard
+PASS real password login and redirect: CUSTOMER_SERVICE_OFFICER
+PASS role route Jasper renders: CUSTOMER_SERVICE_OFFICER
+PASS staff denied customer route
+PASS cross-role route denied: CUSTOMER_SERVICE_OFFICER -> LOAN_OFFICER
+PASS cross-role route denied: CUSTOMER_SERVICE_OFFICER -> CARD_SERVICES_OFFICER
+PASS cross-role route denied: CUSTOMER_SERVICE_OFFICER -> INVESTMENT_OFFICER
+PASS cross-role route denied: CUSTOMER_SERVICE_OFFICER -> COMPLIANCE_RISK_OFFICER
+PASS cross-role route denied: CUSTOMER_SERVICE_OFFICER -> SYSTEM_ADMIN
+PASS logout invalidates staff session
+PASS real password login and redirect: LOAN_OFFICER
+PASS role route Jasper renders: LOAN_OFFICER
+PASS staff denied customer route
+PASS cross-role route denied: LOAN_OFFICER -> CUSTOMER_SERVICE_OFFICER
+PASS cross-role route denied: LOAN_OFFICER -> CARD_SERVICES_OFFICER
+PASS cross-role route denied: LOAN_OFFICER -> INVESTMENT_OFFICER
+PASS cross-role route denied: LOAN_OFFICER -> COMPLIANCE_RISK_OFFICER
+PASS cross-role route denied: LOAN_OFFICER -> SYSTEM_ADMIN
+PASS logout invalidates staff session
+PASS real password login and redirect: CARD_SERVICES_OFFICER
+PASS role route Jasper renders: CARD_SERVICES_OFFICER
+PASS staff denied customer route
+PASS cross-role route denied: CARD_SERVICES_OFFICER -> CUSTOMER_SERVICE_OFFICER
+PASS cross-role route denied: CARD_SERVICES_OFFICER -> LOAN_OFFICER
+PASS cross-role route denied: CARD_SERVICES_OFFICER -> INVESTMENT_OFFICER
+PASS cross-role route denied: CARD_SERVICES_OFFICER -> COMPLIANCE_RISK_OFFICER
+PASS cross-role route denied: CARD_SERVICES_OFFICER -> SYSTEM_ADMIN
+PASS logout invalidates staff session
+PASS real password login and redirect: INVESTMENT_OFFICER
+PASS role route Jasper renders: INVESTMENT_OFFICER
+PASS staff denied customer route
+PASS cross-role route denied: INVESTMENT_OFFICER -> CUSTOMER_SERVICE_OFFICER
+PASS cross-role route denied: INVESTMENT_OFFICER -> LOAN_OFFICER
+PASS cross-role route denied: INVESTMENT_OFFICER -> CARD_SERVICES_OFFICER
+PASS cross-role route denied: INVESTMENT_OFFICER -> COMPLIANCE_RISK_OFFICER
+PASS cross-role route denied: INVESTMENT_OFFICER -> SYSTEM_ADMIN
+PASS logout invalidates staff session
+PASS real password login and redirect: COMPLIANCE_RISK_OFFICER
+PASS role route Jasper renders: COMPLIANCE_RISK_OFFICER
+PASS staff denied customer route
+PASS cross-role route denied: COMPLIANCE_RISK_OFFICER -> CUSTOMER_SERVICE_OFFICER
+PASS cross-role route denied: COMPLIANCE_RISK_OFFICER -> LOAN_OFFICER
+PASS cross-role route denied: COMPLIANCE_RISK_OFFICER -> CARD_SERVICES_OFFICER
+PASS cross-role route denied: COMPLIANCE_RISK_OFFICER -> INVESTMENT_OFFICER
+PASS cross-role route denied: COMPLIANCE_RISK_OFFICER -> SYSTEM_ADMIN
+PASS audit query renders on one valid JSP expression
+PASS logout invalidates staff session
+PASS real password login and redirect: SYSTEM_ADMIN
+PASS role route Jasper renders: SYSTEM_ADMIN
+PASS staff denied customer route
+PASS cross-role route denied: SYSTEM_ADMIN -> CUSTOMER_SERVICE_OFFICER
+PASS cross-role route denied: SYSTEM_ADMIN -> LOAN_OFFICER
+PASS cross-role route denied: SYSTEM_ADMIN -> CARD_SERVICES_OFFICER
+PASS cross-role route denied: SYSTEM_ADMIN -> INVESTMENT_OFFICER
+PASS cross-role route denied: SYSTEM_ADMIN -> COMPLIANCE_RISK_OFFICER
+PASS audit query renders on one valid JSP expression
+PASS admin employee product and customer management visible
+PASS admin CSRF enforced
+PASS admin creates employee
+PASS created password is hashed
+PASS duplicate employee email rejected
+PASS employee validation preserved: email
+PASS employee validation preserved: phone
+PASS employee validation preserved: password
+PASS admin updates employee
+PASS admin reads updated employee
+PASS employee soft delete retains record
+PASS inactive employee cannot log in
+PASS admin creates product
+PASS admin updates and soft deactivates product
+PASS admin reads product
+PASS admin customer status management
+PASS admin operation audit retained
+PASS logout invalidates staff session
+PASS incorrect password rejected
+PASS bill reference form and corrected CSRF token render
+PASS legacy NULL-reference payment renders
+PASS new bill payment succeeds
+PASS bill deducts exact amount
+PASS trimmed bill reference persisted in MySQL fixture
+PASS bill reference visible in history
+PASS invalid bill reference rejected
+PASS invalid bill reference rejected
+PASS invalid bill reference rejected
+PASS invalid bill reference rejected
+PASS invalid bill reference rejected
+PASS invalid bill reference rejected
+PASS missing bill reference rejected
+PASS insufficient funds reported
+PASS invalid input insufficient funds and insert failure preserve balance and payment count
+PASS scheduled bill reference created and updated
+PASS scheduled reference renders
+PASS scheduled bill executes with stored reference
+PASS audit form targets current dashboard Audit-log: SYSTEM_ADMIN / CARD
+PASS case-insensitive partial action/details matching
+PASS audit form targets current dashboard Audit-log: SYSTEM_ADMIN / CARD_BLOCK
+PASS literal underscore filters CARD_BLOCK only
+PASS rendered audit records are filtered
+PASS audit form targets current dashboard Audit-log: SYSTEM_ADMIN / INVESTMENT
+PASS investment request and funding both found
+PASS rendered investment search excludes unrelated records
+PASS audit form targets current dashboard Audit-log: SYSTEM_ADMIN / card
+PASS case-insensitive partial action/details matching
+PASS audit form targets current dashboard Audit-log: SYSTEM_ADMIN / 
+PASS empty search returns normal audit records
+PASS audit form targets current dashboard Audit-log: COMPLIANCE_RISK_OFFICER / CARD
+PASS case-insensitive partial action/details matching
+PASS audit form targets current dashboard Audit-log: COMPLIANCE_RISK_OFFICER / CARD_BLOCK
+PASS literal underscore filters CARD_BLOCK only
+PASS rendered audit records are filtered
+PASS audit form targets current dashboard Audit-log: COMPLIANCE_RISK_OFFICER / INVESTMENT
+PASS investment request and funding both found
+PASS rendered investment search excludes unrelated records
+PASS audit form targets current dashboard Audit-log: COMPLIANCE_RISK_OFFICER / card
+PASS case-insensitive partial action/details matching
+PASS audit form targets current dashboard Audit-log: COMPLIANCE_RISK_OFFICER / 
+PASS empty search returns normal audit records
+PASS password login: one@example.invalid
+PASS routing 1: customer creates ATM Withdrawal Issue
+PASS routing 2: status OPEN
+PASS password login: staff0@example.invalid
+PASS ticket article visibly rendered: 9
+PASS routing 3-5: visible assignment dropdown and button
+PASS assignment option rendered: CUSTOMER_SERVICE_OFFICER
+PASS assignment option rendered: LOAN_OFFICER
+PASS assignment option rendered: CARD_SERVICES_OFFICER
+PASS assignment option rendered: INVESTMENT_OFFICER
+PASS assignment option rendered: COMPLIANCE_RISK_OFFICER
+PASS admin excluded from assignment dropdown
+PASS invalid destination rejected: SYSTEM_ADMIN
+PASS invalid destination rejected: CUSTOMER
+PASS invalid destination rejected: arbitrary
+PASS invalid destination rejected: CARD_SERVICES_OFFICER' OR 1=1
+PASS assignment CSRF enforced
+Sep 17, 2026 10:43:34 PM org.apache.catalina.core.ApplicationContext log
+SEVERE: com.banking.controller.EmployeeServlet: Employee action failed
+java.sql.SQLException: Injected fixture audit failure
+	at SupportWorkflowTest$1.lambda$connect$0(SupportWorkflowTest.java:232)
+	at jdk.proxy3/jdk.proxy3.$Proxy6.prepareStatement(Unknown Source)
+	at com.banking.dao.Jdbc.prepare(Jdbc.java:14)
+	at com.banking.dao.Jdbc.update(Jdbc.java:17)
+	at com.banking.dao.Jdbc.exactlyOne(Jdbc.java:18)
+	at com.banking.dao.Jdbc.audit(Jdbc.java:22)
+	at com.banking.dao.TicketDAO.lambda$assign$2(TicketDAO.java:48)
+	at com.banking.dao.Jdbc.transaction(Jdbc.java:12)
+	at com.banking.dao.TicketDAO.assign(TicketDAO.java:39)
+	at com.banking.controller.EmployeeServlet.doPost(EmployeeServlet.java:111)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:45)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+PASS assignment audit failure rolls back status and timeline
+PASS routing 6: submit rendered Assign Ticket form
+PASS routing 7-8: ASSIGNED and department persisted in MySQL
+PASS assignment success flash visible
+PASS assignment audit identifies actor ticket and destination
+PASS routing 9: service officer logs out
+PASS password login: staff2@example.invalid
+PASS routing 10-12: card queue and opened ticket visibly render
+PASS card officer has no assignment controls
+PASS ticket article visibly rendered: 9
+PASS routing 13: card changes status using rendered form
+PASS ticket article visibly rendered: 9
+PASS routing 14: card sends reply using rendered form
+PASS password login: staff1@example.invalid
+PASS loan cannot view card department ticket
+PASS loan cannot modify or reassign card ticket even with forged role
+PASS customer denied staff assignment endpoint
+PASS customer route rejects assignment action
+PASS routing 15: card logs out
+PASS password login: one@example.invalid
+PASS routing 16-17: customer sees department status reply history and timeline
+PASS customer has no assignment control
+PASS password login: staff2@example.invalid
+PASS ticket article visibly rendered: 9
+PASS routing 18: authorized card officer resolves
+PASS routing 19: customer sees RESOLVED
+PASS routing 20: customer closes
+PASS routing 21: CLOSED persisted
+PASS password login: staff0@example.invalid
+PASS closed ticket cannot be reassigned
+PASS assign to CUSTOMER_SERVICE_OFFICER
+PASS password login: staff0@example.invalid
+PASS ticket article visibly rendered: 10
+PASS assigned ticket visibly listed: CUSTOMER_SERVICE_OFFICER
+PASS department processes and replies: CUSTOMER_SERVICE_OFFICER
+PASS department resolves: CUSTOMER_SERVICE_OFFICER
+PASS assign to LOAN_OFFICER
+PASS password login: staff1@example.invalid
+PASS ticket article visibly rendered: 11
+PASS assigned ticket visibly listed: LOAN_OFFICER
+PASS department processes and replies: LOAN_OFFICER
+PASS department resolves: LOAN_OFFICER
+PASS assign to INVESTMENT_OFFICER
+PASS password login: staff3@example.invalid
+PASS ticket article visibly rendered: 12
+PASS assigned ticket visibly listed: INVESTMENT_OFFICER
+PASS department processes and replies: INVESTMENT_OFFICER
+PASS department resolves: INVESTMENT_OFFICER
+PASS assign to COMPLIANCE_RISK_OFFICER
+PASS password login: staff4@example.invalid
+PASS ticket article visibly rendered: 13
+PASS assigned ticket visibly listed: COMPLIANCE_RISK_OFFICER
+PASS department processes and replies: COMPLIANCE_RISK_OFFICER
+PASS department resolves: COMPLIANCE_RISK_OFFICER
+PASS service reassigns active ticket: CARD_SERVICES_OFFICER
+PASS service reassigns active ticket: LOAN_OFFICER
+PASS reassignment removes old queue access and grants new queue access
+PASS empty bell renders safely with no badge
+PASS new ticket notifies Customer Service
+PASS customer gets no notification for own ticket creation
+PASS notification failure rolls back assignment atomically
+PASS assignment notifies active receiving staff only
+PASS unrelated department excluded and owner notified
+PASS staff unread badge and assignment dropdown rendered
+PASS employee cannot open another employee notification
+PASS notification CSRF failure rejected
+PASS staff open marks own notification and uses safe ticket link ignoring forged fields
+PASS staff unread decreases exactly once
+PASS opening read notification is idempotent
+PASS unchanged status produces no duplicate notification
+PASS notification failure rolls back staff reply
+PASS customer gets assignment status and reply notifications
+PASS customer bell renders reply and status notifications
+PASS validation error preserves unread bell count
+PASS customer cannot open another customer's notification with forged owner
+PASS forged list recipient ignored
+PASS customer opens relevant ticket and notification becomes read
+PASS invalid notification ID fails safely: -1
+PASS invalid notification ID fails safely: 0
+PASS invalid notification ID fails safely: abc
+PASS invalid notification ID fails safely: 999999999
+PASS invalid notification ID fails safely: 1 OR 1=1
+PASS invalid notification ID fails safely: 9999999999999999999999
+PASS mark all customer notifications read
+PASS mark all does not change staff notifications
+PASS customer reply notifies assigned department
+PASS escalation does not notify acting officer
+PASS reassignment notifies new department
+PASS old notification cannot reopen reassigned ticket
+PASS customer receives resolution notification
+PASS notifications omit ticket description and reply content
+PASS notification titles and messages escaped
+PASS database enforces exactly one recipient
+PASS database enforces exactly one recipient
+PASS login redirect /service/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /loan/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /card/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /investment/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /compliance/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS login redirect /admin/dashboard.jsp
+PASS protected JSP renders CSRF token
+Customer registered successfully. ID: 8
+PASS registration creates customer 91
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS registration stores BCrypt hash
+Customer registered successfully. ID: 9
+PASS registration creates customer 92
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS registration stores BCrypt hash
+Customer registered successfully. ID: 10
+PASS registration creates customer 93
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS registration stores BCrypt hash
+PASS operation /customer/transfer 1000000009
+PASS transfer debits session account
+PASS transfer credits receiver
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS operation /customer/payments CEB/123-456
+PASS bill payment debits exact amount
+PASS invalid operation rejected /customer/payments
+PASS failed operation has no success message
+PASS invalid operation rejected /customer/payments
+PASS failed operation has no success message
+PASS receiver history includes incoming transfer
+Customer registered successfully. ID: 11
+PASS registration creates customer 4
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS registration stores BCrypt hash
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'balance' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:95)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:938)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1106)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1045)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1369)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1030)
+	at com.banking.dao.TransferDAO.transferMoney(TransferDAO.java:150)
+	at com.banking.controller.TransferServlet.doPost(TransferServlet.java:101)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:45)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+PASS invalid operation rejected /customer/transfer
+PASS failed operation has no success message
+PASS MySQL transfer rollback after receiver update failure
+PASS operation /customer/payment-plans schedule
+PASS scheduling does not debit
+PASS operation /customer/payment-plans update
+PASS scheduled amount updated
+PASS future payment cannot execute
+PASS operation /customer/payment-plans execute
+PASS due bill executes once
+PASS scheduled replay does not debit twice
+PASS operation /customer/payment-plans schedule
+PASS operation /customer/payment-plans cancel
+PASS pending schedule cancelled
+PASS operation /customer/cards apply
+PASS debit subtype created
+PASS invalid operation rejected /customer/cards
+PASS failed operation has no success message
+PASS operation /employee/dashboard card-approve
+PASS officer activates card
+PASS operation /customer/cards limit
+PASS customer limit update
+PASS operation /customer/cards block
+PASS operation /employee/dashboard card-unblock
+PASS operation /customer/cards close
+PASS card safely closed
+PASS operation /customer/cards apply
+PASS credit subtype created
+PASS operation /customer/cards cancel
+PASS operation /customer/cards apply
+PASS operation /employee/dashboard card-reject
+PASS officer rejects pending card without deletion
+PASS card numbers masked in customer view
+PASS operation /customer/loans apply
+PASS operation /customer/loans update
+PASS invalid operation rejected /customer/loans
+PASS failed operation has no success message
+PASS operation /employee/dashboard loan-approve
+PASS operation /customer/loans accept
+PASS loan principal disbursed once
+PASS monthly loan schedule generated
+PASS flat simple interest schedule total
+PASS invalid operation rejected /customer/loans
+PASS failed operation has no success message
+PASS loan acceptance replay cannot disburse twice
+PASS operation /customer/loans repay
+PASS operation /customer/loans repay
+PASS fully repaid loan closes
+PASS operation /customer/loans apply
+PASS operation /customer/loans cancel
+PASS loan application cancelled
+PASS operation /customer/loans apply
+PASS operation /employee/dashboard loan-reject
+PASS officer loan rejection saved
+PASS operation /customer/investments apply
+PASS operation /customer/investments update
+PASS invalid operation rejected /customer/investments
+PASS failed operation has no success message
+PASS operation /employee/dashboard investment-approve
+PASS investment approval debits funding account
+PASS operation /customer/investments withdraw
+PASS early investment withdrawal returns principal only
+PASS invalid operation rejected /customer/investments
+PASS failed operation has no success message
+PASS investment payout replay prevented
+PASS operation /customer/investments apply
+PASS operation /employee/dashboard investment-approve
+PASS operation /employee/dashboard investment-mature
+PASS maturity payout includes actual-days simple interest
+PASS operation /customer/investments apply
+PASS operation /customer/investments cancel
+PASS pending investment cancelled
+PASS operation /customer/investments apply
+PASS operation /employee/dashboard investment-reject
+PASS investment rejected
+PASS operation /customer/investments apply
+Sep 17, 2026 10:43:43 PM org.apache.catalina.core.ApplicationContext log
+SEVERE: com.banking.controller.EmployeeServlet: Employee action failed
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'INV-FUND-15' for key 'payment.reference_number'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:109)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:113)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:938)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1106)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1045)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1369)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1030)
+	at com.banking.dao.Jdbc.update(Jdbc.java:17)
+	at com.banking.dao.Jdbc.exactlyOne(Jdbc.java:18)
+	at com.banking.dao.FinancialLedger.record(FinancialLedger.java:12)
+	at com.banking.dao.InvestmentDAO.lambda$process$3(InvestmentDAO.java:29)
+	at com.banking.dao.Jdbc.transaction(Jdbc.java:12)
+	at com.banking.dao.InvestmentDAO.process(InvestmentDAO.java:22)
+	at com.banking.controller.EmployeeServlet.doPost(EmployeeServlet.java:168)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:45)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+PASS invalid operation rejected /employee/dashboard
+PASS failed operation has no success message
+PASS MySQL investment debit rolls back on ledger failure
+PASS failed investment funding retains pending state
+PASS operation /customer/investments cancel
+PASS operation /customer/requests request
+PASS operation /customer/requests request-update
+PASS invalid operation rejected /customer/requests
+PASS failed operation has no success message
+PASS operation /employee/dashboard request-review
+PASS operation /employee/dashboard request-review
+PASS service request opens real current account
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS request fulfilled ACCOUNT_STATEMENT
+PASS statement download
+PASS statement ownership enforced
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS request fulfilled CHEQUE_BOOK
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS profile request updates email
+PASS operation /customer/requests request
+PASS operation /customer/requests request-cancel
+PASS service request cancellation
+PASS operation /customer/requests ticket
+PASS operation /customer/requests ticket-update
+PASS operation /employee/dashboard ticket-status
+PASS operation /employee/dashboard ticket-response
+PASS customer sees support response
+PASS operation /customer/requests ticket-close
+PASS ticket safely closed
+PASS invalid operation rejected /customer/settings
+PASS failed operation has no success message
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS account closure preserves record
+PASS operation /customer/requests request
+PASS operation /employee/dashboard request-review
+PASS account closure preserves record
+PASS operation /customer/settings deactivate
+PASS customer safely deactivated
+PASS deactivation invalidates session
+PASS operation /employee/dashboard customer-status
+PASS admin reactivates customer
+PASS operation /employee/dashboard employee-save
+PASS login redirect /loan/dashboard.jsp
+PASS protected JSP renders CSRF token
+PASS operation /employee/dashboard employee-save
+PASS role change revokes stale session
+PASS operation /employee/dashboard employee-status
+PASS employee deactivated without deletion
+PASS operation /employee/dashboard product-save
+PASS customer can read active products
+PASS operation /employee/dashboard product-save
+PASS inactive products hidden from customer
+PASS invalid operation rejected /employee/dashboard
+PASS failed operation has no success message
+PASS operation /employee/dashboard account-status
+PASS compliance freezes account
+PASS invalid operation rejected /customer/payments
+PASS failed operation has no success message
+PASS operation /employee/dashboard account-status
+PASS audit search works
+PASS operation /customer/settings profile
+PASS profile stored and safely escaped
+Sep 17, 2026 10:43:44 PM org.apache.catalina.core.ApplicationContext log
+SEVERE: com.banking.controller.CustomerServicesServlet: Customer operation failed
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '0966521737192' for key 'customer.phone'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:109)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:113)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:938)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1106)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1045)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1369)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1030)
+	at com.banking.dao.CustomerServicesDAO.profile(CustomerServicesDAO.java:75)
+	at com.banking.controller.CustomerServicesServlet.doPost(CustomerServicesServlet.java:84)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:197)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:57)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at com.banking.controller.AccessFilter.doFilter(AccessFilter.java:45)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:348)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:410)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2197)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:976)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:494)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:80)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+PASS invalid operation rejected /customer/settings
+PASS failed operation has no success message
+PASS operation /customer/settings password
+PASS password change signs out current session
+PASS login redirect /customer/dashboard
+PASS protected JSP renders CSRF token
+PASS workflow audit records persisted
+PASS existing banking CRUD regression: 196 checks passed on temporary tables
+BROWSER PASS customer creates ATM ticket using UI
+BROWSER PASS card bell shows unread badge
+BROWSER PASS bell click opens dropdown
+BROWSER PASS assignment notification visible in open dropdown
+BROWSER PASS notification click opens and focuses staff ticket
+BROWSER PASS customer popup shows reply and status updates
+BROWSER PASS outside click closes dropdown
+BROWSER PASS keyboard Enter opens bell
+BROWSER PASS Escape closes popup and restores focus
+BROWSER PASS customer notification opens relevant conversation
+BROWSER PASS click reduces unread count
+BROWSER PASS mark all removes unread badge
+BROWSER PASS resolution notification appears on customer reload
+BROWSER PASS mobile popup fits viewport
+ALL 14 BROWSER CHECKS PASSED
+TASK3 BROWSER: 414/414 checks passed
+PASS real browser notification interactions
+ALL 284 SUPPORT CHECKS PASSED; only connection-local temporary fixtures used.
+Sep 17, 2026 10:44:52 PM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-nio-127.0.0.1-auto-1-58514"]
+Sep 17, 2026 10:44:52 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service [Tomcat]
+Sep 17, 2026 10:44:52 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesObjectStreamClassCaches
+WARNING: You need to add "--add-opens=java.base/java.io=ALL-UNNAMED" to the JVM command line arguments to enable 
+ObjectStream cache memory leak protection. Alternatively, you can suppress this warning by disabling ObjectStream 
+class cache memory leak protection.
+Sep 17, 2026 10:44:52 PM org.apache.catalina.loader.WebappClassLoaderBase checkThreadLocalsForLeaks
+WARNING: You need to add "--add-opens=java.base/java.lang=ALL-UNNAMED" to the JVM command line arguments to enable 
+ThreadLocal memory leak detection. Alternatively, you can suppress this warning by disabling ThreadLocal memory leak 
+detection.
+Sep 17, 2026 10:44:52 PM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesRmiTargets
+WARNING: You need to add "--add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED" to the JVM command line arguments to 
+enable RMI Target memory leak detection. Alternatively, you can suppress this warning by disabling RMI Target memory 
+leak detection.
+Sep 17, 2026 10:44:52 PM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-nio-127.0.0.1-auto-1-58514"]
+Sep 17, 2026 10:44:52 PM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-nio-127.0.0.1-auto-1-58514"]

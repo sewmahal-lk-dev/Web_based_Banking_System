@@ -1,0 +1,31 @@
+{
+  "warSHA256": "b5108168f3be0ea5a351effa5a985c513170ce2533e40fc10e3908341bea4821",
+  "warBytes": 10332970,
+  "sourceMismatches": [],
+  "compiledJspNames": [
+    "accounts_jsp.class",
+    "admin_002dform_jsp.class",
+    "card_002dclosure_jsp.class",
+    "customer_002dsidebar_jsp.class",
+    "customer_002dworkflow_002dactions_jsp.class",
+    "customer_002dworkflow_002dcreate_jsp.class",
+    "dashboard_jsp.class",
+    "home_jsp.class",
+    "index_jsp.class",
+    "login_jsp.class",
+    "notification_002dbell_jsp.class",
+    "notification_002ditems_jsp.class",
+    "notifications_jsp.class",
+    "payments_jsp.class",
+    "register_jsp.class",
+    "scheduled_002dpayments_jsp.class",
+    "services_jsp.class",
+    "staff_002dsupport_002dtickets_jsp.class",
+    "support_002dtickets_jsp.class",
+    "ticket_002dactions_jsp.class",
+    "transactions_jsp.class",
+    "transfer_jsp.class"
+  ],
+  "installedWarSHA256": "56b49db6adf6878ecf14f3a0dc450000de03e3db3e89c057a6bbc7886e81c2e7",
+  "installedWarUnchanged": true
+}

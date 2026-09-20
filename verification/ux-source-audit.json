@@ -1,0 +1,19 @@
+{
+  "checks": 110,
+  "passed": 110,
+  "failures": [],
+  "changedExistingFiles": [
+    "src/main/webapp/login.jsp",
+    "src/main/webapp/register.jsp",
+    "src/main/webapp/customer/accounts.jsp",
+    "src/main/webapp/customer/dashboard.jsp",
+    "src/main/webapp/customer/payments.jsp",
+    "src/main/webapp/customer/transfer.jsp",
+    "src/main/webapp/WEB-INF/notifications.jsp",
+    "src/main/webapp/WEB-INF/customer/services.jsp",
+    "src/main/webapp/WEB-INF/employee/dashboard.jsp",
+    "src/main/webapp/WEB-INF/fragments/customer-workflow-create.jsp",
+    "src/main/webapp/WEB-INF/public/home.jsp",
+    "src/main/webapp/assets/js/banking-ui.js"
+  ]
+}
