@@ -206,10 +206,10 @@ public class EmployeeDAO {
                                     name,
                                     email,
                                     phone,
-                                    status
+                                    status,
+                                    created_at
                                 FROM customer
-                                ORDER BY customer_id
-                                LIMIT 200
+                                ORDER BY created_at DESC, customer_id DESC
                                 """);
 
                 queries.put(
@@ -487,6 +487,8 @@ public class EmployeeDAO {
                     }
                 }
 
+                String previousRequestStatus="request-review".equals(action)
+                        ?(String)Jdbc.one(c,"SELECT status FROM service_request WHERE request_id=? FOR UPDATE",Input.id(idValue)).get("status"):null;
                 /*
                  * Execute role-specific action.
                  */
@@ -625,6 +627,14 @@ public class EmployeeDAO {
                     }
                 }
 
+                switch(action) {
+                    case "request-review" -> {if(!status.equals(previousRequestStatus))NotificationDAO.changed(c,NotificationDAO.Product.REQUEST,Input.id(idValue));}
+                    case "account-status" -> NotificationDAO.accountChanged(c,Long.parseLong(idValue));
+                    case "employee-status" -> NotificationDAO.employeeAccess(c,Input.id(idValue),employeeId);
+                    case "loan-reject" -> NotificationDAO.changed(c,NotificationDAO.Product.LOAN,Input.id(idValue));
+                    case "card-block" -> NotificationDAO.changed(c,NotificationDAO.Product.CARD,Input.id(idValue));
+                    default -> { }
+                }
                 c.commit();
 
             } catch (

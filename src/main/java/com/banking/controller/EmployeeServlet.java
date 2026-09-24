@@ -59,6 +59,16 @@ public class EmployeeServlet extends HttpServlet {
                                         "Unable to load bank records. Please try again.");
                 }
 
+                if ("SYSTEM_ADMIN".equals(role)) {
+                        try {
+                                req.setAttribute("adminRecentActivity",new AdminDAO().recentActivity(
+                                                Input.id(req.getSession().getAttribute("userId").toString())));
+                        } catch (SQLException e) {
+                                log("Recent administrative activity failed",e);
+                                req.setAttribute("adminActivityUnavailable",true);
+                        }
+                }
+
                 if (req.getAttribute("error") == null) {
 
                         req.setAttribute(

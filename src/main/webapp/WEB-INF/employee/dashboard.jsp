@@ -51,6 +51,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/design-system.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/workspaces.css">
 <script defer src="<%= request.getContextPath() %>/assets/js/workspaces.js"></script>
+<% if ("SYSTEM_ADMIN".equals(role)) { %><link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/admin-overview.css"><% } %>
 </head>
 
                 <body class="staff-portal" data-role="<%= Input.html(role) %>">
@@ -108,6 +109,7 @@
 
 
                     <main class="dashboard-content services-content">
+<% if ("SYSTEM_ADMIN".equals(role)) { %><jsp:include page="/WEB-INF/fragments/admin-overview.jsp" /><% } %>
 <section class="staff-welcome"><p class="eyebrow">LANKATRUST / OPERATIONS</p><h2>Welcome, <%= Input.html(userName) %></h2><p>Your workspace for customer care and banking operations.</p></section>
 
                         <% if ("CARD_SERVICES_OFFICER".equals(role)) { %>
@@ -346,6 +348,7 @@
                                                         <!-- ========================================= -->
 
                                                         <nav class="staff-navigation" aria-label="Staff sections">
+<% if ("SYSTEM_ADMIN".equals(role)) { %><a href="<%= request.getContextPath() %>/admin/reports">Reports</a><% } %>
 
 
                                                             <% if ("CUSTOMER_SERVICE_OFFICER".equals(role)) { %>
@@ -575,7 +578,7 @@
                                                                                             %>
 
 
-                                                                                            <article class="record">
+                                                                                            <article class="record"<% if ("Customers".equals(group.getKey())) { %> data-customer-id="<%= Input.html(record.get("customer_id")) %>" data-customer-created="<%= record.get("created_at") instanceof java.sql.Timestamp ? ((java.sql.Timestamp)record.get("created_at")).getTime() : "" %>"<% } %>>
 
 
                                                                                                 <!-- ================================= -->
@@ -590,6 +593,7 @@
                                                                                                         :
                                                                                                         record.entrySet()
                                                                                                         ) {
+                                                                                                        if("Customers".equals(group.getKey())&&"created_at".equals(field.getKey()))continue;
                                                                                                         %>
 
 

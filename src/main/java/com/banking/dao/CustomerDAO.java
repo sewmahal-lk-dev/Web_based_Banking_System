@@ -155,6 +155,8 @@ public class CustomerDAO {
             }
 
             // Everything successful
+            NotificationDAO.accountChanged(con,accountNumber);
+            NotificationDAO.registered(con,customerId);
             con.commit();
 
             return customerId;

@@ -1,0 +1,98 @@
+package com.banking.util;
+
+import com.banking.model.AdminReport;
+import org.apache.pdfbox.pdmodel.*;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.*;
+import java.awt.Color;
+import java.io.*;
+import java.util.*;
+import java.util.List;
+
+/** Print-friendly, paginated report with repeated table headers. */
+public final class AdminReportPdf {
+    private static final PDType1Font FONT=new PDType1Font(Standard14Fonts.FontName.HELVETICA);
+    private static final PDType1Font BOLD=new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
+    private static final Color WINE=new Color(81,17,39), GOLD=new Color(228,185,104), INK=new Color(43,35,38);
+    private AdminReportPdf(){}
+    public static byte[] create(AdminReport report)throws IOException {
+        try(PDDocument document=new PDDocument();ByteArrayOutputStream out=new ByteArrayOutputStream()) {
+            document.getDocumentInformation().setTitle("LankaTrust - "+report.title());
+            document.getDocumentInformation().setAuthor("LankaTrust Banking System");
+            float[] weights=switch(report.type()) {
+                case "EMPLOYEE" -> new float[]{.07f,.15f,.22f,.12f,.18f,.09f,.17f};
+                case "PRODUCT" -> new float[]{.07f,.18f,.13f,.36f,.09f,.17f};
+                case "AUDIT" -> new float[]{.07f,.08f,.15f,.19f,.36f,.15f};
+                default -> new float[]{.08f,.20f,.27f,.14f,.11f,.20f};
+            };
+            Layout layout=new Layout(document,report,weights);
+            try {
+                layout.page(true);
+                if(report.rows().isEmpty())layout.text("No records match the selected filters.",38,layout.y-20,FONT,10,INK);
+                for(List<String> row:report.rows())layout.row(row);
+            } finally {if(layout.stream!=null)layout.stream.close();}
+            int number=0;
+            for(PDPage page:document.getPages()) {
+                try(PDPageContentStream stream=new PDPageContentStream(document,page,PDPageContentStream.AppendMode.APPEND,true)) {
+                    draw(stream,"LankaTrust Banking System | System Generated Administrative Report",38,25,FONT,8,INK);
+                    draw(stream,"Page "+(++number)+" of "+document.getNumberOfPages(),730,25,FONT,8,INK);
+                }
+            }
+            document.save(out);return out.toByteArray();
+        }
+    }
+    // Preserve unsupported code points explicitly instead of dropping customer data.
+    private static String printable(String value) {
+        StringBuilder out=new StringBuilder();
+        value.codePoints().forEach(cp->{String s=new String(Character.toChars(cp));
+            if(Character.isISOControl(cp)){out.append(' ');return;}
+            try{FONT.encode(s);out.append(s);}catch(IOException|IllegalArgumentException e){out.append("[U+").append(Integer.toHexString(cp).toUpperCase(Locale.ROOT)).append(']');}
+        });return out.toString();
+    }
+    private static void draw(PDPageContentStream stream,String value,float x,float y,PDFont font,float size,Color color)throws IOException {
+        stream.setNonStrokingColor(color);stream.beginText();stream.setFont(font,size);stream.newLineAtOffset(x,y);stream.showText(printable(value));stream.endText();
+    }
+    private static List<String> wrap(String value,float width,PDFont font,float size)throws IOException {
+        List<String> lines=new ArrayList<>();StringBuilder line=new StringBuilder();
+        for(char ch:printable(value).toCharArray()) {
+            if(font.getStringWidth(line.toString()+ch)/1000*size>width&&!line.isEmpty()){lines.add(line.toString());line.setLength(0);}
+            line.append(ch);
+        }
+        lines.add(line.toString());return lines;
+    }
+    private static final class Layout {
+        final PDDocument document;final AdminReport report;final float[] widths;PDPageContentStream stream;float y;
+        Layout(PDDocument document,AdminReport report,float[] weights){this.document=document;this.report=report;float total=0;for(float w:weights)total+=w;this.widths=new float[weights.length];for(int i=0;i<weights.length;i++)widths[i]=766*weights[i]/total;}
+        void text(String text,float x,float y,PDFont font,float size,Color color)throws IOException {draw(stream,text,x,y,font,size,color);}
+        void page(boolean first)throws IOException {
+            if(stream!=null)stream.close();
+            PDPage page=new PDPage(new PDRectangle(842,595));document.addPage(page);stream=new PDPageContentStream(document,page);
+            text("LankaTrust",38,553,BOLD,22,WINE);text("TRUST IN EVERY TRANSACTION",38,536,FONT,8,INK);
+            text("ADMINISTRATION REPORT",560,553,BOLD,12,WINE);
+            stream.setStrokingColor(GOLD);stream.setLineWidth(2);stream.moveTo(38,523);stream.lineTo(804,523);stream.stroke();
+            y=501;text(report.title(),38,y,BOLD,14,WINE);y-=19;
+            if(first) {
+                for(String detail:List.of("Generated: "+report.generatedLabel(),"Generated by: "+report.generatedBy(),
+                        "Filters: "+(report.filters().isEmpty()?"All records":report.filters()),"Total records: "+report.rows().size())) {
+                    for(String line:wrap(detail,755,FONT,9)){text(line,38,y,FONT,9,INK);y-=13;}
+                }
+            } else {text("Generated: "+report.generatedLabel()+" | Total records: "+report.rows().size(),38,y,FONT,9,INK);y-=15;}
+            y-=8;
+            int max=1;List<List<String>> labels=new ArrayList<>();for(int i=0;i<widths.length;i++){List<String> lines=wrap(report.headers().get(i),widths[i]-12,BOLD,8);labels.add(lines);max=Math.max(max,lines.size());}
+            float height=max*11+14;stream.setNonStrokingColor(WINE);stream.addRect(38,y-height,766,height);stream.fill();
+            float x=38;for(int i=0;i<widths.length;i++){float yy=y-14;for(String line:labels.get(i)){text(line,x+6,yy,BOLD,8,Color.WHITE);yy-=11;}x+=widths[i];}y-=height;
+        }
+        void row(List<String> row)throws IOException {
+            List<List<String>> cells=new ArrayList<>();int max=1;
+            for(int i=0;i<widths.length;i++){var lines=wrap(row.get(i),widths[i]-12,FONT,8);cells.add(lines);max=Math.max(max,lines.size());}
+            // Split exceptionally long rows safely while repeating the table header.
+            int offset=0;
+            while(offset<max){if(y<75)page(false);int take=Math.min(max-offset,Math.max(1,(int)((y-52-12)/11)));float height=take*11+12;
+                stream.setNonStrokingColor(new Color(252,249,243));stream.addRect(38,y-height,766,height);stream.fill();
+                float x=38;for(int i=0;i<widths.length;i++){for(int j=0;j<take&&offset+j<cells.get(i).size();j++)text(cells.get(i).get(offset+j),x+6,y-14-j*11,FONT,8,INK);x+=widths[i];}
+                stream.setStrokingColor(new Color(222,211,194));stream.setLineWidth(.4f);stream.moveTo(38,y-height);stream.lineTo(804,y-height);stream.stroke();y-=height;offset+=take;
+                if(offset<max)page(false);
+            }
+        }
+    }
+}
