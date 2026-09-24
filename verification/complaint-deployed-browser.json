@@ -1,0 +1,18 @@
+{
+  "base": "http://localhost:8080/WebBasedBankingSystem",
+  "route": "/customer/requests#support-workspace",
+  "ticketId": "ticket-9",
+  "subject": "Complaint UI verification 1790233264895",
+  "checks": [
+    "verification customer registered through real application",
+    "deployed customer requests workspace loaded with JavaScript",
+    "Submit Complaint visibly beside New support ticket",
+    "complaint button opens subject description and LOW MEDIUM HIGH form",
+    "complaint submission shows success",
+    "complaint stored in existing customer history",
+    "selected complaint visibly labelled COMPLAINT with OPEN and HIGH",
+    "refresh retains one complaint entry",
+    "mobile complaint button visible without page overflow",
+    "normal support ticket form still opens"
+  ]
+}

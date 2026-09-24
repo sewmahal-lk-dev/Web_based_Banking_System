@@ -1,0 +1,269 @@
+/* LankaTrust presentation tokens. Loaded after legacy layout styles on every page. */
+/* Shared palette: public, authentication and every banking workspace. */
+:root {
+  --wine:#270b23; --burgundy:#771b40; --crimson:#ad2851; --champagne:#e7c78d;
+  --brand-primary:#641735; --brand-primary-light:#8b2450; --brand-gold:var(--champagne);
+  --background:#f5eddf; --surface:#fff8ed; --surface-secondary:#eee1d2;
+  --text-primary:#3d192d; --text-muted:#74575f; --border:#d5bcad;
+  --success:#276345; --success-bg:#e4f0e4; --warning:#76510e; --warning-bg:#f8eac8;
+  --danger:#9d3049; --danger-bg:#f8e2e6; --shadow:0 8px 28px #50153112; --radius:16px;
+  --bg:var(--background); --brand:var(--brand-primary); --nav-bg:var(--wine);
+  --nav-selected:#6b2045; --nav-text:#e2cbd3; --on-brand:#fff3e1;
+  --accent:#79541f; --accent-soft:#efe0c5; --text-secondary:var(--text-muted);
+  --navy:var(--brand-primary); --gold:var(--accent); --text:var(--text-primary);
+  --muted:var(--text-muted); --ink:var(--text-primary); --warm:var(--surface-secondary);
+  --line:var(--border); --border-color:var(--border); --sidebar-size:248px;
+  --crimson-glow:#be30551a; --amber-glow:#e7b66026; --motif:#ad82580a;
+  --surface-glow:#ffffff66; --input-surface:#fffaf2; --hover-surface:#f2e3d4;
+  --premium-gradient:radial-gradient(ellipse at 90% 0%,#e9ae5633,transparent 55%),linear-gradient(120deg,var(--wine),var(--burgundy) 65%,var(--crimson));
+  --cta-gradient:linear-gradient(115deg,#f5dfb5,var(--champagne) 60%,#d6ae69);
+  --nav-gradient:radial-gradient(ellipse at 0 0,#a62b503b,transparent 55%),linear-gradient(170deg,#360e2b,var(--wine));
+}
+:root[data-theme=dark] {
+  --background:#210c20; --surface:#38132e; --surface-secondary:#461a37;
+  --text-primary:#fbefdd; --text-muted:#d0b4bf; --border:#76536a;
+  --brand:#8b2450; --nav-bg:var(--wine); --nav-selected:#6b2045; --nav-text:#e2cbd3;
+  --accent:var(--champagne); --accent-soft:#543349; --success:#a3d8b7; --success-bg:#203c32;
+  --warning:#ebce8b; --warning-bg:#493820; --danger:#f1b0be; --danger-bg:#572639;
+  --shadow:0 10px 32px #17071740;
+  --crimson-glow:#cf28532c; --amber-glow:#e9aa4920; --motif:#e7c78d08;
+  --surface-glow:#b23e6715; --input-surface:#2b1027; --hover-surface:#51213f;
+}
+body {background:var(--background);color:var(--text-primary);font-size:14px;line-height:1.6}
+body h1,body h2,body h3 {letter-spacing:-.035em}
+body h1,body h2 {color:var(--brand-primary)}
+[data-theme=dark] body h1,[data-theme=dark] body h2 {color:var(--text-primary)}
+:focus-visible {outline:3px solid var(--accent)!important;outline-offset:4px}
+body a,body button,body summary {transition:background .2s,color .2s,border-color .2s,box-shadow .2s,transform .2s}
+body button:active,.button:active {transform:translateY(1px)}
+body button:disabled {opacity:.5;cursor:not-allowed;transform:none}
+.skip-link {position:fixed;top:10px;left:12px;z-index:300;background:var(--brand-gold);color:var(--brand-primary);padding:12px 20px;border-radius:8px;transform:translateY(-180%)}
+.skip-link:focus {transform:none}
+.sr-only {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* Navigation and authenticated headers */
+.customer-sidebar,.operations-sidebar {background:var(--nav-bg);border:0;padding:30px 18px 24px}
+.customer-logo {background:var(--brand-gold);color:var(--brand-primary);border:0;border-radius:10px;width:40px;height:42px;font-weight:700}
+.customer-brand {padding-bottom:32px}.customer-brand strong {font-family:Georgia,serif;font-size:25px}
+.customer-brand small {letter-spacing:.15em;color:var(--nav-text)}
+.customer-sidebar .customer-nav-item,.operations-sidebar nav a {min-height:46px;font-size:13px;border-radius:10px;padding:11px 14px;border-left:3px solid transparent}
+.customer-sidebar .customer-nav-item.active,.operations-sidebar nav a[aria-current] {background:var(--nav-selected);color:#fff;border-left-color:var(--brand-gold)}
+.customer-nav-item.active .ui-icon,.operations-sidebar a[aria-current] .ui-icon {color:var(--brand-gold)}
+.customer-sidebar .customer-nav-item:hover,.operations-sidebar nav a:hover {background:var(--nav-selected);color:#fff}
+.sidebar-collapsed {--sidebar-size:88px}
+.sidebar-collapsed .customer-signout .customer-nav-icon {display:grid}
+body .topbar {min-height:88px;background:var(--surface);padding:18px 32px;gap:16px}
+.topbar h1 {font-weight:650}.topbar .eyebrow {font-size:10px}.topbar>span {font-size:13px}
+.notification-identity strong {display:block;font:24px Georgia,serif;color:var(--text-primary)}.notification-identity span {font-size:11px;color:var(--text-muted)}
+.portal-controls {margin-left:0}.profile {margin-left:auto}.avatar {background:var(--accent-soft);color:var(--accent);width:40px;height:40px}
+.customer-portal .dashboard-content,.customer-portal .content,.staff-portal>.dashboard-content {padding:32px;animation:content-enter .3s ease-out}
+.overview-intro {padding:8px 0 20px;margin-bottom:20px}.overview-intro h2 {font-size:clamp(25px,3vw,35px);font-weight:650}
+.overview-intro .eyebrow {font-size:10px}.overview-intro p {font-size:14px}
+.staff-welcome {margin-bottom:26px;padding:26px 30px;background:var(--accent-soft);border:1px solid var(--border);border-radius:var(--radius)}
+.staff-welcome h2 {margin:0 0 8px;font-size:28px}.staff-welcome p {margin:0;color:var(--text-primary)}
+.wealth-panel {position:relative;overflow:hidden;background:var(--premium-gradient);border:0;border-radius:var(--radius);padding:30px;box-shadow:0 12px 28px #3300061a}
+.wealth-panel::after {content:"";position:absolute;width:230px;height:230px;border:1px solid #ffc10726;border-radius:50%;right:-75px;top:-105px;pointer-events:none}
+.wealth-label,.wealth-panel p,.wealth-bottom {color:#e4cdd4}.wealth-bottom a,.eye-button {color:#ffd35c}.wealth-number {font-size:clamp(28px,3.4vw,46px);font-weight:600}
+.primary-panel,body .panel,body .account-card,body .form-card,body .payment-form,body .transfer-card {border-radius:var(--radius)!important;box-shadow:var(--shadow)!important}
+.primary-panel,.account-card,.action-card,.summary-card {transition:transform .2s,box-shadow .2s}
+@media(hover:hover) {.primary-panel:hover,body .account-card:hover,.action-card:hover {transform:translateY(-3px);box-shadow:0 10px 28px #33000612!important}}
+.primary-panel {border-top:3px solid var(--brand-gold)}
+.banking-shortcuts {gap:10px;padding:22px 0 28px}.banking-shortcuts>a {font-size:12px}.shortcut-icon {background:var(--surface);border-radius:14px;width:49px;height:49px;color:var(--accent)}
+.panel-heading h3 {font-size:18px}.transaction-info strong,.transaction-amount {font-size:13px!important}.transaction-info span {font-size:12px}.transaction-direction {width:37px;height:37px}
+.account-directory-row strong,.account-directory-row b {font-size:13px}.account-directory-row small,.panel-heading a {font-size:12px}
+.workspace-summary {border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.workspace-summary strong {color:var(--accent);font-size:29px}.workspace-summary span {font-size:11px}
+/* Forms and action hierarchy: gold primary, burgundy secondary, red destructive. */
+body input:not([type=checkbox]):not([type=hidden]),body select,body textarea {border-radius:9px!important;min-height:46px;border-color:var(--border)!important;padding:12px 14px}
+body input:focus,body select:focus,body textarea:focus {border-color:var(--accent)!important;box-shadow:0 0 0 3px var(--accent-soft)}
+body label {font-size:13px}.services-content form>label {font-size:13px;line-height:1.7}
+.field-required {color:var(--danger);font-size:11px;margin-left:5px;font-weight:500}
+body .services-content button,body .transfer-button,body .pay-button,body .auth-page button[type=submit],.auth-page .login-btn,.auth-page .submit-btn,.public-site .button,body .ui-primary {background:var(--cta-gradient)!important;color:#330006!important;border:1px solid var(--brand-gold)!important;min-height:44px;border-radius:9px!important;padding:11px 20px;font-weight:650;box-shadow:none}
+body .services-content button:hover,body .transfer-button:hover,body .pay-button:hover,.auth-page .login-btn:hover,.auth-page .submit-btn:hover,.public-site .button:hover {background:linear-gradient(115deg,#f8e7c7,var(--champagne))!important;filter:none}
+body .ui-secondary,body .services-content button.ui-secondary,body .services-content button.ui-secondary:hover {background:var(--nav-gradient)!important;color:var(--on-brand)!important;border:1px solid var(--champagne)!important;border-radius:9px!important;padding:11px 20px}
+body .ui-danger {background:var(--danger-bg)!important;color:var(--danger)!important;border:1px solid var(--danger)!important;border-radius:9px!important;padding:11px 20px}
+body .ui-ghost,body .services-content button.ui-ghost,body .services-content button.ui-ghost:hover {background:var(--surface)!important;color:var(--text-primary)!important;border:1px solid var(--border)!important;border-radius:9px!important;padding:11px 20px}
+body .ui-danger:hover,body .ui-ghost:hover {box-shadow:inset 0 0 0 1px currentColor!important}
+body .services-content button.ui-danger,body .services-content button.ui-danger:hover {background:var(--danger-bg)!important;color:var(--danger)!important;border-color:var(--danger)!important}
+body .services-content summary {font-size:13px;color:var(--accent)}
+.services-content .record {padding:24px 0}.record dt {font-size:11px!important}.record dd,.staff-portal .record dd {font-size:14px}
+/* Tables retain every column and action inside a keyboard-scrollable region. */
+.table-wrapper,.table-container,.ui-table-scroll {max-width:100%;overflow-x:auto;border:1px solid var(--border);border-radius:12px;overscroll-behavior-inline:contain}
+body table {font-size:13px;font-variant-numeric:tabular-nums}body th {font-size:11px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;background:var(--surface-secondary);color:var(--text-muted);padding:15px}
+body td {padding:16px 15px}body tbody tr:hover {background:var(--surface-secondary)}
+.transaction-table {min-width:920px}.transaction-table td {vertical-align:top}.transaction-table td:first-child {min-width:145px}.transaction-table td:nth-child(4) {max-width:260px;overflow-wrap:anywhere}.transaction-table .transaction-value {text-align:right;white-space:nowrap;font-weight:650}
+.status-badge,.account-status,.product-status {font-size:11px!important;border-radius:6px!important;font-weight:650;letter-spacing:.03em}
+.status-badge[data-state=ASSIGNED],.status-badge[data-state=OPEN],.status-badge[data-state=ESCALATED] {background:var(--warning-bg)!important;color:var(--warning)!important}
+.empty-state,.support-empty,.notify-empty,.ui-empty {padding:28px!important;background:var(--surface-secondary);border:1px dashed var(--border);border-radius:12px;text-align:center;color:var(--text-muted)}
+.ui-empty::before,.support-empty::before {content:"\25C7";display:block;font-size:28px;color:var(--accent);margin-bottom:8px}
+/* Support: status, assignment, and chronological conversation in one place. */
+.support-heading {flex-wrap:wrap;gap:12px}.support-count {padding:6px 12px;background:var(--accent-soft);color:var(--accent);border-radius:30px}.support-count span:last-child {display:inline}
+.support-ticket {padding:26px;border:1px solid var(--border);border-radius:14px;margin-top:24px;background:var(--surface);scroll-margin-top:24px}
+.support-ticket:target {outline:2px solid var(--accent);outline-offset:4px}.support-ticket h3 {margin:6px 0 24px;font-size:21px;overflow-wrap:anywhere}.support-reference {color:var(--accent)!important}
+.ticket-progress {counter-reset:step;overflow:visible;gap:0;margin:24px 0 30px}
+.ticket-progress li {counter-increment:step;min-width:0;padding:39px 4px 0;color:var(--text-muted);font-size:10px;letter-spacing:.025em}
+.ticket-progress li::before {top:14px;bottom:auto;height:2px;background:var(--border)}
+.ticket-progress li::after {content:counter(step);display:grid;place-items:center;top:0;bottom:auto;width:30px;height:30px;left:calc(50% - 15px);background:var(--surface-secondary);color:var(--text-muted);border:1px solid var(--border);font-size:12px;z-index:1}
+.ticket-progress li.complete::after {content:"\2713";background:var(--brand-primary);color:#ffd35c;border-color:var(--brand-primary)}
+.ticket-progress li.complete::before {background:var(--accent)}
+.ticket-progress li.current {color:var(--accent);font-weight:750}.ticket-progress li.current::after {background:var(--brand-gold);color:#330006;border-color:var(--brand-gold);box-shadow:0 0 0 4px var(--accent-soft)}
+.ticket-assignment {grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:16px;padding:20px;background:var(--surface-secondary);border-radius:10px}
+.ticket-assignment div {display:block;min-width:0}.ticket-assignment dt {color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:.045em;margin-bottom:6px}.ticket-assignment dd {font-size:13px;overflow-wrap:anywhere}
+.ticket-conversation {padding:8px 0 20px;border-color:var(--border)}
+.conversation-title {font-size:13px!important;margin:18px 0!important;color:var(--text-muted)!important}
+.ticket-message {margin:14px 0;padding:16px 20px;border:1px solid var(--border)!important;border-left:3px solid var(--brand-primary)!important;border-radius:0 12px 12px 12px;background:var(--surface-secondary);max-width:92%}
+.ticket-message header {font-size:12px;align-items:baseline;flex-wrap:wrap;gap:6px}.ticket-message time {color:var(--text-muted);font-size:11px}.ticket-message p {color:var(--text-primary);font-size:13px}
+.ticket-message[data-sender=customer] {margin-left:auto;background:var(--accent-soft);border-left:1px solid var(--border)!important;border-right:3px solid var(--brand-gold)!important;border-radius:12px 0 12px 12px}
+.ticket-message[data-sender=system] {max-width:100%;border:0!important;border-left:2px solid var(--border)!important;border-radius:0;background:transparent;margin:16px 0 16px 10px;padding:8px 16px}
+.ticket-message[data-sender=system] p {color:var(--text-muted);font-size:12px}.ticket-message[data-sender=system] strong {color:var(--accent)}
+.ticket-escalated {background:var(--warning-bg);color:var(--warning)!important;border-radius:8px;padding:10px 14px}
+body .support-center .ticket-reply {display:flex;flex-direction:column}.ticket-reply label {font-weight:650}.ticket-reply button {align-self:flex-end}
+/* Feedback keeps the full server message available, including after toast dismissal. */
+.ui-toast-stack {position:fixed;right:24px;bottom:24px;width:min(400px,calc(100vw - 32px));z-index:150;display:grid;gap:12px;pointer-events:none}
+.ui-toast {display:flex;align-items:flex-start;gap:12px;padding:18px;background:var(--surface);color:var(--text-primary);border:1px solid var(--border);border-left:4px solid var(--success);border-radius:12px;box-shadow:0 10px 36px #0002;animation:toast-enter .25s ease-out;pointer-events:auto}
+.ui-toast.is-error {border-left-color:var(--danger)}.ui-toast p {margin:0;color:var(--text-primary);font-size:13px;overflow-wrap:anywhere;flex:1}
+body .ui-toast button {background:var(--surface)!important;color:var(--text-primary)!important;border:1px solid var(--border)!important;padding:0;min-width:36px;min-height:36px;border-radius:8px!important;flex-shrink:0}
+.ui-dialog {position:fixed;inset:0;margin:auto;width:min(460px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:28px;border:1px solid var(--border);border-radius:18px;background:var(--surface);color:var(--text-primary);box-shadow:0 24px 80px #0004}
+.ui-dialog[open] {animation:dialog-enter .2s ease-out}.ui-dialog::backdrop {background:#19030bc0}.ui-dialog h2 {font-size:24px;margin:0 0 12px}.ui-dialog p {color:var(--text-muted)}.ui-dialog-actions {display:flex;justify-content:flex-end;gap:12px;margin-top:26px;flex-wrap:wrap}
+/* CSS-only banking identity; no externally loaded imagery or invented metrics. */
+.auth-page .brand-panel {background:radial-gradient(ellipse at 0 100%,#8a33414d,transparent 65%),linear-gradient(145deg,#330006,#591522)!important;overflow:hidden;border-radius:20px}
+.auth-page .brand-panel::after {content:"";display:block;position:absolute;width:380px;height:380px;border:1px solid #ffc10738;border-radius:50%;right:-220px;bottom:40px;pointer-events:none}
+.auth-page .brand-panel h1 span,.auth-page .logo-box {color:#ffd35c}.auth-page .brand-panel h1 {font-size:clamp(32px,3.7vw,50px)}
+.auth-page .brand-panel p {color:#e5cfd6!important}.auth-page .login-panel,.auth-page .form-panel {background:var(--surface)!important;border-radius:20px}
+.auth-page .input-wrapper {background:var(--surface)!important;border-color:var(--border)!important;border-radius:9px!important}.auth-page .input-wrapper:focus-within {border-color:var(--accent)!important;box-shadow:0 0 0 3px var(--accent-soft)}
+.auth-page .auth-home {background:transparent;color:var(--accent);padding:8px 12px;border-radius:8px;font-size:12px}.auth-page .secure-message,.auth-page .security-message {background:var(--surface-secondary);color:var(--text-muted);padding:12px;border-radius:8px}
+body.auth-page button[type=submit] {background:var(--cta-gradient)!important;color:#330006!important;border:1px solid var(--brand-gold)!important;border-radius:10px!important;min-height:50px}
+body.auth-page button[type=submit]:hover {background:linear-gradient(115deg,#f8e7c7,var(--champagne))!important}
+body.auth-page button[type=submit] .arrow {color:#330006}
+.auth-page .brand-panel .eyebrow,.auth-page .brand-panel .small-gold {color:#ffd35c}
+.auth-page .input-wrapper input::placeholder {color:var(--text-muted)!important;opacity:1}
+.public-site .hero {background:var(--surface-secondary)}.public-site .hero h1 {font-size:clamp(44px,5vw,68px)}.public-site .hero h1 em {color:var(--accent)}
+.public-site .banking-art {display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:24px;background:radial-gradient(ellipse at 80% 15%,#8f394e88,transparent 60%),#330006;min-height:440px;position:relative;padding:40px}
+.banking-art::before,.banking-art::after {content:"";position:absolute;width:420px;height:420px;border:1px solid #ffc10740;border-radius:50%;right:-140px;top:-210px}.banking-art::after {top:auto;bottom:-290px;right:80px;width:500px;height:500px}
+.banking-art .art-card {position:relative;width:100%;max-width:360px;background:linear-gradient(125deg,#fffaf0,#f4dfb0);color:#330006;padding:30px;border:1px solid #fff8;border-radius:18px;box-shadow:0 30px 45px #17000555;transform:rotate(-5deg)}
+.art-card .art-brand {font:27px Georgia,serif;display:block}.art-card .art-chip {display:block;width:40px;height:30px;border:1px solid #9b711e;border-radius:6px;background:linear-gradient(120deg,#d9ab42,#ffdf88);margin:28px 0}.art-card strong {display:block;font-size:22px;line-height:1.3}.art-card small {display:block;font-size:10px;letter-spacing:.12em;margin-top:22px}
+.public-site .banking-art figcaption {bottom:18px;left:30px;color:#f6d981;background:transparent;font:12px 'Segoe UI',sans-serif;padding:0}
+.public-site .card-visual,.public-site .navy,.public-site .utility {background:var(--brand-primary)}.public-site .card-visual {border-radius:18px}.public-site .navy h2,.public-site .navy h3 {color:#fff}.public-site .navy p {color:#e5cfd6}
+.public-site header,.public-site footer {background:var(--surface)}.public-site .nav-links>a:hover {color:var(--accent)}
+@keyframes content-enter {from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes toast-enter {from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+@keyframes dialog-enter {from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:1100px) {.topbar .profile {margin-left:0}.overview-grid,.activity-grid {grid-template-columns:1fr}.public-site .banking-art {min-height:370px;padding:30px}}
+@media(max-width:800px) {
+  :root {--sidebar-size:248px}.customer-sidebar,.operations-sidebar {width:248px}
+  .customer-portal .dashboard-content,.customer-portal .content,.staff-portal>.dashboard-content {padding:22px 18px}
+  body .topbar {padding:16px 18px;gap:12px}.portal-controls {margin-left:auto}.overview-intro {padding:0 0 8px}
+  .staff-welcome {padding:22px}.staff-welcome h2 {font-size:24px}.support-ticket {padding:18px}.ticket-assignment {padding:16px}
+  .public-site .banking-art {min-height:340px;height:auto}.auth-page .brand-panel {border-radius:0;background:var(--brand-primary)!important}
+  .auth-page .login-panel,.auth-page .form-panel {border-radius:0}.ui-toast-stack {right:16px;bottom:16px}
+}
+@media(max-width:480px) {
+  .support-ticket {padding:16px}.support-ticket h3 {font-size:19px}.ticket-progress {flex-direction:column;margin:20px 0;gap:0}
+  .ticket-progress li {text-align:left;padding:5px 0 15px 44px;min-height:45px;font-size:11px}
+  .ticket-progress li::after {left:0;top:0}.ticket-progress li::before {left:14px!important;right:auto!important;width:2px;height:100%;top:0}
+  .ticket-progress li:last-child::before {display:none}.ticket-progress li:first-child::before {left:14px}.ticket-message {max-width:100%;padding:14px}
+  .ticket-assignment {grid-template-columns:1fr}.staff-welcome {padding:18px}.wealth-panel {padding:24px 20px}.wealth-number {font-size:28px}
+  .services-content .support-center {padding:16px}.ui-dialog-actions button {flex:1}.public-site .banking-art {padding:28px;min-height:330px}
+}
+@media(prefers-reduced-motion:reduce) {*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Every authenticated canvas shares the same quiet decorative layer. */
+:root:has(body:is(.customer-portal,.staff-portal,.notifications-page)) {
+  --canvas-dot:#a4774817; --canvas-line:#ae7a441c; --canvas-bar:#b37d4410;
+  --panel-edge:#c4a16c80;
+}
+:root[data-theme=dark]:has(body:is(.customer-portal,.staff-portal,.notifications-page)) {
+  --background:#36132b; --surface:#481c37; --surface-secondary:#54243f;
+  --input-surface:#351429; --hover-surface:#642c4b; --border:#916a77;
+  --surface-glow:#d858771c; --crimson-glow:#e63b6438; --amber-glow:#edb86524;
+  --canvas-dot:#ebce9328; --canvas-line:#ebce9330; --canvas-bar:#ebce9311;
+  --panel-edge:#d9b87d66;
+}
+body.customer-portal,body.staff-portal,body.notifications-page {
+  min-height:100vh;isolation:isolate;
+  background:radial-gradient(ellipse at 90% 0,var(--crimson-glow),transparent 65%),
+    radial-gradient(ellipse at 20% 90%,var(--amber-glow),transparent 65%),var(--background);
+}
+/* Ruby illumination is confined to the dark authenticated workspace canvas. */
+:root[data-theme=dark] body:is(.customer-portal,.staff-portal,.notifications-page) {
+  background:radial-gradient(circle at 78% 18%,rgba(190,45,82,.22) 0%,rgba(190,45,82,.08) 30%,transparent 52%),
+    radial-gradient(circle at 28% 72%,rgba(145,30,68,.18) 0%,transparent 48%),
+    linear-gradient(135deg,#4a1029 0%,#65172f 38%,#721c36 65%,#451025 100%);
+}
+body:is(.customer-portal,.staff-portal,.notifications-page)::before,
+body:is(.customer-portal,.staff-portal,.notifications-page)::after {
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+}
+body:is(.customer-portal,.staff-portal,.notifications-page)::before {
+  background:radial-gradient(ellipse at 100% 35%,transparent 46%,var(--canvas-line) 46.1% 46.25%,transparent 46.4% 54%,var(--canvas-line) 54.1% 54.25%,transparent 54.4%),
+    radial-gradient(circle at 15% 95%,transparent 28%,var(--canvas-line) 28.1% 28.25%,transparent 28.4%),
+    radial-gradient(circle,var(--canvas-dot) 1px,transparent 1.5px) 0 0/24px 24px;
+}
+body:is(.customer-portal,.staff-portal,.notifications-page)::after {
+  background:linear-gradient(var(--canvas-bar),var(--canvas-bar)) 91% 100%/26px 21% no-repeat,
+    linear-gradient(var(--canvas-bar),var(--canvas-bar)) 94% 100%/26px 30% no-repeat,
+    linear-gradient(var(--canvas-bar),var(--canvas-bar)) 97% 100%/26px 41% no-repeat,
+    linear-gradient(135deg,transparent 65%,var(--canvas-line) 65.1%,transparent 65.2%);
+}
+.customer-sidebar,.operations-sidebar {background:linear-gradient(180deg,#3B1025 0%,#421028 45%,#2D0B1D 100%);box-shadow:8px 0 30px #210a2018}
+body .topbar {background:linear-gradient(105deg,var(--surface),var(--surface-secondary));border-bottom:1px solid var(--border)}
+body .panel,body .primary-panel,body .summary-card,body .account-card,body .form-card,body .payment-form,body .transfer-card {
+  background:linear-gradient(135deg,var(--surface-glow),transparent 65%),var(--surface)!important;
+  border-color:var(--border);
+}
+body .wealth-panel {background:var(--premium-gradient);color:var(--on-brand);border:1px solid #e7c78d55;box-shadow:var(--shadow)}
+.wealth-panel .wealth-number {color:var(--on-brand)}
+.wealth-panel .wealth-label,.wealth-panel p,.wealth-bottom {color:#ebcdd5}
+.wealth-bottom a,.wealth-panel .eye-button {color:var(--champagne)}
+body input:not([type=checkbox]):not([type=radio]):not([type=hidden]),body select,body textarea {
+  background:var(--input-surface);color:var(--text-primary);border-color:var(--border);
+}
+body input[type=checkbox],body input[type=radio] {accent-color:var(--accent)}
+body select option {background:var(--surface);color:var(--text-primary)}
+body .services-content a:not([class]) {color:var(--accent)}
+body th {background:var(--surface-secondary);color:var(--text-primary)}
+body td {border-color:var(--border)}
+body tbody tr:hover {background:var(--hover-surface)}
+.table-wrapper,.table-container,.ui-table-scroll,.workspace-table-region {min-width:0;box-shadow:var(--shadow)}
+body .status-badge {background:var(--surface-secondary)!important;color:var(--text-muted)!important;border:1px solid currentColor}
+body .status-badge:is([data-state=ACTIVE],[data-state=APPROVED],[data-state=COMPLETED],[data-state=RESOLVED],[data-state=PAID]) {background:var(--success-bg)!important;color:var(--success)!important}
+body .status-badge:is([data-state=PENDING],[data-state=PROCESSING],[data-state=IN_PROGRESS],[data-state=ASSIGNED],[data-state=OPEN],[data-state=ESCALATED]) {background:var(--warning-bg)!important;color:var(--warning)!important}
+body .status-badge:is([data-state=BLOCKED],[data-state=REJECTED],[data-state=FAILED],[data-state=OVERDUE]) {background:var(--danger-bg)!important;color:var(--danger)!important}
+body .status-badge:is([data-state=INACTIVE],[data-state=CANCELLED],[data-state=CLOSED]) {background:var(--surface-secondary)!important;color:var(--text-muted)!important}
+body .notice {background:var(--warning-bg);color:var(--warning);border-color:var(--warning)}
+body .notice.error {background:var(--danger-bg);color:var(--danger);border-color:var(--danger)}
+.customer-portal :is(.main-content,.main-area,.main,.dashboard-content,.content),.staff-portal>.dashboard-content {min-width:0}
+.customer-portal :is(.panel,.form-card,.payment-form,.transfer-card),.staff-portal .panel {min-width:0;max-width:100%}
+
+/* Existing logout anchors keep their original URL and keyboard behavior. */
+body:is(.customer-portal,.staff-portal,.notifications-page) a[href$="/logout"] {
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:42px;
+  padding:9px 15px;border:1px solid var(--champagne);border-radius:10px;
+  background:linear-gradient(120deg,#521736,#8a2448);color:var(--on-brand);
+  font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap;
+  box-shadow:inset 0 1px 0 #ffe3ac1a,0 4px 14px #310d281a;
+}
+body:is(.customer-portal,.staff-portal,.notifications-page) a[href$="/logout"]:not(:has(svg,.customer-nav-icon))::before {
+  content:"";width:18px;height:18px;flex-shrink:0;background:currentColor;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 4H4v16h5m4-12 4 4-4 4m-5-4h13' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+body:is(.customer-portal,.staff-portal,.notifications-page) a[href$="/logout"] .ui-icon {color:var(--champagne)}
+@media(hover:hover) {
+  body:is(.customer-portal,.staff-portal,.notifications-page) a[href$="/logout"]:hover {
+    background:linear-gradient(120deg,#6b2045,#a22d50);color:#fff3df;transform:translateY(-2px);
+    box-shadow:0 7px 20px #ca965536,0 0 0 3px #e7c78d12;
+  }
+}
+.customer-sidebar,.operations-sidebar {border-right:1px solid #e7c78d40}
+body:is(.customer-portal,.staff-portal,.notifications-page) .topbar {box-shadow:0 4px 22px #290b2018;border-bottom-color:var(--panel-edge)}
+body:is(.customer-portal,.staff-portal,.notifications-page) :is(.panel,.primary-panel,.account-card,.form-card,.payment-form,.transfer-card,.workspace-dialog,.ui-dialog) {
+  border-color:var(--panel-edge);box-shadow:var(--shadow),inset 0 1px 0 var(--surface-glow)!important;
+}
+body.notifications-page main {background:linear-gradient(135deg,var(--surface-glow),transparent 65%),var(--surface);border:1px solid var(--panel-edge);border-radius:16px;box-shadow:var(--shadow)}
+body.sidebar-collapsed .customer-sidebar a.customer-signout {font-size:0;padding-inline:10px;gap:0}
+body.sidebar-collapsed .customer-sidebar a.customer-signout .customer-nav-icon {font-size:16px}
+@media(max-width:800px) {
+  body.sidebar-collapsed .customer-sidebar a.customer-signout {font-size:12px;gap:10px}
+  body:is(.staff-portal,.notifications-page) .topbar a[href$="/logout"] {padding:8px 11px;min-height:38px}
+}
+@media(prefers-reduced-motion:reduce) {
+  body:is(.customer-portal,.staff-portal,.notifications-page) a[href$="/logout"]:hover {transform:none}
+}

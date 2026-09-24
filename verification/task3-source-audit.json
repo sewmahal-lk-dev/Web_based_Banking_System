@@ -1,0 +1,103 @@
+{
+  "checks": 125,
+  "passed": 125,
+  "failures": [],
+  "changedFiles": [
+    "src/main/webapp/login.jsp",
+    "src/main/webapp/register.jsp",
+    "src/main/webapp/customer/accounts.jsp",
+    "src/main/webapp/customer/dashboard.jsp",
+    "src/main/webapp/customer/payments.jsp",
+    "src/main/webapp/customer/transfer.jsp",
+    "src/main/webapp/WEB-INF/notifications.jsp",
+    "src/main/webapp/WEB-INF/customer/services.jsp",
+    "src/main/webapp/WEB-INF/employee/dashboard.jsp",
+    "src/main/webapp/WEB-INF/fragments/customer-sidebar.jsp",
+    "src/main/webapp/WEB-INF/fragments/staff-support-tickets.jsp",
+    "src/main/webapp/WEB-INF/fragments/support-tickets.jsp",
+    "src/main/webapp/WEB-INF/fragments/transactions.jsp",
+    "src/main/webapp/WEB-INF/public/home.jsp",
+    "src/main/webapp/assets/css/notifications.css",
+    "src/main/webapp/assets/js/banking-ui.js"
+  ],
+  "createdApplicationFiles": [
+    "src/main/webapp/assets/css/design-system.css"
+  ],
+  "contrast": {
+    "Primary CTA": {
+      "foreground": "#330006",
+      "background": "#FFC107",
+      "ratio": 11.27
+    },
+    "Navigation text": {
+      "foreground": "#decbd0",
+      "background": "#330006",
+      "ratio": 11.86
+    },
+    "White on burgundy": {
+      "foreground": "#ffffff",
+      "background": "#330006",
+      "ratio": 18.37
+    },
+    "Light text": {
+      "foreground": "#291f22",
+      "background": "#ffffff",
+      "ratio": 15.99
+    },
+    "Light muted text": {
+      "foreground": "#6c6065",
+      "background": "#ffffff",
+      "ratio": 6.0
+    },
+    "Light links": {
+      "foreground": "#795300",
+      "background": "#ffffff",
+      "ratio": 6.88
+    },
+    "Light success badge": {
+      "foreground": "#226044",
+      "background": "#eaf5ef",
+      "ratio": 6.66
+    },
+    "Light warning badge": {
+      "foreground": "#785400",
+      "background": "#fff4cc",
+      "ratio": 6.22
+    },
+    "Light error badge": {
+      "foreground": "#a32137",
+      "background": "#fcecf0",
+      "ratio": 6.5
+    },
+    "Dark text": {
+      "foreground": "#f7edf1",
+      "background": "#241b20",
+      "ratio": 14.64
+    },
+    "Dark muted text": {
+      "foreground": "#c4b3bb",
+      "background": "#241b20",
+      "ratio": 8.39
+    },
+    "Dark links": {
+      "foreground": "#ffd35c",
+      "background": "#241b20",
+      "ratio": 11.75
+    },
+    "Dark success badge": {
+      "foreground": "#92ddb1",
+      "background": "#20382b",
+      "ratio": 7.94
+    },
+    "Dark warning badge": {
+      "foreground": "#ffda74",
+      "background": "#403519",
+      "ratio": 8.92
+    },
+    "Dark error badge": {
+      "foreground": "#ffadbe",
+      "background": "#48212c",
+      "ratio": 7.83
+    }
+  }
+}

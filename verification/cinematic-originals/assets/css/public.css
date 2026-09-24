@@ -1,0 +1,226 @@
+/* Public presentation. The existing theme-init.js / banking-ui.js own theme state. */
+body.public-site, body.auth-page {
+ --background:#f5ecdf; --surface:#fcf5e9; --surface-secondary:#ede0cf;
+ --text-primary:#3e1725; --text-muted:#715650; --text-secondary:var(--text-muted);
+ --border:#d7c2a6; --accent:#805723; --accent-soft:#eaddc5; --brand-gold:#dfbf83;
+ --bg:var(--background); --text:var(--text-primary); --muted:var(--text-muted); --line:var(--border);
+ --hero-start:#f4e7d5; --hero-end:#e1c7ad; --hero-veil:#f4e7d5f2;
+ --shadow:0 24px 64px #49172a14; --card-wine:#58162b; --card-deep:#2e0c1b;
+ --on-card:#fff1dc; --card-gold:#e4c48a; --motif:#aa875515;
+ margin:0; background:var(--background); color:var(--text-primary); font-family:'Segoe UI',Arial,sans-serif;
+}
+:root[data-theme=dark] body.public-site, :root[data-theme=dark] body.auth-page {
+ --background:#2d0e1c; --surface:#421526; --surface-secondary:#371020;
+ --text-primary:#f8ecd9; --text-muted:#d1b8b7; --border:#765244; --accent:#e2c28b; --accent-soft:#593426;
+ --hero-start:#300d1e; --hero-end:#681e34; --hero-veil:#300d1ef2;
+ --shadow:0 24px 64px #20081655; --motif:#d7b7780d;
+}
+.public-site *, .public-site *::before, .public-site *::after {box-sizing:border-box}
+.public-site {font-size:15px;line-height:1.75}
+.public-site .wrap {width:min(1320px,calc(100% - 96px));margin-inline:auto}
+.public-site main {padding:0;margin:0;width:100%}
+.public-site a {color:inherit;text-decoration:none}
+.public-site p {color:var(--text-muted);margin:0 0 24px}
+.public-site h1,.public-site h2,.public-site h3 {color:var(--text-primary);font-family:Georgia,'Times New Roman',serif;font-weight:400}
+.public-site h2 {font-size:clamp(32px,3.5vw,50px);line-height:1.15;margin:0 0 24px}
+.public-site h3 {font-size:25px;line-height:1.25;margin:0 0 16px}
+.public-site img {display:block;width:100%;max-width:100%;object-fit:cover}
+.public-site .skip {position:fixed;top:-100px;left:16px;z-index:200;padding:12px 20px;background:var(--surface)}
+.public-site .skip:focus {top:12px}
+.public-site section[id] {scroll-margin-top:110px}
+.public-site .utility {background:var(--surface-secondary);border-bottom:1px solid var(--border);color:var(--text-muted);font-size:10px;letter-spacing:1px;padding:8px 0}
+.public-site .utility-inner {display:flex;justify-content:space-between;gap:20px}
+.public-site .utility-main {color:var(--accent);text-transform:uppercase}
+.public-site .site-header {position:sticky;top:0;z-index:100;background:var(--surface);color:var(--text-primary);border-bottom:1px solid var(--border);box-shadow:0 8px 32px #300d1e0a}
+.public-site .nav {display:flex;align-items:center;flex-wrap:nowrap;gap:22px;min-height:92px}
+.public-site .wordmark {display:inline-flex;align-items:center;gap:16px;flex-shrink:0}
+.public-site .brand-symbol {width:36px;height:36px;border:1px solid var(--accent);display:grid;place-items:center;transform:rotate(45deg);color:var(--accent)}
+.public-site .brand-symbol span {transform:rotate(-45deg);font:14px Georgia,serif}
+.public-site .brand-copy {display:grid;gap:5px}
+.public-site .brand-copy strong {font:26px Georgia,serif;color:var(--text-primary)}
+.public-site .brand-copy small {font-size:8px;letter-spacing:2.4px;color:var(--accent)}
+.public-site .nav>.nav-links {display:flex;align-items:center;gap:17px;margin-left:auto;width:auto;font-size:11px}
+.public-site .nav-links>a {white-space:nowrap;padding-block:10px}
+.public-site .nav-links>a:not(.button):hover,.public-site .nav-links>a[aria-current] {color:var(--accent);text-decoration:underline;text-underline-offset:9px}
+.public-site .button {display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:48px;padding:13px 24px;background:linear-gradient(120deg,#efdbb3,var(--brand-gold))!important;color:#3c1524!important;border:1px solid var(--brand-gold)!important;border-radius:4px!important;font:600 12px/1.5 'Segoe UI',sans-serif;box-shadow:0 8px 30px #ae82451a;transition:transform .2s,box-shadow .2s}
+.public-site .button:hover {transform:translateY(-2px);box-shadow:0 12px 32px #ae824535}
+.public-site .nav .nav-cta {padding:10px 13px;min-height:42px;font-size:11px}
+.public-site .nav>.theme-toggle {display:inline-flex;flex-shrink:0;margin:0;min-height:42px}
+.public-site .nav .theme-toggle span {display:inline}
+.public-site .menu-toggle {display:none;background:var(--surface-secondary);color:var(--text-primary);border:1px solid var(--border);padding:10px 12px}
+/* Real image layer, with an intentional atmospheric fallback until supplied. */
+.public-site .hero {position:relative;isolation:isolate;overflow:clip;background:radial-gradient(ellipse at 85% 35%,#c38a4530,transparent 55%),linear-gradient(115deg,var(--hero-start),var(--hero-end))}
+.public-site .hero-skyline {position:absolute;inset:0;z-index:-2;background:url('../images/colombo-lotus.jpg') right center/cover no-repeat}
+.public-site .hero::before {content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--hero-veil) 0%,var(--hero-veil) 28%,transparent 78%),linear-gradient(0deg,var(--hero-start),transparent 32%);pointer-events:none}
+.public-site .hero-light,.public-site .hero-line {position:absolute;pointer-events:none}
+.public-site .hero-light-one {inset:15% 0 0 40%;background:radial-gradient(ellipse,#d2a16028,transparent 65%)}
+.public-site .hero-line {width:65%;height:1px;right:0;background:linear-gradient(90deg,transparent,var(--border),transparent);opacity:.45;transform:rotate(-35deg)}
+.public-site .hero-line-one {top:40%}.public-site .hero-line-two {top:70%}
+.public-site .hero-grid {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:40px;min-height:640px;padding-block:72px;position:relative}
+.public-site .hero-grid>div {min-width:0}
+.public-site .hero-kicker,.public-site .eyebrow {color:var(--accent);font:600 10px/1.8 'Segoe UI',sans-serif;letter-spacing:2.4px;margin:0 0 24px}
+.public-site .hero-kicker {display:flex;align-items:center;gap:12px}
+.public-site .hero-kicker>span {width:30px;height:1px;background:var(--accent)}
+.public-site .hero h1 {font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(50px,5.3vw,82px);line-height:1.04;letter-spacing:-3px;margin:0 0 28px}
+.public-site .hero h1 em {font-style:italic;color:var(--accent);font-weight:400}
+.public-site .hero-description {max-width:430px;font-size:15px;line-height:1.9}
+.public-site .hero-actions {display:flex;align-items:center;flex-wrap:wrap;gap:24px;margin:32px 0}
+.public-site .secondary-cta,.public-site .text-link {color:var(--accent);font-size:12px;font-weight:600;border-bottom:1px solid var(--border);padding-bottom:6px}
+.public-site .secondary-cta:hover,.public-site .text-link:hover {border-color:var(--accent)}
+.public-site .hero-trust {display:flex;align-items:center;gap:14px;margin-top:44px}
+.public-site .trust-mark {border:1px solid var(--border);border-radius:50%;width:38px;height:38px;display:grid;place-items:center;color:var(--accent);font-family:Georgia,serif}
+.public-site .hero-trust strong,.public-site .hero-trust span {display:block;font-size:11px}
+.public-site .hero-trust span {color:var(--text-muted);font-size:10px}
+.public-site .hero-visual {position:relative;min-height:460px;display:grid;place-items:center}
+.public-site .visual-orbit {position:absolute;width:88%;aspect-ratio:1;border:1px solid var(--border);border-radius:50%;opacity:.45;pointer-events:none}
+.public-site .orbit-two {width:105%;opacity:.23}
+.public-site .glass-panel {position:absolute;width:78%;aspect-ratio:1.65;border:1px solid var(--border);border-radius:18px;background:linear-gradient(125deg,#d8b97e1f,#ad647b12);backdrop-filter:blur(5px)}
+.public-site .glass-panel-back {transform:translate(4%,-18%) rotate(14deg)}
+.public-site .glass-panel-front {transform:translate(-5%,8%) rotate(-13deg)}
+.public-site .premium-card,.public-site .display-card {position:relative;isolation:isolate;overflow:hidden;width:min(420px,85%);padding:29px;border:1px solid var(--card-gold);border-radius:17px;background:radial-gradient(ellipse at top left,#aa526544,transparent 70%),linear-gradient(125deg,var(--card-wine),var(--card-deep));color:var(--on-card);box-shadow:0 32px 60px #28081955;transform:rotate(-7deg)}
+.public-site .premium-card::before,.public-site .display-card::before {content:'';position:absolute;z-index:-1;width:110%;aspect-ratio:1;border:1px solid #e4c48a33;border-radius:50%;left:40%;top:-35%;box-shadow:0 0 0 22px #e4c48a08,0 0 0 60px #e4c48a05}
+.public-site .card-top,.public-site .card-bottom,.public-site .display-card-top,.public-site .display-card-bottom {display:flex;align-items:center;justify-content:space-between;gap:10px}
+.public-site .card-bank,.public-site .display-card-top {font:23px Georgia,serif}
+.public-site .card-symbol {color:var(--card-gold);border:1px solid #e4c48a66;padding:5px 8px;font:17px Georgia,serif}
+.public-site .premium-chip,.public-site .display-chip {width:43px;height:33px;border-radius:7px;margin:30px 0 22px;border:1px solid #bd9552;background:linear-gradient(90deg,transparent 30%,#997541 31% 33%,transparent 34% 65%,#997541 66% 68%,transparent 69%),linear-gradient(0deg,#dec995 46%,#997541 47% 50%,#eedcad 51%)}
+.public-site .card-number,.public-site .display-number {font-size:clamp(13px,1.6vw,20px);letter-spacing:2px;margin-bottom:24px;white-space:nowrap}
+.public-site .card-bottom small,.public-site .card-bottom strong {display:block;font-size:8px;letter-spacing:1px;color:var(--on-card)}
+.public-site .card-bottom small {color:var(--card-gold);font-size:7px;margin-bottom:5px}
+.public-site .card-type {color:var(--card-gold);font:23px Georgia,serif;text-align:right}
+.public-site .card-type span {display:block;font:7px 'Segoe UI',sans-serif;letter-spacing:2px}
+.public-site .floating-badge {position:absolute;bottom:14px;right:0;display:flex;align-items:center;gap:12px;padding:14px 20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow)}
+.public-site .badge-icon {color:var(--accent);font-size:20px}
+.public-site .floating-badge small,.public-site .floating-badge strong {display:block;font-size:10px}
+.public-site .floating-badge small {color:var(--accent);letter-spacing:1.5px;font-size:8px}
+.public-site .visual-caption {position:absolute;left:3%;bottom:14px;font:italic 15px/1.5 Georgia,serif;color:var(--text-muted)}
+.public-site .hero-bottom {border-top:1px solid var(--border);background:var(--surface-secondary)}
+.public-site .hero-bottom-inner {display:flex;justify-content:space-between;gap:20px;padding-block:24px;font-size:11px;color:var(--text-muted)}
+.public-site .hero-bottom span {color:var(--accent);margin-right:10px;font-family:Georgia,serif}
+/* Fine architectural grids and orbits continue across the public sections. */
+.public-site .section {position:relative;isolation:isolate;padding:96px 0;border-bottom:1px solid var(--border);background:var(--background)}
+.public-site .section::before {content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,var(--motif) 1px,transparent 1px) 0 0/96px 96px,linear-gradient(var(--motif) 1px,transparent 1px) 0 0/96px 96px,radial-gradient(ellipse at 100% 0,transparent 48%,var(--motif) 48.2% 48.4%,transparent 48.6%)}
+.public-site .cream-section,.public-site .digital-section,.public-site .achievements-section {background:var(--surface-secondary)}
+.public-site .split {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:90px}
+.public-site .split>*,.public-site .section-heading>* {min-width:0}
+.public-site .section h2 {font:400 clamp(32px,3.5vw,50px)/1.15 Georgia,serif}
+.public-site .section h3 {font-family:Georgia,serif;font-size:25px}
+.public-site .section-heading {display:flex;justify-content:space-between;align-items:center;gap:60px;margin-bottom:46px}
+.public-site .heading-copy {max-width:390px}
+.public-site .service-row {background:transparent}
+.public-site .service-row,.public-site .feature-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.public-site .service-row>a,.public-site .feature-grid>div,.public-site .achievement-grid>div {position:relative;padding:32px;border:1px solid var(--border);border-radius:9px;background:var(--surface);box-shadow:var(--shadow)}
+.public-site .service-row>a {transition:transform .25s,border-color .25s}
+.public-site .service-row>a:hover {transform:translateY(-5px);border-color:var(--accent)}
+.public-site .service-number {position:absolute;top:28px;right:28px;color:var(--accent);font:14px Georgia,serif}
+.public-site .service-icon {display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--border);color:var(--accent);font:22px Georgia,serif;margin-bottom:34px}
+.public-site .service-row p,.public-site .feature-grid p {font-size:13px}
+.public-site .service-row strong,.public-site .feature-grid span {color:var(--accent);font-size:11px}
+.public-site .feature-grid span {display:block;margin-bottom:24px;letter-spacing:1.5px}
+.public-site .feature-grid h3 {font-size:24px}.public-site .feature-grid p:last-child {margin-bottom:0}
+.public-site .feature-list {padding:0;list-style:none;margin:28px 0;color:var(--text-muted);font-size:13px}
+.public-site .feature-list li {border-bottom:1px solid var(--border);padding:12px 0}
+.public-site .feature-list li::before {content:'\2713';color:var(--accent);margin-right:12px}
+.public-site .account-showcase {position:relative;isolation:isolate;overflow:hidden;padding:60px 42px;border:1px solid var(--border);border-radius:12px;background:linear-gradient(135deg,var(--surface),var(--surface-secondary));box-shadow:var(--shadow)}
+.public-site .showcase-decoration {position:absolute;right:-20px;bottom:-50px;z-index:-1;color:var(--accent);opacity:.08;font:250px Georgia,serif}
+.public-site .account-showcase h3 {font-size:36px}
+.public-site .card-stage {position:relative;min-height:390px;display:grid;place-items:center;overflow:clip}
+.public-site .secondary-card {position:absolute;width:77%;aspect-ratio:1.65;border-radius:16px;padding:25px;background:linear-gradient(135deg,#ddc99e,#a88150);color:#471f2d;transform:translate(3%,-8%) rotate(12deg)}
+.public-site .display-card {transform:rotate(-8deg)}.public-site .display-card-bottom {font-size:8px;letter-spacing:1px}
+.public-site .fine {font-size:11px;margin-top:24px}
+.public-site .image-frame {position:relative;overflow:hidden;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.public-site .image-frame img {height:420px}
+.public-site .image-label {position:absolute;inset:auto 0 0;padding:60px 28px 28px;background:linear-gradient(transparent,#2e0c1bea);color:var(--on-card)}
+.public-site .image-label small {display:block;font-size:9px;color:var(--card-gold);letter-spacing:2px;margin-bottom:10px}
+.public-site .image-label strong {font:26px/1.3 Georgia,serif}
+.public-site .image-number {position:absolute;right:20px;bottom:10px;color:var(--on-card);font:70px Georgia,serif}
+.public-site .security-rows>div {position:relative;padding:22px 0 22px 48px;border-bottom:1px solid var(--border)}
+.public-site .security-rows span {position:absolute;left:0;top:24px;color:var(--accent);font-family:Georgia,serif}
+.public-site .security-rows h3 {font-size:23px;margin-bottom:10px}.public-site .security-rows p {margin:0;font-size:13px}
+.public-site .security-tip {border-left:2px solid var(--accent);padding-left:18px;font-size:12px}
+.public-site .lead {font:24px/1.7 Georgia,serif}
+.public-site .achievement-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.public-site .achievement-grid strong {display:block;color:var(--text-primary);font:36px Georgia,serif;margin-bottom:12px}
+.public-site .achievement-grid span {font-size:12px;color:var(--accent)}
+.public-site .contact-options {background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:32px;box-shadow:var(--shadow)}
+.public-site .contact-options details {padding:18px 0;border-top:1px solid var(--border)}
+.public-site .contact-options summary {cursor:pointer;color:var(--text-primary);font-size:13px}
+.public-site .contact-options details p {margin:16px 0 0;font-size:12px}
+.public-site footer {background:var(--surface-secondary);padding:65px 0 0;color:var(--text-muted)}
+.public-site .footer-grid {display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:45px;padding-bottom:55px}
+.public-site .footer-grid h3 {font:600 10px 'Segoe UI',sans-serif;letter-spacing:1.6px;color:var(--accent);margin-bottom:22px}
+.public-site .footer-grid>div>a:not(.wordmark) {display:block;font-size:12px;margin-bottom:12px}
+.public-site .footer-grid a:hover {color:var(--accent)}.public-site .footer-brand p {margin-top:24px;font-size:12px}
+.public-site .footer-bottom {display:flex;justify-content:space-between;gap:20px;padding-block:24px;border-top:1px solid var(--border);font-size:10px}
+/* Authentication retains existing form behavior and inherits the public palette. */
+body.auth-page .login-container,body.auth-page .register-page {grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+body.auth-page .brand-panel {background:radial-gradient(ellipse at 90% 80%,var(--motif),transparent 65%),linear-gradient(135deg,var(--hero-start),var(--hero-end))!important;border:1px solid var(--border);color:var(--text-primary)}
+body.auth-page .brand-panel::after {display:block;border-color:var(--border);opacity:.45}
+body.auth-page .brand-panel h1,body.auth-page .brand-name,body.auth-page .brand-name h2 {color:var(--text-primary);font-family:Georgia,serif}
+body.auth-page .brand-panel p {color:var(--text-muted)!important}
+body.auth-page .brand-panel h1 span,body.auth-page .logo-box,body.auth-page .stat strong,body.auth-page .feature strong,body.auth-page .brand-panel .eyebrow,body.auth-page .small-title {color:var(--accent)}
+body.auth-page .stat span,body.auth-page .feature span,body.auth-page .brand-footer,body.auth-page .security-line,body.auth-page .brand-small,body.auth-page .brand-name span {color:var(--text-muted)}
+body.auth-page .stats,body.auth-page .features,body.auth-page .logo-box {border-color:var(--border)}
+body.auth-page .login-panel,body.auth-page .form-panel {border:1px solid var(--border);box-shadow:var(--shadow)}
+body.auth-page .login-box,body.auth-page .form-container,body.auth-page .form-group {min-width:0}
+body.auth-page .form-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+body.auth-page .form-group label {color:var(--text-primary)}
+body.auth-page .login-box h2,body.auth-page .form-container h2 {font-family:Georgia,serif;font-weight:400}
+body.auth-page .secure-message,body.auth-page .security-message {background:var(--surface-secondary);border-color:var(--border)}
+body.auth-page .auth-home {color:var(--accent)}
+body.auth-page button[type=submit]:hover {background:#e8cf9d!important}
+body.auth-page .auth-tools .theme-toggle span {display:inline}
+@media(max-width:1320px) {
+ .public-site .wrap {width:calc(100% - 64px)}
+ .public-site .nav {flex-wrap:wrap;gap:16px;padding-block:20px}
+ .public-site .nav>.theme-toggle {margin-left:auto}.public-site .menu-toggle {display:inline-flex}
+ .public-site .nav>.nav-links {order:4;display:none;width:100%;margin:0;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;border-top:1px solid var(--border);padding-top:18px;font-size:12px}
+ .public-site .nav>.nav-links.open {display:grid}.public-site .split {gap:48px}
+}
+@media(max-width:900px) {
+ .public-site .hero-grid {grid-template-columns:minmax(0,1fr);gap:20px;padding-block:56px 30px}
+ .public-site .hero-content {max-width:600px}
+ .public-site .hero-visual {min-height:430px;width:min(560px,100%);margin-inline:auto}
+ .public-site .hero h1 {font-size:clamp(48px,8vw,72px)}
+ .public-site .hero-skyline {background-size:auto 70%;background-position:right bottom}
+ .public-site .hero::before {background:linear-gradient(180deg,var(--hero-veil) 15%,transparent 80%)}
+ .public-site .hero-bottom-inner {flex-wrap:wrap}.public-site .section {padding-block:64px}
+ .public-site .split {grid-template-columns:minmax(0,1fr);gap:38px}
+ .public-site .section-heading {align-items:flex-start;gap:30px}
+ .public-site .service-row>a,.public-site .feature-grid>div {padding:24px}
+ .public-site .footer-grid {grid-template-columns:repeat(2,minmax(0,1fr))}.public-site .card-number {font-size:19px}
+}
+@media(max-width:800px) {
+ body.auth-page .login-container,body.auth-page .register-page {display:block}
+ body.auth-page .brand-panel {border-radius:0;padding-right:160px!important}
+ body.auth-page .auth-tools {right:12px;top:6px}
+ body.auth-page .auth-home {padding:16px 12px}
+ body.auth-page .brand-panel {padding-right:24px!important}
+ body.auth-page .login-panel,body.auth-page .form-panel {border-radius:0}
+}
+@media(max-width:600px) {
+ .public-site .wrap {width:calc(100% - 40px)}.public-site .utility-message {display:none}
+ .public-site .nav {gap:12px;min-height:82px}.public-site .wordmark {gap:12px}
+ .public-site .brand-symbol {width:28px;height:28px}.public-site .brand-copy strong {font-size:23px}.public-site .brand-copy small {font-size:7px}
+ .public-site .nav>.theme-toggle {order:4;margin:0}.public-site .nav>.menu-toggle {margin-left:auto}
+ .public-site .nav>.nav-links {order:5;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .public-site .hero h1 {font-size:clamp(42px,9.5vw,57px);letter-spacing:-2px}
+ .public-site .hero-kicker {font-size:8px;letter-spacing:1.6px}.public-site .hero-actions {gap:20px}
+ .public-site .hero-visual {min-height:350px}
+ .public-site .premium-card,.public-site .display-card {padding:22px;width:88%;border-radius:13px}
+ .public-site .card-bank {font-size:21px}
+ .public-site .card-number,.public-site .display-number {font-size:clamp(10px,3.5vw,17px);letter-spacing:1px}
+ .public-site .card-bottom strong {font-size:6px;letter-spacing:.5px}.public-site .premium-chip {margin:22px 0 18px}
+ .public-site .visual-caption {display:none}.public-site .floating-badge {bottom:0;padding:10px 14px}
+ .public-site .hero-bottom-inner {display:grid;grid-template-columns:1fr 1fr;font-size:10px;gap:16px}
+ .public-site .section-heading {display:block}
+ .public-site .service-row,.public-site .feature-grid,.public-site .achievement-grid {grid-template-columns:minmax(0,1fr)}
+ .public-site .account-showcase {padding:36px 26px}.public-site .account-showcase h3 {font-size:32px}
+ .public-site .image-frame img {height:330px}.public-site .contact-options {padding:25px}
+ .public-site .footer-grid {gap:28px}.public-site .footer-brand {grid-column:1/-1}
+ .public-site .footer-bottom {flex-direction:column;gap:8px}
+ body.auth-page .form-grid {grid-template-columns:minmax(0,1fr)}
+ body.auth-page .brand-name,body.auth-page .brand-name h2 {font-size:20px}
+}
+@media(prefers-reduced-motion:reduce) {
+ .public-site *,.public-site *::before,.public-site *::after {transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}

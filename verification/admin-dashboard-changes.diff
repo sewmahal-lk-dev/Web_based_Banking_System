@@ -1,0 +1,149 @@
+--- before/tools/BankingNotificationTest.java
++++ tools/BankingNotificationTest.java
+@@ -159,10 +159,10 @@
+         dao.employee(6,7,"Staff 7","staff7@example.invalid","0771234567","LOAN_OFFICER","ACTIVE",null);
+         check(total()==before,"Ordinary employee edit does not notify");
+         dao.employee(6,7,"Staff 7","staff7@example.invalid","0771234567","INVESTMENT_OFFICER","ACTIVE",null);
+-        check(count("notification_type='EMPLOYEE_ACCESS'")==2,"Role change alerts both administrators");
++        check(count("notification_type='EMPLOYEE_ACCESS'")==1,"Role change alerts the other administrator");
+         before=total();dao.employee(6,7,"Staff 7","staff7@example.invalid","0771234567","INVESTMENT_OFFICER","ACTIVE",null);check(total()==before,"Repeated access edit stays silent");
+         new EmployeeDAO().act(6,"SYSTEM_ADMIN","employee-status","7","INACTIVE","Access removed");
+-        check(count("notification_type='EMPLOYEE_ACCESS'")==4,"Legacy employee status action alerts administrators");
++        check(count("notification_type='EMPLOYEE_ACCESS'")==2,"Legacy employee status action alerts administrators");
+         dao.customerStatus(6,3,"INACTIVE");dao.customerStatus(6,3,"ACTIVE");
+         check(count("customer_id=3 AND notification_type LIKE 'PROFILE_%'")==2,"Customer access deactivation and activation");
+         fails(()->dao.customerStatus(6,3,"ACTIVE"),"Repeated profile activation");
+--- before/src/main/webapp/WEB-INF/employee/dashboard.jsp
++++ src/main/webapp/WEB-INF/employee/dashboard.jsp
+@@ -51,6 +51,7 @@
+ <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/design-system.css">
+ <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/workspaces.css">
+ <script defer src="<%= request.getContextPath() %>/assets/js/workspaces.js"></script>
++<% if ("SYSTEM_ADMIN".equals(role)) { %><link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/admin-overview.css"><% } %>
+ </head>
+ 
+                 <body class="staff-portal" data-role="<%= Input.html(role) %>">
+@@ -108,6 +109,7 @@
+ 
+ 
+                     <main class="dashboard-content services-content">
++<% if ("SYSTEM_ADMIN".equals(role)) { %><jsp:include page="/WEB-INF/fragments/admin-overview.jsp" /><% } %>
+ <section class="staff-welcome"><p class="eyebrow">LANKATRUST / OPERATIONS</p><h2>Welcome, <%= Input.html(userName) %></h2><p>Your workspace for customer care and banking operations.</p></section>
+ 
+                         <% if ("CARD_SERVICES_OFFICER".equals(role)) { %>
+--- before/src/main/webapp/assets/js/workspaces.js
++++ src/main/webapp/assets/js/workspaces.js
+@@ -106,7 +106,7 @@
+ 
+   // Actions use the original DOM nodes, retaining native validation, listeners and form contracts.
+   const shortTitles={'ticket':'New support ticket','ticket-reply':'Reply to ticket','ticket-assign':'Assign department','ticket-status':'Update ticket status','ticket-update':'Edit ticket','schedule':'Schedule payment','cash-deposit':'Cash deposit','cash-withdraw':'Cash withdrawal','limit':'Change card limit','request':'New service request','profile':'Edit profile','password':'Change password','employee-save':'Edit employee','product-save':'Edit product'};
+-  $$('form').filter(form=>form.method.toLowerCase()==='post'&&!form.closest('.notification-center,.notifications-page')).forEach(form=>{
++  $$('form').filter(form=>form.method.toLowerCase()==='post'&&!form.closest('.notification-center,.notifications-page,.admin-overview')).forEach(form=>{
+     const action=$('[name=action]',form)?.value||'';const record=form.closest('.record,.support-ticket');const title=shortTitles[action]||labelOf($('button:not([type=button]),input[type=submit]',form))||'Banking action';
+     // One-click confirmations already handled by banking-ui.js do not need a second action dialog.
+     const controls=$$('input:not([type=hidden]),select,textarea',form);
+@@ -192,6 +192,7 @@
+     if(body.dataset.role==='SYSTEM_ADMIN')quick.append(tile('Generate report','Preview and download administrative reports',contextPath+'/admin/reports','audit'));
+     dashboard.append(quick);
+     const summaries=el('div','workspace-metrics');for(const collection of collections){const card=el('a','workspace-metric');card.href='#'+collection.panel.id;card.append(el('span','',collection.title),el('strong','',String(collection.index.length)),el('small','','Records currently loaded'));card.addEventListener('click',e=>{e.preventDefault();navigate(card.hash);});summaries.append(card);}dashboard.append(summaries);
++    if(body.dataset.role==='SYSTEM_ADMIN'){const overview=$('.admin-overview',content);if(overview)dashboard.append(overview);}
+     content.prepend(dashboard);workspaces.set('workspace-home',{section:dashboard,title:'Dashboard',icon:'dashboard'});
+     [['workspace-home',workspaces.get('workspace-home')],...[...workspaces].filter(([id])=>id!=='workspace-home')].forEach(([id,workspace])=>{const a=el('a');a.href='#'+id;a.dataset.workspaceLink=id;a.title=workspace.title;a.append(icon(workspace.icon),el('span','nav-label',workspace.title));a.addEventListener('click',event=>{event.preventDefault();navigate(a.hash);});nav?.append(a);});
+     if(body.dataset.role==='SYSTEM_ADMIN'){const reports=el('a');reports.href=contextPath+'/admin/reports';reports.append(icon('audit'),el('span','nav-label','Reports'));nav?.append(reports);}
+--- before/src/main/java/com/banking/controller/EmployeeServlet.java
++++ src/main/java/com/banking/controller/EmployeeServlet.java
+@@ -59,6 +59,16 @@
+                                         "Unable to load bank records. Please try again.");
+                 }
+ 
++                if ("SYSTEM_ADMIN".equals(role)) {
++                        try {
++                                req.setAttribute("adminRecentActivity",new AdminDAO().recentActivity(
++                                                Input.id(req.getSession().getAttribute("userId").toString())));
++                        } catch (SQLException e) {
++                                log("Recent administrative activity failed",e);
++                                req.setAttribute("adminActivityUnavailable",true);
++                        }
++                }
++
+                 if (req.getAttribute("error") == null) {
+ 
+                         req.setAttribute(
+--- before/src/main/java/com/banking/dao/AdminDAO.java
++++ src/main/java/com/banking/dao/AdminDAO.java
+@@ -7,6 +7,16 @@
+ public class AdminDAO {
+     public static final String[] ROLES = { "LOAN_OFFICER", "CARD_SERVICES_OFFICER", "INVESTMENT_OFFICER",
+             "CUSTOMER_SERVICE_OFFICER", "COMPLIANCE_RISK_OFFICER", "SYSTEM_ADMIN" };
++
++    public List<Map<String,Object>> recentActivity(int admin)throws SQLException {
++        return Jdbc.transaction(c->{
++            Jdbc.staff(c,admin,"SYSTEM_ADMIN");
++            return Jdbc.rows(c,"SELECT l.log_id,l.action,l.details,l.action_time,l.employee_id,e.name AS actor_name "
++                +"FROM audit_log l LEFT JOIN employee e ON e.employee_id=l.employee_id "
++                +"WHERE l.action IN ('EMPLOYEE_CREATE','EMPLOYEE_UPDATE','employee-status','PRODUCT_CREATE','PRODUCT_UPDATE','CUSTOMER_STATUS','REPORT_GENERATED') "
++                +"ORDER BY l.log_id DESC LIMIT 5");
++        });
++    }
+ 
+     public static String email(String value) {
+         String email = Input.text(value, 150, "email").toLowerCase(Locale.ROOT);
+@@ -51,7 +61,7 @@
+                 Jdbc.exactlyOne(c, "UPDATE employee SET name=?,email=?,phone=?,role=?,status=? WHERE employee_id=?",
+                         fullName, mail, contact, role, status, id);
+                 saved = id;
+-                if(!role.equals(previous.get("role"))||!status.equals(previous.get("status")))NotificationDAO.employeeAccess(c,id);
++                if(!role.equals(previous.get("role"))||!status.equals(previous.get("status")))NotificationDAO.employeeAccess(c,id,admin);
+             }
+             Jdbc.audit(c, admin, id == null ? "EMPLOYEE_CREATE" : "EMPLOYEE_UPDATE", "Employee " + saved);
+             return saved;
+--- before/src/main/java/com/banking/dao/CustomerDAO.java
++++ src/main/java/com/banking/dao/CustomerDAO.java
+@@ -156,6 +156,7 @@
+ 
+             // Everything successful
+             NotificationDAO.accountChanged(con,accountNumber);
++            NotificationDAO.registered(con,customerId);
+             con.commit();
+ 
+             return customerId;
+--- before/src/main/java/com/banking/dao/EmployeeDAO.java
++++ src/main/java/com/banking/dao/EmployeeDAO.java
+@@ -630,7 +630,7 @@
+                 switch(action) {
+                     case "request-review" -> {if(!status.equals(previousRequestStatus))NotificationDAO.changed(c,NotificationDAO.Product.REQUEST,Input.id(idValue));}
+                     case "account-status" -> NotificationDAO.accountChanged(c,Long.parseLong(idValue));
+-                    case "employee-status" -> NotificationDAO.employeeAccess(c,Input.id(idValue));
++                    case "employee-status" -> NotificationDAO.employeeAccess(c,Input.id(idValue),employeeId);
+                     case "loan-reject" -> NotificationDAO.changed(c,NotificationDAO.Product.LOAN,Input.id(idValue));
+                     case "card-block" -> NotificationDAO.changed(c,NotificationDAO.Product.CARD,Input.id(idValue));
+                     default -> { }
+--- before/src/main/java/com/banking/dao/NotificationDAO.java
++++ src/main/java/com/banking/dao/NotificationDAO.java
+@@ -74,7 +74,8 @@
+         else if(type.startsWith("PAYMENT_"))section="transactions";
+         else if(type.startsWith("ACCOUNT_"))section="accounts";
+         else if(type.startsWith("PROFILE_"))section="settings";
+-        else if(type.equals("EMPLOYEE_ACCESS"))return customer?fallback:"/employee/dashboard";
++        else if(type.equals("EMPLOYEE_ACCESS"))return customer?fallback:"/employee/dashboard#Employees";
++        else if(type.equals("CUSTOMER_REGISTERED"))return customer?fallback:"/employee/dashboard#Customers";
+         return section==null?fallback:customer?"/customer/"+section:"/employee/dashboard";
+     }
+     private static void recipient(Connection c,int customer,String type,String title,String message)throws SQLException {
+@@ -122,9 +123,14 @@
+         String status=(String)Jdbc.one(c,"SELECT status FROM customer WHERE customer_id=?",customer).get("status");
+         recipient(c,customer,"PROFILE_"+status,"Customer access updated","Your customer profile is now "+status.toLowerCase(Locale.ROOT)+".");
+     }
+-    static void employeeAccess(Connection c,int employee)throws SQLException {
++    static void registered(Connection c,int customer)throws SQLException {
++        String name=(String)Jdbc.one(c,"SELECT name FROM customer WHERE customer_id=?",customer).get("name");
++        role(c,"SYSTEM_ADMIN","CUSTOMER_REGISTERED","New Customer Registration","New customer "+name+" has registered.");
++    }
++    static void employeeAccess(Connection c,int employee,int actor)throws SQLException {
+         var row=Jdbc.one(c,"SELECT name,role,status FROM employee WHERE employee_id=?",employee);
+-        role(c,"SYSTEM_ADMIN","EMPLOYEE_ACCESS","Employee access changed","Access for "+row.get("name")+" (#"+employee+") changed to "+row.get("role")+", "+row.get("status")+".");
++        Jdbc.update(c,"INSERT INTO notification(employee_id,notification_type,title,message) SELECT employee_id,'EMPLOYEE_ACCESS','Employee access changed',? FROM employee WHERE role='SYSTEM_ADMIN' AND status='ACTIVE' AND employee_id<>?",
++            "Access for "+row.get("name")+" (#"+employee+") changed to "+row.get("role")+", "+row.get("status")+".",actor);
+     }
+     static void payment(Connection c,String reference)throws SQLException {
+         var row=Jdbc.one(c,"SELECT p.payment_id,p.payment_type,p.recipient,p.amount,p.status,a.customer_id FROM payment p JOIN account a ON a.account_number=p.account_number WHERE p.reference_number=? FOR UPDATE",reference);

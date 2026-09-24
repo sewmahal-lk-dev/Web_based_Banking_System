@@ -1,0 +1,26 @@
+.customer-sidebar { box-sizing:border-box; position:fixed; inset:0 auto 0 0; width:260px; height:100vh; padding:30px 22px 20px; display:flex; flex-direction:column; overflow-y:auto; background:radial-gradient(circle at top right,rgba(31,102,136,.28),transparent 32%),#061d2e; color:white; z-index:100; font:13px Arial,Helvetica,sans-serif; }
+.customer-brand { display:flex; align-items:center; gap:13px; padding:0 10px 30px; }
+.customer-logo { width:42px; height:42px; display:grid; place-items:center; border:1px solid #d4a64e; border-radius:11px; color:#f0ca75; font:23px Georgia,serif; }
+.customer-brand strong { font-size:14px; letter-spacing:3px; }
+.customer-brand small { display:block; margin-top:5px; font-size:7px; letter-spacing:1.6px; color:#94abba; }
+.customer-navigation { display:flex; flex-direction:column; gap:5px; }
+.customer-sidebar .customer-nav-item { position:relative; display:flex; align-items:center; gap:14px; min-height:47px; padding:0 15px; border-radius:8px; text-decoration:none; color:#a5b8c5; font:13px Arial,Helvetica,sans-serif; }
+.customer-sidebar .customer-nav-item:hover,.customer-sidebar .customer-nav-item:focus-visible { color:white; background:rgba(255,255,255,.08); outline:2px solid #d4a64e; outline-offset:-2px; }
+.customer-sidebar .customer-nav-item.active { color:white; background:linear-gradient(90deg,rgba(212,166,78,.17),rgba(212,166,78,.04)); }
+.customer-nav-item.active::before { content:""; position:absolute; left:0; width:2px; height:24px; background:#d4a64e; }
+.customer-nav-icon { width:20px; flex-shrink:0; text-align:center; color:#f0ca75; font-size:16px; }
+.customer-signout { margin-top:auto; }
+body .main,body .main-area,body .main-content { margin-left:260px; width:calc(100% - 260px); min-width:0; }
+body #menuButton { display:none; }
+@media(max-width:800px) {
+ body .app-layout,body .layout { display:block; }
+ .customer-sidebar { position:relative; width:100%; height:auto; padding:20px; }
+ .customer-brand { padding-bottom:15px; }
+ .customer-navigation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .customer-signout { margin-top:10px; }
+ body .main,body .main-area,body .main-content { margin-left:0; width:100%; }
+ body .transfer-grid { grid-template-columns:1fr; }
+}
+
+a.action-card { text-decoration:none; color:#102436; }
+.account-detail-link,.support-banner > a { margin-left:auto; padding:12px 18px; border-radius:7px; background:#061d2e; color:#f0ca75; text-decoration:none; }

@@ -1,0 +1,26 @@
+{
+  "sourceFiles": [
+    "tools/BankingNotificationTest.java",
+    "src/main/webapp/WEB-INF/employee/dashboard.jsp",
+    "src/main/webapp/assets/js/workspaces.js",
+    "src/main/java/com/banking/controller/EmployeeServlet.java",
+    "src/main/java/com/banking/dao/AdminDAO.java",
+    "src/main/java/com/banking/dao/CustomerDAO.java",
+    "src/main/java/com/banking/dao/EmployeeDAO.java",
+    "src/main/java/com/banking/dao/NotificationDAO.java"
+  ],
+  "changedEntries": [
+    "WEB-INF/classes/com/banking/controller/EmployeeServlet.class",
+    "WEB-INF/classes/com/banking/dao/AdminDAO.class",
+    "WEB-INF/classes/com/banking/dao/CustomerDAO.class",
+    "WEB-INF/classes/com/banking/dao/EmployeeDAO.class",
+    "WEB-INF/classes/com/banking/dao/NotificationDAO.class",
+    "assets/js/workspaces.js",
+    "WEB-INF/employee/dashboard.jsp",
+    "WEB-INF/fragments/admin-overview.jsp",
+    "assets/css/admin-overview.css"
+  ],
+  "sha256": "d441877a5279a66f88b27e28d7801d8975c71cc4c996ea7a36cad6914b999f63",
+  "deployedEntriesVerified": true,
+  "smokeCheck": "Login and new stylesheet 200; anonymous Admin dashboard and notifications redirect to login."
+}

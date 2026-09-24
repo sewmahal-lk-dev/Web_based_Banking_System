@@ -1,0 +1,43 @@
+{
+  "sourceFiles": [
+    "AccountWorkflowDAO",
+    "AdminDAO",
+    "CardDAO",
+    "CashTransactionDAO",
+    "CustomerDAO",
+    "CustomerServicesDAO",
+    "EmployeeDAO",
+    "FinancialLedger",
+    "InvestmentDAO",
+    "LoanDAO",
+    "LoanRepaymentDAO",
+    "NotificationDAO",
+    "PaymentDAO",
+    "ScheduledPaymentDAO",
+    "ServiceRequestDAO",
+    "TransferDAO"
+  ],
+  "changedArchiveEntries": [
+    "WEB-INF/classes/com/banking/dao/AccountWorkflowDAO.class",
+    "WEB-INF/classes/com/banking/dao/AdminDAO.class",
+    "WEB-INF/classes/com/banking/dao/CardDAO.class",
+    "WEB-INF/classes/com/banking/dao/CashTransactionDAO$AccountInfo.class",
+    "WEB-INF/classes/com/banking/dao/CashTransactionDAO.class",
+    "WEB-INF/classes/com/banking/dao/CustomerDAO.class",
+    "WEB-INF/classes/com/banking/dao/CustomerServicesDAO.class",
+    "WEB-INF/classes/com/banking/dao/EmployeeDAO.class",
+    "WEB-INF/classes/com/banking/dao/FinancialLedger.class",
+    "WEB-INF/classes/com/banking/dao/InvestmentDAO.class",
+    "WEB-INF/classes/com/banking/dao/LoanDAO.class",
+    "WEB-INF/classes/com/banking/dao/LoanRepaymentDAO.class",
+    "WEB-INF/classes/com/banking/dao/NotificationDAO.class",
+    "WEB-INF/classes/com/banking/dao/PaymentDAO.class",
+    "WEB-INF/classes/com/banking/dao/ScheduledPaymentDAO.class",
+    "WEB-INF/classes/com/banking/dao/ServiceRequestDAO.class",
+    "WEB-INF/classes/com/banking/dao/TransferDAO.class",
+    "WEB-INF/classes/com/banking/dao/NotificationDAO$Product.class"
+  ],
+  "sha256": "c44278493ef818f9bb434ddf95bf35215f30486e22ddb30f45d5b2d278940462",
+  "expandedClassesVerified": true,
+  "httpSmoke": "Login 200; anonymous customer and staff notification requests redirect to login."
+}

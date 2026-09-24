@@ -1,0 +1,10 @@
+{
+  "baseline": "deployment-backups/complaint-ui-20260924-122540/WebBasedBankingSystem.war",
+  "modifiedEntries": [
+    "assets/css/public.css",
+    "assets/css/workspaces.css"
+  ],
+  "sha256": "a95038727eccde928fbb86b53c671c5b4cc7c47dfc70765e0f70037f919528b5",
+  "functionalEntriesUnchanged": true,
+  "layoutRulesRetained": true
+}

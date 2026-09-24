@@ -1,0 +1,11 @@
+{
+  "checks": 167,
+  "failures": [
+    "wine canvas CUSTOMER/customer/dashboard",
+    "wine canvas CUSTOMER/customer/dashboard",
+    "authenticated render CUSTOMER/customer/notifications",
+    "wine canvas CUSTOMER/customer/notifications",
+    "authenticated render CUSTOMER/customer/notifications",
+    "wine canvas CUSTOMER/customer/notifications"
+  ]
+}

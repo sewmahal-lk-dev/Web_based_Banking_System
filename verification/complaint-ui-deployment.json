@@ -1,0 +1,36 @@
+{
+  "url": "http://localhost:8080/WebBasedBankingSystem/customer/requests#support-workspace",
+  "deployedWarSha256": "479EF21DB70C2AC581C309E523CCF7D51F3638E3AD51D9A1B0D22C3726E4BEF0",
+  "backup": "deployment-backups/complaint-ui-20260924-122540/WebBasedBankingSystem.war",
+  "schemaChanges": false,
+  "verification": {
+    "supportChecks": 278,
+    "notificationBrowserChecks": 14,
+    "deployedBrowserChecks": 10,
+    "deployedComplaintId": 9,
+    "notificationRecipients": "All active CUSTOMER_SERVICE_OFFICER employees; verified one current recipient, none unrelated"
+  },
+  "rootCause": "workspaces.js relocates forms into dialogs and generates customer header actions; complaint required its own registered action and header launcher, not only a JSP link.",
+  "applicationFiles": [
+    "src/main/webapp/assets/js/workspaces.js",
+    "src/main/webapp/WEB-INF/customer/services.jsp",
+    "src/main/webapp/WEB-INF/fragments/support-tickets.jsp",
+    "src/main/webapp/WEB-INF/fragments/staff-support-tickets.jsp",
+    "src/main/java/com/banking/dao/CustomerServicesDAO.java",
+    "src/main/java/com/banking/dao/TicketDAO.java"
+  ],
+  "testFiles": [
+    "tools/SupportWorkflowTest.java",
+    "tools/NotificationWorkflowTest.java",
+    "tools/notification-browser.mjs",
+    "tools/complaint-deployed-browser.mjs",
+    "tools/VerifyDeployedComplaint.java"
+  ],
+  "notes": [
+    "Existing support-ticket schema and notification/audit mechanisms reused.",
+    "Complaints allow LOW, MEDIUM, HIGH; normal tickets retain URGENT.",
+    "Authorized staff can close a RESOLVED ticket via existing status action; premature closure is rejected.",
+    "Browser verification used dedicated local verification customer registrations and created complaint #9.",
+    "mvn -q package and mvn -q test succeeded; standalone harness supplies integration checks."
+  ]
+}

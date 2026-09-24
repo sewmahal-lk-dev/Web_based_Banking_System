@@ -1,0 +1,139 @@
+{
+  "results": [
+    {
+      "theme": "dark",
+      "movingCard": true,
+      "movingOrbit": true,
+      "card": "matrix3d(0.993612, -0.108149, 0.0322402, 0, 0.107612, 0.994031, 0.0179616, 0, -0.0339903, -0.0143775, 0.999319, 0, 0, 0.0891492, 0, 1)",
+      "orbit": "matrix(0.978162, 0.207843, -0.207843, 0.978162, 0, 0)",
+      "animations": [
+        {
+          "name": "lt-gold-pulse",
+          "state": "running"
+        },
+        {
+          "name": "lt-gold-pulse",
+          "state": "running"
+        },
+        {
+          "name": "lt-line-drift",
+          "state": "running"
+        },
+        {
+          "name": "lt-line-drift",
+          "state": "running"
+        },
+        {
+          "name": "lt-fade-up",
+          "state": "finished"
+        },
+        {
+          "name": "lt-fade-up",
+          "state": "finished"
+        },
+        {
+          "name": "lt-fade-up",
+          "state": "finished"
+        },
+        {
+          "name": "lt-fade-up",
+          "state": "running"
+        },
+        {
+          "name": "lt-gold-pulse",
+          "state": "running"
+        },
+        {
+          "name": "lt-orbit",
+          "state": "running"
+        },
+        {
+          "name": "lt-orbit",
+          "state": "running"
+        },
+        {
+          "name": "lt-glass-drift",
+          "state": "running"
+        },
+        {
+          "name": "lt-card-float",
+          "state": "running"
+        },
+        {
+          "name": "lt-reflection",
+          "state": "running"
+        }
+      ],
+      "features": 4
+    },
+    {
+      "theme": "light",
+      "movingCard": true,
+      "movingOrbit": true,
+      "card": "matrix3d(0.993741, -0.1076, 0.0300012, 0, 0.10714, 0.994106, 0.0165637, 0, -0.0316066, -0.0132457, 0.999413, 0, 0, -0.151503, 0, 1)",
+      "orbit": "matrix(0.977204, 0.212303, -0.212303, 0.977204, 0, 0)",
+      "animations": [
+        {
+          "name": "lt-gold-pulse",
+          "state": "running"
+        },
+        {
+          "name": "lt-gold-pulse",
+          "state": "running"
+        },
+        {
+          "name": "lt-line-drift",
+          "state": "running"
+        },
+        {
+          "name": "lt-line-drift",
+          "state": "running"
+        },
+        {
+          "name": "lt-fade-up",
+          "state": "finished"
+        },
+        {
+          "name": "lt-fade-up",
+          "state": "finished"
+        },
+        {
+          "name": "lt-fade-up",
+          "state": "finished"
+        },
+        {
+          "name": "lt-fade-up",
+          "state": "running"
+        },
+        {
+          "name": "lt-gold-pulse",
+          "state": "running"
+        },
+        {
+          "name": "lt-orbit",
+          "state": "running"
+        },
+        {
+          "name": "lt-orbit",
+          "state": "running"
+        },
+        {
+          "name": "lt-glass-drift",
+          "state": "running"
+        },
+        {
+          "name": "lt-card-float",
+          "state": "running"
+        },
+        {
+          "name": "lt-reflection",
+          "state": "running"
+        }
+      ],
+      "features": 4
+    }
+  ],
+  "reducedMotion": true,
+  "scrollReveal": true,
+  "errors": []
+}
