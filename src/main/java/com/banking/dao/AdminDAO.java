@@ -61,7 +61,7 @@ public class AdminDAO {
                 Jdbc.exactlyOne(c, "UPDATE employee SET name=?,email=?,phone=?,role=?,status=? WHERE employee_id=?",
                         fullName, mail, contact, role, status, id);
                 saved = id;
-                if(!role.equals(previous.get("role"))||!status.equals(previous.get("status")))NotificationDAO.employeeAccess(c,id,admin);
+                if(!role.equals(previous.get("role"))||!status.equals(previous.get("status")))BankingEventPublisher.publishNotifications(c,new BankingEvent.EmployeeAccessChanged(id,admin));
             }
             Jdbc.audit(c, admin, id == null ? "EMPLOYEE_CREATE" : "EMPLOYEE_UPDATE", "Employee " + saved);
             return saved;
@@ -101,7 +101,7 @@ public class AdminDAO {
             else
                 Jdbc.exactlyOne(c, "UPDATE customer SET status='ACTIVE' WHERE customer_id=? AND status='INACTIVE'",
                         customer);
-            if("ACTIVE".equals(status))NotificationDAO.profileChanged(c,customer);
+            if("ACTIVE".equals(status))BankingEventPublisher.publishNotifications(c,new BankingEvent.ProfileChanged(customer));
             Jdbc.audit(c, admin, "CUSTOMER_STATUS", "Customer " + customer + "; " + status);
             return null;
         });

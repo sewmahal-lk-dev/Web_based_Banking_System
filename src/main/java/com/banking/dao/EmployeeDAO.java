@@ -628,11 +628,11 @@ public class EmployeeDAO {
                 }
 
                 switch(action) {
-                    case "request-review" -> {if(!status.equals(previousRequestStatus))NotificationDAO.changed(c,NotificationDAO.Product.REQUEST,Input.id(idValue));}
-                    case "account-status" -> NotificationDAO.accountChanged(c,Long.parseLong(idValue));
-                    case "employee-status" -> NotificationDAO.employeeAccess(c,Input.id(idValue),employeeId);
-                    case "loan-reject" -> NotificationDAO.changed(c,NotificationDAO.Product.LOAN,Input.id(idValue));
-                    case "card-block" -> NotificationDAO.changed(c,NotificationDAO.Product.CARD,Input.id(idValue));
+                    case "request-review" -> {if(!status.equals(previousRequestStatus))BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.REQUEST,Input.id(idValue)));}
+                    case "account-status" -> BankingEventPublisher.publishNotifications(c,new BankingEvent.AccountChanged(Long.parseLong(idValue)));
+                    case "employee-status" -> BankingEventPublisher.publishNotifications(c,new BankingEvent.EmployeeAccessChanged(Input.id(idValue),employeeId));
+                    case "loan-reject" -> BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.LOAN,Input.id(idValue)));
+                    case "card-block" -> BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.CARD,Input.id(idValue)));
                     default -> { }
                 }
                 c.commit();
