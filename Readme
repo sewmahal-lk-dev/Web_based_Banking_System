@@ -1,1 +1,55 @@
+# Admin Management Module
 
+This branch contains the **Administration Management** functionality of the Web-Based Banking System.
+
+## Overview
+
+The Admin Management module provides administrative features required to monitor and manage the banking system through a centralized admin interface.
+
+## Main Features
+
+- Admin Dashboard
+- View and manage system records
+- Review submitted information
+- Update administrative records
+- Monitor system activities
+- Manage relevant user/account information
+- Control administrative operations
+- View system-related details and statuses
+
+## Admin Responsibilities
+
+The Administrator is responsible for supervising and maintaining the system by reviewing information, updating records, monitoring activities, and performing required management operations.
+
+## Technologies Used
+
+- Java
+- Java Servlets
+- JSP
+- HTML
+- CSS
+- JavaScript
+- MySQL
+- Maven
+- Apache Tomcat
+
+## Project Structure
+
+The Admin Management implementation follows the project architecture using:
+
+- **Controller Layer** – Handles admin requests and responses
+- **DAO Layer** – Handles database operations
+- **Model Layer** – Represents system data
+- **View Layer** – Provides the Admin user interface
+
+## Purpose
+
+The main purpose of this module is to provide administrators with a secure and organized way to manage important banking system operations from a centralized interface.
+
+## Branch
+
+`feature/admin-management`
+
+---
+
+**Developed as part of the Web-Based Banking System group project.**
