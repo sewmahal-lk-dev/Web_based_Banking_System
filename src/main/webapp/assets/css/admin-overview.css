@@ -1,6 +1,6 @@
 /* Admin dashboard additions inherit the existing dark/light banking palette. */
 .admin-overview {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:24px;align-items:start}
-.admin-overview .panel {min-width:0;margin:0;padding:20px}
+.admin-overview .panel {min-width:0;margin:0;padding:20px}  
 .admin-overview .panel-heading {display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:12px}
 .admin-overview .panel-heading h2 {font-size:18px;line-height:1.4;margin:0}
 .admin-overview .panel-heading a {color:var(--accent);font-size:13px;white-space:nowrap}
