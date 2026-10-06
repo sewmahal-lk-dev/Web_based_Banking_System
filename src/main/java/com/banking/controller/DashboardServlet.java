@@ -87,7 +87,7 @@ public class DashboardServlet extends HttpServlet {
             request.setAttribute("transactionError", true);
         }
 
-        request.setAttribute(
+        request.setAttribute(    
                 "account",
                 account);
 
