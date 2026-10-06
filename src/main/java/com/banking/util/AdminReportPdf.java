@@ -82,7 +82,7 @@ public final class AdminReportPdf {
             float height=max*11+14;stream.setNonStrokingColor(WINE);stream.addRect(38,y-height,766,height);stream.fill();
             float x=38;for(int i=0;i<widths.length;i++){float yy=y-14;for(String line:labels.get(i)){text(line,x+6,yy,BOLD,8,Color.WHITE);yy-=11;}x+=widths[i];}y-=height;
         }
-        void row(List<String> row)throws IOException {
+        void row(List<String> row)throws IOException {  
             List<List<String>> cells=new ArrayList<>();int max=1;
             for(int i=0;i<widths.length;i++){var lines=wrap(row.get(i),widths[i]-12,FONT,8);cells.add(lines);max=Math.max(max,lines.size());}
             // Split exceptionally long rows safely while repeating the table header.
