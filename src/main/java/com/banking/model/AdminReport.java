@@ -12,7 +12,7 @@ public record AdminReport(String type, String title, List<String> headers, List<
     }
     public AdminReport {
         headers = List.copyOf(headers);
-        rows = rows.stream().map(List::copyOf).toList();
+        rows = rows.stream().map(List::copyOf).toList();    
         filters = Collections.unmodifiableMap(new LinkedHashMap<>(filters));
     }
 }
