@@ -29,13 +29,13 @@ public class CustomerServicesDAO {
         }
     }
     public void blockCard(int customerId,int cardId) throws SQLException {
-        Jdbc.transaction(c->{Jdbc.exactlyOne(c,"UPDATE card c JOIN account a ON a.account_number=c.account_number SET c.status='BLOCKED' WHERE c.card_id=? AND a.customer_id=? AND c.status='ACTIVE'",cardId,customerId);NotificationDAO.changed(c,NotificationDAO.Product.CARD,cardId);return null;});
+        Jdbc.transaction(c->{Jdbc.exactlyOne(c,"UPDATE card c JOIN account a ON a.account_number=c.account_number SET c.status='BLOCKED' WHERE c.card_id=? AND a.customer_id=? AND c.status='ACTIVE'",cardId,customerId);BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.CARD,cardId));return null;});
     }
     public void request(int customerId,String type,String description) throws SQLException {
         type=Input.choice(type,"ACCOUNT_OPENING","ACCOUNT_CLOSURE","PROFILE_UPDATE","CHEQUE_BOOK","ACCOUNT_STATEMENT");
         description=Input.text(description,500,"request description");
         final String category=type,text=description;
-        Jdbc.transaction(c->{long id=Jdbc.insert(c,"INSERT INTO service_request(customer_id,request_type,description,status) VALUES(?,?,?,'PENDING')",customerId,category,text);NotificationDAO.submitted(c,NotificationDAO.Product.REQUEST,id);return null;});
+        Jdbc.transaction(c->{long id=Jdbc.insert(c,"INSERT INTO service_request(customer_id,request_type,description,status) VALUES(?,?,?,'PENDING')",customerId,category,text);BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductSubmitted(BankingEvent.Product.REQUEST,id));return null;});
     }
     public void ticket(int customerId,String type,String subject,String description) throws SQLException {
         ticket(customerId,type,subject,description,"MEDIUM");
@@ -50,7 +50,7 @@ public class CustomerServicesDAO {
             long ticketId=Jdbc.insert(c,"INSERT INTO ticket(customer_id,ticket_type,subject,description,priority,status) VALUES(?,?,?,?,?,'OPEN')",customerId,category,title,text,urgency);
             boolean complaint="COMPLAINT".equals(category);
             String name=(String)Jdbc.one(c,"SELECT name FROM customer WHERE customer_id=?",customerId).get("name");
-            NotificationDAO.department(c,(int)ticketId,"CUSTOMER_SERVICE_OFFICER",null,null,"TICKET_CREATED",complaint?"New Customer Complaint":"New Support Ticket",complaint?"A new complaint has been submitted by "+name+". Ticket #"+ticketId+".":"Support ticket #"+ticketId+" is awaiting review.");
+            BankingEventPublisher.publishNotifications(c,new BankingEvent.TicketDepartmentNotice((int)ticketId,"CUSTOMER_SERVICE_OFFICER",null,null,"TICKET_CREATED",complaint?"New Customer Complaint":"New Support Ticket",complaint?"A new complaint has been submitted by "+name+". Ticket #"+ticketId+".":"Support ticket #"+ticketId+" is awaiting review."));
             Jdbc.audit(c,null,"TICKET_CREATE","Customer "+customerId+"; ticket "+ticketId+"; category "+category);
             return null;
         });
@@ -64,7 +64,7 @@ public class CustomerServicesDAO {
             if("CLOSED".equals(ticket.get("status")))throw new IllegalArgumentException("This ticket is closed.");
             Jdbc.insert(c,"INSERT INTO ticket_message(ticket_id,sender_label,body) VALUES(?,'Customer',?)",ticketId,message);
             Jdbc.update(c,"UPDATE ticket SET date_updated=CURRENT_TIMESTAMP WHERE ticket_id=?",ticketId);
-            NotificationDAO.customerReply(c,ticketId);
+            BankingEventPublisher.publishNotifications(c,new BankingEvent.CustomerReplied(ticketId));
             Jdbc.audit(c,null,"TICKET_REPLY","Customer "+customerId+"; ticket "+ticketId);
             return null;
         });

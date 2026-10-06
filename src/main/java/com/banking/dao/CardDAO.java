@@ -42,7 +42,7 @@ public class CardDAO {
             long id=Jdbc.insert(c,"INSERT INTO card(account_number,card_number,card_type,issue_date,expiry_date,status,daily_limit) VALUES(?,?,?,CURDATE(),?,'PENDING',?)",account,number,type,Date.valueOf(LocalDate.now().plusYears(DemoRules.integer("card.expiryYears"))),DemoRules.number("card.dailyLimit"));
             if("DEBIT".equals(type))Jdbc.exactlyOne(c,"INSERT INTO debit_card(card_id,daily_withdrawal_limit) VALUES(?,?)",id,DemoRules.number("card.withdrawalLimit"));
             else Jdbc.exactlyOne(c,"INSERT INTO credit_card(card_id,credit_limit,available_credit) VALUES(?,?,?)",id,DemoRules.number("card.creditLimit"),DemoRules.number("card.creditLimit"));
-            NotificationDAO.submitted(c,NotificationDAO.Product.CARD,id);Jdbc.audit(c,null,"CARD_REQUEST","Customer "+customer+"; card "+id);return id;});
+            BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductSubmitted(BankingEvent.Product.CARD,id));Jdbc.audit(c,null,"CARD_REQUEST","Customer "+customer+"; card "+id);return id;});
     }
     public void customerAction(int customer,int id,String action,String limit)throws SQLException {
         Input.choice(action,"block","cancel","close","limit");
@@ -50,7 +50,7 @@ public class CardDAO {
             if("limit".equals(action)) {if(!"ACTIVE".equals(status))throw new IllegalArgumentException("Only active card limits can change.");BigDecimal value;try{value=Input.money(new BigDecimal(limit));}catch(RuntimeException e){throw new IllegalArgumentException("Enter a valid daily limit.");}if(value.compareTo(DemoRules.number("card.dailyLimit"))>0)throw new IllegalArgumentException("Limit exceeds the demo maximum.");Jdbc.exactlyOne(c,"UPDATE card SET daily_limit=? WHERE card_id=?",value,id);}
             else if("block".equals(action)){if(!"ACTIVE".equals(status))throw new IllegalArgumentException("Only active cards can be blocked.");Jdbc.exactlyOne(c,"UPDATE card SET status='BLOCKED' WHERE card_id=?",id);}
             else {if("cancel".equals(action) && !"PENDING".equals(status) || "close".equals(action) && !java.util.List.of("ACTIVE","BLOCKED","EXPIRED").contains(status))throw new IllegalArgumentException("Card cannot be cancelled in its current state.");noDebt(c,id);Jdbc.exactlyOne(c,"UPDATE card SET status='CANCELLED' WHERE card_id=?",id);}
-            if(!"limit".equals(action))NotificationDAO.changed(c,NotificationDAO.Product.CARD,id,action);Jdbc.audit(c,null,"CARD_"+action.toUpperCase(),"Customer "+customer+"; card "+id);return null;});
+            if(!"limit".equals(action))BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.CARD,id,action));Jdbc.audit(c,null,"CARD_"+action.toUpperCase(),"Customer "+customer+"; card "+id);return null;});
     }
     public void process(int employee,int id,String action,String reason)throws SQLException {
         Input.choice(action,"approve","reject","block","unblock","close");final String note=Input.text(reason,500,"reason");
@@ -63,7 +63,7 @@ public class CardDAO {
             if("CANCELLED".equals(next))noDebt(c,id);
             if("approve".equals(action))Jdbc.exactlyOne(c,"UPDATE card SET status=?,decision_note=?,issue_date=CURDATE(),expiry_date=? WHERE card_id=?",next,note,Date.valueOf(LocalDate.now().plusYears(DemoRules.integer("card.expiryYears"))),id);
             else Jdbc.exactlyOne(c,"UPDATE card SET status=?,decision_note=? WHERE card_id=?",next,note,id);
-            NotificationDAO.changed(c,NotificationDAO.Product.CARD,id,action);Jdbc.audit(c,employee,"CARD_"+action.toUpperCase(),"Card "+id+"; "+note);return null;});
+            BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.CARD,id,action));Jdbc.audit(c,employee,"CARD_"+action.toUpperCase(),"Card "+id+"; "+note);return null;});
     }
     static void noDebt(Connection c,int id)throws SQLException {if(!Jdbc.rows(c,"SELECT card_id FROM credit_card WHERE card_id=? AND available_credit<credit_limit FOR UPDATE",id).isEmpty())throw new IllegalArgumentException("Outstanding card balance must be settled before closure.");}
 }

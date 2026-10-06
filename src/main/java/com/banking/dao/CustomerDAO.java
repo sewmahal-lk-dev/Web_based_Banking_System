@@ -155,8 +155,8 @@ public class CustomerDAO {
             }
 
             // Everything successful
-            NotificationDAO.accountChanged(con,accountNumber);
-            NotificationDAO.registered(con,customerId);
+            BankingEventPublisher.publishNotifications(con,new BankingEvent.AccountChanged(accountNumber));
+            BankingEventPublisher.publishNotifications(con,new BankingEvent.CustomerRegistered(customerId));
             con.commit();
 
             return customerId;

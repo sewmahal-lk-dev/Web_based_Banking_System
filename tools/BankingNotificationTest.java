@@ -106,7 +106,7 @@ public class BankingNotificationTest {
         check(customer("PAYMENT_COMPLETED")==before+1&&count("customer_id=2 AND notification_type='PAYMENT_RECEIVED'")==received+1,"Transfer notifies sender and actual receiver");
         long all=total();
         ExecutorService pool=Executors.newFixedThreadPool(2);
-        try{List<Future<?>> futures=new ArrayList<>();for(int i=0;i<2;i++)futures.add(pool.submit(()->{try{Jdbc.transaction(c->{NotificationDAO.payment(c,reference);return null;});}catch(SQLException e){throw new RuntimeException(e);}}));for(var f:futures)f.get(15,TimeUnit.SECONDS);}finally{pool.shutdownNow();}
+        try{List<Future<?>> futures=new ArrayList<>();for(int i=0;i<2;i++)futures.add(pool.submit(()->{try{Jdbc.transaction(c->{BankingEventPublisher.publishNotifications(c,new BankingEvent.PaymentRecorded(reference));return null;});}catch(SQLException e){throw new RuntimeException(e);}}));for(var f:futures)f.get(15,TimeUnit.SECONDS);}finally{pool.shutdownNow();}
         check(total()==all,"Concurrent repeated delivery of one payment is idempotent");
         changed(()->new PaymentDAO().makeBillPayment(1,"Power","BILL-123",new BigDecimal("10")),"PAYMENT_COMPLETED","Bill payment");
         changed(()->new CashTransactionDAO().deposit(1,ACCOUNT,new BigDecimal("20"),"Test deposit"),"PAYMENT_COMPLETED","Cash deposit");
@@ -214,6 +214,39 @@ public class BankingNotificationTest {
         }finally{execute("DROP TRIGGER notification_failure");}
         check(total()==before,"No partial notifications survived rollback");
     }
+    static void observerRollback()throws Exception{
+        long before=total();
+        String status=(String)scalar("SELECT status FROM account WHERE account_number=?",ACCOUNT);
+        long audit=((Number)scalar("SELECT COUNT(*) FROM audit_log")).longValue();
+        execute("CREATE TRIGGER observer_staff_failure BEFORE INSERT ON notification FOR EACH ROW BEGIN IF NEW.employee_id IS NOT NULL THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Synthetic second observer failure'; END IF; END");
+        try{
+            fails(()->new EmployeeDAO().act(5,"COMPLIANCE_RISK_OFFICER","account-status",Long.toString(ACCOUNT),"FROZEN","Observer rollback"),"Staff observer failure rolls back earlier customer observer");
+            check(status.equals(scalar("SELECT status FROM account WHERE account_number=?",ACCOUNT)),"Second observer failure restores business account status");
+            check(total()==before&&audit==((Number)scalar("SELECT COUNT(*) FROM audit_log")).longValue(),"Second observer failure leaves no notification or audit write");
+        }finally{execute("DROP TRIGGER observer_staff_failure");}
+    }
+    static void observerRecipients()throws Exception{
+        check(count("employee_id=6 AND notification_type='EMPLOYEE_ACCESS'")==0
+                &&count("employee_id=8 AND notification_type='EMPLOYEE_ACCESS'")==2,
+                "Admin access notices exclude acting administrator and reach other administrator");
+        execute("INSERT INTO employee(employee_id,name,email,password,role,status) VALUES(10,'Second Service','second-service@example.invalid','unused','CUSTOMER_SERVICE_OFFICER','ACTIVE'),(11,'Inactive Service','inactive-service@example.invalid','unused','CUSTOMER_SERVICE_OFFICER','INACTIVE')");
+        new CustomerServicesDAO().ticket(1,"COMPLAINT","Observer recipients","Private complaint","HIGH");
+        int ticket=id("ticket","ticket_id");
+        check(count("related_ticket_id=? AND notification_type='TICKET_CREATED'",ticket)==2
+                &&count("related_ticket_id=? AND employee_id=11",ticket)==0,"Complaint reaches both active service staff, excludes inactive staff");
+        check(count("related_ticket_id=? AND title='New Customer Complaint' AND message=?",ticket,
+                "A new complaint has been submitted by Customer 1. Ticket #"+ticket+".")==2,"Existing complaint title/message preserved exactly");
+        new TicketDAO().assign(1,ticket,"CUSTOMER_SERVICE_OFFICER");
+        check(count("related_ticket_id=? AND notification_type='TICKET_ASSIGNED' AND employee_id=1",ticket)==0
+                &&count("related_ticket_id=? AND notification_type='TICKET_ASSIGNED' AND employee_id=10",ticket)==1
+                &&count("related_ticket_id=? AND notification_type='TICKET_ASSIGNED' AND customer_id=1",ticket)==1,"Assignment keeps customer notice and excludes staff actor");
+        new TicketDAO().update(1,ticket,"ticket-status","IN_PROGRESS",null);
+        new TicketDAO().update(1,ticket,"ticket-status","ESCALATED",null);
+        check(count("related_ticket_id=? AND notification_type='TICKET_ESCALATED' AND employee_id=1",ticket)==0
+                &&count("related_ticket_id=? AND notification_type='TICKET_ESCALATED' AND employee_id=10",ticket)==1,"Escalation preserves department actor exclusion");
+        new CustomerServicesDAO().reply(1,ticket,"Customer follow-up");
+        check(count("related_ticket_id=? AND notification_type='CUSTOMER_REPLY' AND employee_id IN (1,10)",ticket)==2,"Customer reply reaches entire assigned department, not only last handler");
+    }
     static class User {HttpClient client=HttpClient.newBuilder().cookieHandler(new CookieManager(null,CookiePolicy.ACCEPT_ALL)).followRedirects(HttpClient.Redirect.NEVER).build();String csrf;}
     static HttpResponse<String> get(User u,String path)throws Exception{return u.client.send(HttpRequest.newBuilder(URI.create(BASE+path)).GET().build(),HttpResponse.BodyHandlers.ofString());}
     static HttpResponse<String> post(User u,String path,Map<String,String> values)throws Exception{
@@ -264,10 +297,11 @@ public class BankingNotificationTest {
         System.setProperty("bank.db.url","jdbc:mysql://localhost:3306/"+db+"?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Colombo");
         Tomcat server=new Tomcat();boolean started=false;
         try{
-            for(String sql:ddl)execute(sql);fixtures();loans();investments();cards();payments();requestsAndAccounts();admin();support();remainingEntryPoints();rollback();
+            for(String sql:ddl)execute(sql);fixtures();loans();investments();cards();payments();requestsAndAccounts();admin();support();remainingEntryPoints();rollback();observerRollback();observerRecipients();
             server.setBaseDir(Path.of("target/notification-tomcat").toAbsolutePath().toString());server.setPort(8774);server.getConnector().setProperty("address","127.0.0.1");
             Context context=server.addWebapp("/bank",Path.of("target/WebBasedBankingSystem").toAbsolutePath().toString());context.setParentClassLoader(BankingNotificationTest.class.getClassLoader());server.start();started=true;http();
-            Files.writeString(Path.of("verification/banking-notification-tests.json"),"{\"checks\":"+checks+",\"passed\":true}");System.out.println("BANKING NOTIFICATION CHECKS PASSED: "+checks);
+            Path report=Path.of(Arrays.asList(args).contains("--observer-report")?"target/observer-banking-notification-tests.json":"verification/banking-notification-tests.json");
+            Files.writeString(report,"{\"checks\":"+checks+",\"passed\":true}");System.out.println("BANKING NOTIFICATION CHECKS PASSED: "+checks);
         }finally{
             if(started){server.stop();server.destroy();}
             if(!db.matches("banking_test_notifications_[0-9]+"))throw new IllegalStateException("Unsafe test DB name");

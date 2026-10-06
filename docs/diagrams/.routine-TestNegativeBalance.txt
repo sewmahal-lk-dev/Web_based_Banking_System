@@ -1,0 +1,12 @@
+BEGIN
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+    BEGIN
+        SELECT 'SUCCESS - Trigger blocked the negative balance' AS Trigger_Test_Result;
+    END;
+
+    UPDATE account
+    SET balance = -1000
+    WHERE account_number = 1000000002;
+
+    SELECT 'FAILED - Negative balance was allowed' AS Trigger_Test_Result;
+END

@@ -91,7 +91,7 @@ public class CashTransactionDAO {
                         reference,
                         note);
 
-                NotificationDAO.payment(connection,reference);
+                BankingEventPublisher.publishNotifications(connection,new BankingEvent.PaymentRecorded(reference));
                 connection.commit();
 
                 return reference;
@@ -189,7 +189,7 @@ public class CashTransactionDAO {
                         reference,
                         note);
 
-                NotificationDAO.payment(connection,reference);
+                BankingEventPublisher.publishNotifications(connection,new BankingEvent.PaymentRecorded(reference));
                 connection.commit();
 
                 return reference;

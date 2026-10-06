@@ -130,7 +130,7 @@ public class PaymentDAO {
                 }
             }
 
-            NotificationDAO.payment(con,referenceNumber);
+            BankingEventPublisher.publishNotifications(con,new BankingEvent.PaymentRecorded(referenceNumber));
             con.commit();
 
             return referenceNumber;

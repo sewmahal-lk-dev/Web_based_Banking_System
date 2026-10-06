@@ -11,13 +11,13 @@ public class ServiceRequestDAO {
             else if("PROFILE_UPDATE".equals(type))newEmail=AdminDAO.email(email);
             else {try{account=Long.parseLong(accountValue);}catch(RuntimeException e){throw new IllegalArgumentException("Select an account.");}FinancialLedger.account(c,customer,account);}
             long id=Jdbc.insert(c,"INSERT INTO service_request(customer_id,request_type,description,account_number,requested_account_type,requested_email,status) VALUES(?,?,?,?,?,?,'PENDING')",customer,type,text,account,selectedType,newEmail);
-            NotificationDAO.submitted(c,NotificationDAO.Product.REQUEST,id);Jdbc.audit(c,null,"SERVICE_REQUEST","Customer "+customer+"; request "+id);return id;});
+            BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductSubmitted(BankingEvent.Product.REQUEST,id));Jdbc.audit(c,null,"SERVICE_REQUEST","Customer "+customer+"; request "+id);return id;});
     }
     public void update(int customer,int id,String description,boolean cancel)throws SQLException {
         final String text=cancel?null:Input.text(description,500,"description");Jdbc.transaction(c->{Jdbc.customer(c,customer);
             if(cancel)Jdbc.exactlyOne(c,"UPDATE service_request SET status='CANCELLED' WHERE request_id=? AND customer_id=? AND status='PENDING'",id,customer);
             else Jdbc.exactlyOne(c,"UPDATE service_request SET description=? WHERE request_id=? AND customer_id=? AND status='PENDING'",text,id,customer);
-            if(cancel)NotificationDAO.changed(c,NotificationDAO.Product.REQUEST,id);Jdbc.audit(c,null,cancel?"REQUEST_CANCEL":"REQUEST_UPDATE","Customer "+customer+"; request "+id);return null;});
+            if(cancel)BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.REQUEST,id));Jdbc.audit(c,null,cancel?"REQUEST_CANCEL":"REQUEST_UPDATE","Customer "+customer+"; request "+id);return null;});
     }
     public void ticketUpdate(int customer,int id,String subject,String description,boolean close)throws SQLException {
         final String title=close?null:Input.text(subject,150,"subject"),text=close?null:Input.text(description,5000,"description");
@@ -41,6 +41,6 @@ public class ServiceRequestDAO {
                     default -> throw new IllegalArgumentException("Unsupported request.");
                 }
             }
-            Jdbc.exactlyOne(c,"UPDATE service_request SET status=?,response=?,rejection_reason=? WHERE request_id=?",status,result.substring(0,Math.min(500,result.length())),"REJECTED".equals(status)?response:null,id);if(!status.equals(request.get("status"))||!java.util.Objects.equals(result,request.get("response")))NotificationDAO.changed(c,NotificationDAO.Product.REQUEST,id);Jdbc.audit(c,employee,"REQUEST_"+status,"Request "+id+"; "+result);return null;});
+            Jdbc.exactlyOne(c,"UPDATE service_request SET status=?,response=?,rejection_reason=? WHERE request_id=?",status,result.substring(0,Math.min(500,result.length())),"REJECTED".equals(status)?response:null,id);if(!status.equals(request.get("status"))||!java.util.Objects.equals(result,request.get("response")))BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.REQUEST,id));Jdbc.audit(c,employee,"REQUEST_"+status,"Request "+id+"; "+result);return null;});
     }
 }

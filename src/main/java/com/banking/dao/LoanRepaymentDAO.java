@@ -25,8 +25,8 @@ public class LoanRepaymentDAO {
                 try(PreparedStatement ps=c.prepareStatement("INSERT INTO payment(account_number,payment_type,recipient,amount,status,reference_number) VALUES(?,'LOAN_PAYMENT',?,?,'COMPLETED',?)")) {
                     ps.setLong(1,account);ps.setString(2,"Loan installment "+repaymentId);ps.setBigDecimal(3,amount);ps.setString(4,"LNP-"+repaymentId);if(ps.executeUpdate()!=1)throw new SQLException("Payment recording failed");
                 }
-                try(PreparedStatement ps=c.prepareStatement("UPDATE loan SET status='CLOSED' WHERE loan_id=(SELECT loan_id FROM loan_repayment WHERE repayment_id=?) AND status='ACTIVE' AND NOT EXISTS (SELECT 1 FROM loan_repayment r WHERE r.loan_id=loan.loan_id AND r.status<>'PAID')")){ps.setInt(1,repaymentId);if(ps.executeUpdate()==1){var loan=Jdbc.one(c,"SELECT loan_id FROM loan_repayment WHERE repayment_id=?",repaymentId);NotificationDAO.changed(c,NotificationDAO.Product.LOAN,((Number)loan.get("loan_id")).longValue());}}
-                NotificationDAO.payment(c,"LNP-"+repaymentId);
+                try(PreparedStatement ps=c.prepareStatement("UPDATE loan SET status='CLOSED' WHERE loan_id=(SELECT loan_id FROM loan_repayment WHERE repayment_id=?) AND status='ACTIVE' AND NOT EXISTS (SELECT 1 FROM loan_repayment r WHERE r.loan_id=loan.loan_id AND r.status<>'PAID')")){ps.setInt(1,repaymentId);if(ps.executeUpdate()==1){var loan=Jdbc.one(c,"SELECT loan_id FROM loan_repayment WHERE repayment_id=?",repaymentId);BankingEventPublisher.publishNotifications(c,new BankingEvent.ProductChanged(BankingEvent.Product.LOAN,((Number)loan.get("loan_id")).longValue()));}}
+                BankingEventPublisher.publishNotifications(c,new BankingEvent.PaymentRecorded("LNP-"+repaymentId));
                 c.commit();
             }catch(SQLException|RuntimeException e){c.rollback();throw e;}
         }

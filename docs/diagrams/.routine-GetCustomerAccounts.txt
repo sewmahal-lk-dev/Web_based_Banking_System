@@ -1,0 +1,10 @@
+BEGIN
+    SELECT
+        a.account_number,
+        a.account_type,
+        a.balance,
+        a.status
+    FROM account a
+    WHERE a.customer_id = p_customer_id
+    ORDER BY a.account_number;
+END

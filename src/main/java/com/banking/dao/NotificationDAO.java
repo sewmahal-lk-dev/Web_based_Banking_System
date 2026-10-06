@@ -1,6 +1,7 @@
 package com.banking.dao;
 
 import com.banking.util.DBConnection;
+import com.banking.dao.BankingEvent.Product;
 import java.sql.*;
 import java.util.*;
 
@@ -57,14 +58,6 @@ public class NotificationDAO {
 
     // Call only after a successful write, on the SAME transaction connection.
     // Notifications become visible only with the business commit; failures roll back both.
-    enum Product {
-        LOAN("loan", "loan_id", "Loan", "LOAN_OFFICER"),
-        INVESTMENT("investment", "investment_id", "Investment", "INVESTMENT_OFFICER"),
-        CARD("card", "card_id", "Card", "CARD_SERVICES_OFFICER"),
-        REQUEST("service_request", "request_id", "Service request", "CUSTOMER_SERVICE_OFFICER");
-        final String table,key,label,role;
-        Product(String table,String key,String label,String role){this.table=table;this.key=key;this.label=label;this.role=role;}
-    }
     private static String bankingTarget(boolean customer,String type,String fallback) {
         String section=null;
         if(type.startsWith("LOAN_"))section="loans";
@@ -117,6 +110,10 @@ public class NotificationDAO {
         var row=Jdbc.one(c,"SELECT customer_id,status FROM account WHERE account_number=?",number);
         String status=(String)row.get("status"),masked="**** "+Long.toString(number).substring(Math.max(0,Long.toString(number).length()-4));
         recipient(c,((Number)row.get("customer_id")).intValue(),"ACCOUNT_"+status,"Account status updated","Your account "+masked+" is now "+status.toLowerCase(Locale.ROOT)+".");
+    }
+    static void accountStaffChanged(Connection c,long number)throws SQLException {
+        var row=Jdbc.one(c,"SELECT customer_id,status FROM account WHERE account_number=?",number);
+        String status=(String)row.get("status"),masked="**** "+Long.toString(number).substring(Math.max(0,Long.toString(number).length()-4));
         if("FROZEN".equals(status))role(c,"SYSTEM_ADMIN","ACCOUNT_FROZEN","Account frozen","Compliance has frozen account "+masked+" for customer #"+row.get("customer_id")+".");
     }
     static void profileChanged(Connection c,int customer)throws SQLException {

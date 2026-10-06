@@ -1,0 +1,10 @@
+Read-only metadata inspection on 2026-10-04 (Asia/Colombo).
+Server product/version: MySQL 8.0.46
+Base tables: 16
+VIEWS: 0
+TRIGGERS: 1
+ROUTINES: 2
+EVENTS: 0
+Trigger: prevent_negative_balance; BEFORE UPDATE on account
+Routine: GetCustomerAccounts; PROCEDURE; CONTAINS SQL
+Routine: TestNegativeBalance; PROCEDURE; CONTAINS SQL
