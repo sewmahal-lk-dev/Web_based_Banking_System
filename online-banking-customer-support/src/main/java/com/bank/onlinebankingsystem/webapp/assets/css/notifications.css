@@ -1,0 +1,28 @@
+/* Scoped notification component; existing banking layouts are unchanged. */
+.notification-center{position:relative;flex:0 0 auto;font:14px/1.5 system-ui,sans-serif;color:#243044;z-index:100}
+.notification-center summary.notify-bell{display:flex;align-items:center;justify-content:center;position:relative;width:44px;height:44px;list-style:none;cursor:pointer;border:1px solid #dce2eb;border-radius:50%;background:#fff;color:#330006}
+.notify-bell::-webkit-details-marker{display:none}.notify-bell:focus-visible,.notify-item button:focus-visible{outline:3px solid #b08b32;outline-offset:3px}
+.notify-badge{position:absolute;top:-5px;right:-7px;min-width:20px;padding:1px 4px;border-radius:12px;background:#330006;color:#ffe19a;font-size:11px;font-weight:700;text-align:center}
+.notify-popup{position:absolute;right:0;top:54px;width:min(380px,calc(100vw - 32px));background:#fff;border:1px solid #e2e6ed;border-radius:14px;box-shadow:0 12px 36px #17233526;overflow:hidden;animation:notify-open .14s ease-out}
+.notify-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px;border-bottom:1px solid #edf0f4}.notify-heading form{margin:0}.notify-heading button{border:0;background:transparent;color:#703349;cursor:pointer;font:inherit;font-size:12px;padding:4px}
+.notify-list{max-height:min(440px,65vh);overflow-y:auto}.notify-item{margin:0!important;border-bottom:1px solid #edf0f4}.notify-item button{display:block;width:100%;padding:15px 18px;text-align:left;border:0;border-radius:0;background:#fff;color:#243044;font:14px/1.5 system-ui,sans-serif;cursor:pointer;white-space:normal}.notify-item.is-unread button{background:#fffbf2}.notify-item button:hover{background:#f2f4f8}.notify-title{display:flex;align-items:center;gap:8px;font-weight:650}.notify-dot{width:7px;height:7px;border-radius:50%;background:#963955;flex-shrink:0}.is-read .notify-dot{background:transparent}.notify-state{margin-left:auto;color:#697386;font-size:10px;font-weight:400}.notify-message{display:block;margin:5px 0;color:#4d596a;overflow-wrap:anywhere}.notify-item time{font-size:11px;color:#697386}.notify-footer{display:block;padding:12px;text-align:center;color:#703349;text-decoration:none;font-weight:600}.notify-empty{padding:20px;color:#697386;margin:0}.notifications-page{margin:0;background:#f4f6f9;color:#243044;font:15px/1.6 system-ui,sans-serif}.notifications-page>header{display:flex;align-items:center;justify-content:space-between;max-width:760px;margin:auto;padding:20px}.notifications-page main{max-width:720px;margin:20px auto;padding:20px;background:white;border-radius:14px}.notifications-page nav{padding-top:20px}.notifications-page a{color:#703349}
+@keyframes notify-open{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.notify-popup{animation:none}}@media(max-width:600px){.notify-popup{position:fixed;top:80px;right:16px}.notifications-page main{margin:12px}}
+
+/* Theme-aware notification surfaces shared with the banking design system. */
+.notification-center {color:var(--text-primary);z-index:100}
+.notification-center summary.notify-bell {background:var(--surface);color:var(--text-primary);border-color:var(--border)}
+.notify-badge {background:var(--brand-gold,#ffc107);color:#330006;border:2px solid var(--surface);min-width:23px;font-weight:750}
+.notify-bell:has(.notify-badge) svg {transform-origin:50% 15%;animation:bell-ring .38s ease-in-out 2}
+.notify-popup {background:var(--surface);border-color:var(--border);box-shadow:0 15px 48px #19030b30;border-radius:16px;animation-duration:.2s}
+.notify-heading {border-color:var(--border)}.notify-heading button,.notify-footer {color:var(--accent)}
+.notify-item {border-color:var(--border)}.notify-item button {background:var(--surface);color:var(--text-primary);border-radius:0!important;min-height:70px}
+.notify-item.is-unread button {background:var(--accent-soft)}.notify-item button:hover {background:var(--surface-secondary)}
+.notify-dot {background:var(--accent)}.notify-message,.notify-state,.notify-item time,.notify-empty {color:var(--text-muted)}
+.notify-title {gap:9px}.notify-message {font-size:13px}.notify-footer:hover {background:var(--surface-secondary)}
+body.notifications-page {background:var(--background);color:var(--text-primary)}.notifications-page>header {max-width:none;padding:20px 32px;gap:16px}
+.notifications-page main {background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:16px;padding:28px;max-width:820px}
+.notifications-page a {color:var(--accent)}.notifications-page main h1 {font-size:30px}.notifications-page .notify-item button {padding:20px}
+@keyframes bell-ring {0%,100%{transform:rotate(0)}25%{transform:rotate(12deg)}75%{transform:rotate(-12deg)}}
+@media(max-width:800px) {.notify-popup{position:fixed;top:86px;right:16px;width:calc(100vw - 32px);max-width:400px}.notify-list{max-height:calc(100dvh - 240px)}}
+@media(max-width:480px) {.notifications-page>header{padding:16px;flex-wrap:wrap}.notifications-page main{padding:18px}.notify-heading{padding:14px;gap:8px}.notify-heading button{min-height:40px}.notify-state{white-space:nowrap}}
+@media(prefers-reduced-motion:reduce) {.notify-bell:has(.notify-badge) svg,.notify-popup{animation:none!important}}

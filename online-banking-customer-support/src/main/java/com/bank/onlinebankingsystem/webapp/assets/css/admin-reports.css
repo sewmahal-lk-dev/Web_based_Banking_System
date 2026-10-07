@@ -1,0 +1,20 @@
+.admin-reports .customer-workspace-header {display:block}
+.admin-reports .customer-workspace-header h2 {margin:6px 0}
+.admin-reports .customer-workspace-header p {color:var(--text-secondary);margin:0}
+.admin-reports .workspace-metrics {margin-bottom:24px}
+.admin-reports .workspace-metric>span {text-transform:capitalize}
+.admin-reports .report-controls,.admin-reports .report-preview {padding:24px;margin-bottom:24px}
+.admin-reports .report-controls h3 {margin:0 0 18px}
+.admin-reports .report-controls form {grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.admin-reports .report-controls [hidden] {display:none!important}
+.admin-reports .report-help {font-size:12px;color:var(--text-secondary);margin:15px 0}
+.admin-reports .report-preview-heading {display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.admin-reports .report-preview-heading p {font-size:12px;color:var(--text-secondary);overflow-wrap:anywhere}
+.admin-reports .report-table-scroll {overflow:auto;max-height:600px;border:1px solid var(--border);border-radius:12px}
+.admin-reports table {min-width:820px}
+.admin-reports td {max-width:280px;overflow-wrap:anywhere;vertical-align:top}
+.admin-reports thead th {position:sticky;top:0}
+.admin-reports .report-pagination {display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:20px;font-size:12px}
+.admin-reports .report-pagination a {color:var(--accent)}
+@media(max-width:1000px){.admin-reports .report-controls form{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.admin-reports .report-controls form{grid-template-columns:minmax(0,1fr)}.admin-reports .report-controls,.admin-reports .report-preview{padding:16px}}
